@@ -1,0 +1,54 @@
+{
+  "name": "paired_v1",
+  "fixed_on": "2026-09-26",
+  "status_when_fixed": "NOT_RUN",
+  "question": "With the same pixel features, data and head, does adding the existing cross-group edit-consistency objective to the hard-negative loss give added utility on binding-necessary development groups?",
+  "data_config": "configs/data_v1.json",
+  "encoder_config": "configs/encoder_pixel_v1.json",
+  "panel": {
+    "train": {"split": "train", "start": 0, "n_groups": 512},
+    "dev": {"split": "dev", "start": 32, "n_groups": 128},
+    "rule": "contiguous ranges in generation order inside the train/dev-owned orbits; dev starts at 32 to exclude the 32 dev groups already scored by pixel_baseline_v1; never chosen by model performance",
+    "earlier_small_panel": "runs/pixel_baseline_v1_20260926T161957Z is kept as the small-panel result; its 64 train groups are a prefix of this train panel",
+    "test_splits": "SEALED: not rendered, not encoded, not scored"
+  },
+  "arms": {
+    "A": {"loss": "hard-negative InfoNCE", "lam_eq": 0.0},
+    "B": {"loss": "hard-negative InfoNCE + lam_eq * cross-group edit-consistency", "lam_eq": 0.01, "tau_eq": 0.1}
+  },
+  "lambda_disclosure": "lam_eq = 0.01 is the smallest non-zero value of configs/prereg_pilot_v0.json tuning.hardneg_eq.lam_eq. That grid was set after smoke_v0 showed the edit gradient ~80x the task gradient at init (v0 oracle tokens, lam 0.3), and pixel_baseline_v1 measured ||grad L_edit|| / ||grad L_task|| = 11.7-14.0 at init (lam = 1) before this choice. At lam = 0.01 the edit term is therefore expected to contribute roughly a tenth of the task gradient at init; the actual values on this panel's first batch are recorded before training. lam is not changed after seeing any dev result.",
+  "loss_scaling_expectation": "L_edit is a cross-entropy over B = 16 groups, about log(16) = 2.77 for unaligned edit directions; L_hn is about 3.5 at init on the small panel, so lam * L_edit adds about 0.03 to the loss value at init.",
+  "held_constant": ["head class and initialization (seed)", "batch order (seed)", "supervision and false-negative masks", "cached frozen-encoder features and train-panel standardization", "optimizer (AdamW, lr, weight decay, betas)", "number of updates", "evaluation code"],
+  "head": {"d": 512, "hc": 8, "hb": 8, "window": 5, "init_scale": 1.0},
+  "train": {"lr": 0.01, "weight_decay": 0.0001, "steps": 1500, "batch_groups": 16, "logit_scale": 1.0,
+            "log_every": 100, "grad_split_every": 250},
+  "seeds": [0, 1, 2],
+  "seed_note": "seeds are paired optimization repeats on the same panel (same data), not independent samples",
+  "evaluation": {
+    "when": "final step only; no intermediate dev evaluation, no early stopping",
+    "primary": "Winoground group score on binding-necessary (binding or relation) dev groups",
+    "secondary": ["GroupMatch and pair AUC on binding-necessary dev groups", "binding-only and relation-only dev group scores", "all-kinds dev scores", "train-panel fit", "text, image, aug, aug_group", "tie rates"],
+    "controls": ["oracle scorer", "random scorer (analytic chance + Monte Carlo)", "zero-shot CLIP", "content-only and binding-only channels", "dev images / captions shuffled across groups"],
+    "diagnostics": ["task and edit loss and grad norms during training (both arms; edit loss computed without gradient in arm A)", "content change on binding-necessary dev pairs rendered with a shared seed", "wall/CPU time and peak memory"]
+  },
+  "statistics": {
+    "per_seed": "B - A on each metric for each seed",
+    "ci": "95% percentile bootstrap over binding-necessary dev groups (2000 resamples); each resample averages the per-group B - A outcome over the three seeds (pair AUC recomputed per resample and seed)",
+    "mie": "0.05 absolute, applied ONLY to the Winoground group score (same metric and scale as prereg_pilot_v0/v1); no MIE is claimed for GroupMatch or pair AUC",
+    "interpretation": "non-significance is not read as zero effect or equivalence"
+  },
+  "decision_rules": {
+    "fits": "an arm fits if the mean over seeds of its binding-necessary train-panel group score is >= 0.75",
+    "at_chance": "an arm is at chance on dev if the 95% group-bootstrap CI (seed-averaged) of its binding-necessary dev group score has lower bound <= 1/6 AND that of its binding-necessary dev GroupMatch has lower bound <= 0.5",
+    "verdict_order": [
+      "OPTIMIZATION_OR_INPUT_UNRESOLVED if neither arm fits",
+      "GENERALIZATION_UNRESOLVED if both arms are at chance on dev",
+      "PRELIMINARY_ADDED_UTILITY if B - A on BN dev group score has mean >= 0.05, CI lower bound > 0 and is positive in all three seeds",
+      "EDIT_LOSS_BRANCH_ON_HOLD otherwise (weak, absent or unfavourable difference)"
+    ],
+    "edit_loss_branch": "further edit-loss work is put on hold unless the verdict is PRELIMINARY_ADDED_UTILITY; even then test, natural images and novelty stay unevaluated",
+    "no_automatic_followups": "no encoder change, data increase or new loss is started on the basis of this result"
+  },
+  "caps": {"cpu_s_total_task": 7200, "ledger": "runs/paired_v1_cpu_ledger.json", "workers": 1, "torch_threads": 1,
+           "max_address_space_gib": 3.0, "note": "covers split analysis, rendering, encoding, training, evaluation, retries and child processes"}
+}

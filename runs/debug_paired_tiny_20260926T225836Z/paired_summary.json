@@ -1,0 +1,316 @@
+{
+ "panel": {
+  "train_groups": 8,
+  "dev_groups": 8,
+  "dev_binding_necessary": 4,
+  "gids_sha256": "f140b7710816e3549b76e71830bc8ae801576164209b51e92303a3353935501c"
+ },
+ "config": {
+  "lam_eq": 0.01,
+  "steps": 5,
+  "seeds": [
+   0,
+   1,
+   2
+  ]
+ },
+ "renderer_audit": {
+  "images": 40,
+  "decode_mismatches": 0
+ },
+ "controls": {
+  "oracle": {
+   "bn": {
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0,
+    "n": 4,
+    "pair_auc": 1.0,
+    "tie_rate": 0.0
+   },
+   "binding": {
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0,
+    "n": 2,
+    "pair_auc": 1.0,
+    "tie_rate": 0.0
+   },
+   "relation": {
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0,
+    "n": 2,
+    "pair_auc": 1.0,
+    "tie_rate": 0.0
+   },
+   "all": {
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0,
+    "n": 8,
+    "pair_auc": 1.0,
+    "tie_rate": 0.0
+   }
+  },
+  "zero_shot_clip": {
+   "bn": {
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.75,
+    "aug": 0.375,
+    "aug_group": 0.0,
+    "n": 4,
+    "pair_auc": 0.515625,
+    "tie_rate": 0.0
+   },
+   "binding": {
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 1.0,
+    "aug": 0.5,
+    "aug_group": 0.0,
+    "n": 2,
+    "pair_auc": 0.5,
+    "tie_rate": 0.0
+   },
+   "relation": {
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.5,
+    "aug": 0.25,
+    "aug_group": 0.0,
+    "n": 2,
+    "pair_auc": 0.5,
+    "tie_rate": 0.0
+   },
+   "all": {
+    "text": 0.375,
+    "image": 0.125,
+    "group": 0.125,
+    "match": 0.875,
+    "aug": 0.625,
+    "aug_group": 0.375,
+    "n": 8,
+    "pair_auc": 0.578125,
+    "tie_rate": 0.0
+   }
+  },
+  "random_mc300_bn": {
+   "text": 0.23916666666666667,
+   "image": 0.25666666666666665,
+   "group": 0.16583333333333333,
+   "match": 0.5058333333333334,
+   "aug": 0.3329166666666667,
+   "aug_group": 0.10666666666666667,
+   "pair_auc": 0.5040625
+  }
+ },
+ "arms": {
+  "A": {
+   "seed0": {
+    "dev_bn_group": 0.0,
+    "dev_bn_match": 0.25,
+    "dev_bn_auc": 0.515625,
+    "dev_all_group": 0.0,
+    "dev_all_match": 0.625,
+    "train_bn_group": 0.25,
+    "dev_binding_group": 0.0,
+    "dev_relation_group": 0.0,
+    "dev_content_all_group": 0.0,
+    "loss_last": 0.5490392244436006,
+    "edit_last": 1.5001532849736343,
+    "content_residual_bn": 0.42317488723859215
+   },
+   "seed1": {
+    "dev_bn_group": 0.0,
+    "dev_bn_match": 0.0,
+    "dev_bn_auc": 0.46875,
+    "dev_all_group": 0.0,
+    "dev_all_match": 0.375,
+    "train_bn_group": 0.0,
+    "dev_binding_group": 0.0,
+    "dev_relation_group": 0.0,
+    "dev_content_all_group": 0.0,
+    "loss_last": 0.7392634645183997,
+    "edit_last": 0.9466672766429152,
+    "content_residual_bn": 0.345159298936117
+   },
+   "seed2": {
+    "dev_bn_group": 0.0,
+    "dev_bn_match": 1.0,
+    "dev_bn_auc": 0.515625,
+    "dev_all_group": 0.0,
+    "dev_all_match": 0.875,
+    "train_bn_group": 0.25,
+    "dev_binding_group": 0.0,
+    "dev_relation_group": 0.0,
+    "dev_content_all_group": 0.0,
+    "loss_last": 0.6587665833918035,
+    "edit_last": 0.8132084922363454,
+    "content_residual_bn": 0.3827163735915146
+   }
+  },
+  "B": {
+   "seed0": {
+    "dev_bn_group": 0.0,
+    "dev_bn_match": 0.25,
+    "dev_bn_auc": 0.453125,
+    "dev_all_group": 0.0,
+    "dev_all_match": 0.625,
+    "train_bn_group": 0.75,
+    "dev_binding_group": 0.0,
+    "dev_relation_group": 0.0,
+    "dev_content_all_group": 0.125,
+    "loss_last": 0.40222789675197473,
+    "edit_last": 0.4388140627122243,
+    "content_residual_bn": 0.4533833975138506
+   },
+   "seed1": {
+    "dev_bn_group": 0.0,
+    "dev_bn_match": 0.0,
+    "dev_bn_auc": 0.484375,
+    "dev_all_group": 0.0,
+    "dev_all_match": 0.375,
+    "train_bn_group": 0.0,
+    "dev_binding_group": 0.0,
+    "dev_relation_group": 0.0,
+    "dev_content_all_group": 0.0,
+    "loss_last": 1.0378606353328397,
+    "edit_last": 0.5150386587600894,
+    "content_residual_bn": 0.3166468355859735
+   },
+   "seed2": {
+    "dev_bn_group": 0.0,
+    "dev_bn_match": 0.25,
+    "dev_bn_auc": 0.5,
+    "dev_all_group": 0.0,
+    "dev_all_match": 0.625,
+    "train_bn_group": 0.25,
+    "dev_binding_group": 0.0,
+    "dev_relation_group": 0.0,
+    "dev_content_all_group": 0.0,
+    "loss_last": 0.7582567762340279,
+    "edit_last": 0.6847473479859645,
+    "content_residual_bn": 0.35096527365851604
+   }
+  }
+ },
+ "paired": {
+  "dev_bn_group": {
+   "mean_diff": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "per_seed_diff": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "n_seeds_positive": 0,
+   "n_groups": 4
+  },
+  "dev_bn_match": {
+   "mean_diff": -0.25,
+   "ci95": [
+    -0.3333333333333333,
+    -0.08333333333333333
+   ],
+   "per_seed_diff": [
+    0.0,
+    0.0,
+    -0.75
+   ],
+   "n_seeds_positive": 0,
+   "n_groups": 4
+  },
+  "dev_bn_auc": {
+   "mean_diff": -0.020833333333333332,
+   "ci95": [
+    -0.0625,
+    0.005208333333333333
+   ],
+   "per_seed_diff": [
+    -0.0625,
+    0.015625,
+    -0.015625
+   ],
+   "n_seeds_positive": 1,
+   "n_groups": 4
+  }
+ },
+ "verdict": {
+  "label": "OPTIMIZATION_OR_INPUT_UNRESOLVED",
+  "edit_loss_branch": "ON_HOLD",
+  "fits": {
+   "A": false,
+   "B": false
+  },
+  "at_chance": {
+   "A": true,
+   "B": true
+  },
+  "arm_bn_ci": {
+   "A": {
+    "group": {
+     "mean": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "match": {
+     "mean": 0.41666666666666663,
+     "ci95": [
+      0.3333333333333333,
+      0.5833333333333333
+     ]
+    }
+   },
+   "B": {
+    "group": {
+     "mean": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "match": {
+     "mean": 0.16666666666666666,
+     "ci95": [
+      0.0,
+      0.3333333333333333
+     ]
+    }
+   }
+  }
+ },
+ "grad_ratio": {
+  "init_mean": 13.388161045311287,
+  "init_lam_scaled_mean": 0.1338816104531129
+ },
+ "cost": {
+  "stage_cpu_s": 32.3,
+  "peak_rss_mib": 1571.6,
+  "render_and_audit_cpu_s": 0.95,
+  "encoder_cpu_s": 14.38,
+  "encoder_images": 40,
+  "encoder_captions": 64
+ }
+}

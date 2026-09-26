@@ -102,8 +102,12 @@ def orbit_owner(key, cfg):
     return None
 
 
-def _sample_ops(rng, base, kinds, accept=None):
-    """Sample one op per kind; ``accept(scene)`` optionally restricts the result scenes."""
+def _sample_ops(rng, base, kinds, accept=None, filter_trace=None):
+    """Sample one op per kind; ``accept(scene)`` optionally restricts the result scenes.
+
+    ``filter_trace`` (read-only bookkeeping, never touches ``rng``) counts, per op name, how many
+    applicable ops existed and how many survived the ``accept`` filter.
+    """
     kinds = list(kinds)
     rng.shuffle(kinds)
     ops, s = [], base
@@ -111,7 +115,13 @@ def _sample_ops(rng, base, kinds, accept=None):
         if accept is None:
             op = sample_op(rng, s, k)
         else:
-            cands = [op for op in applicable_ops(s, (k,)) if accept(op.apply(s))]
+            appl = applicable_ops(s, (k,))
+            cands = [op for op in appl if accept(op.apply(s))]
+            if filter_trace is not None:
+                for o in appl:
+                    filter_trace[("applicable", o.name, o.args[0] if o.name in ("swap_attr", "replace_attr") else "-")] += 1
+                for o in cands:
+                    filter_trace[("kept", o.name, o.args[0] if o.name in ("swap_attr", "replace_attr") else "-")] += 1
             if not cands:
                 raise InvalidOp(f"no applicable {k} op inside the owned orbits")
             op = rng.choice(cands)
@@ -120,8 +130,12 @@ def _sample_ops(rng, base, kinds, accept=None):
     return ops
 
 
-def build_dataset(cfg, log=None):
-    """Return ({split: [Group]}, stats). Deterministic given ``cfg``."""
+def build_dataset(cfg, log=None, trace=None):
+    """Return ({split: [Group]}, stats). Deterministic given ``cfg``.
+
+    ``trace`` (optional dict) receives per-split proposal/acceptance bookkeeping; it does not
+    change sampling (the dataset hash is identical with or without it).
+    """
     H = heldout_set(cfg)
     units = leakage_units(cfg)
     partition = "orbit_partition" in cfg
@@ -139,23 +153,35 @@ def build_dataset(cfg, log=None):
         seen = set()
         groups = []
         rejects = Counter()
+        tr = None
+        if trace is not None:
+            tr = trace.setdefault(split, {"proposals": Counter(), "rejects_by_kind": Counter(),
+                                          "accepted": Counter(), "accepted_ops": Counter(), "filter": Counter()})
+        cur_kind = None
         attempts = 0
         while len(groups) < spec["n_groups"]:
             attempts += 1
             if attempts > cfg["max_attempts_per_split"]:
                 raise RuntimeError(f"{split}: exceeded max attempts ({dict(rejects)})")
             kinds = schedule[len(groups) % len(schedule)]
+            cur_kind = "+".join(sorted(kinds))
+            if tr is not None:
+                tr["proposals"][cur_kind] += 1
             n_obj = rng.choices(n_obj_choices, n_obj_weights)[0]
             forbid = H if spec["heldout"] == "exclude" else frozenset()
             base = sample_scene(rng, n_obj, forbid)
             if partition and orbit_owner(base.content_key(), cfg) != split:
                 rejects["orbit_not_owned"] += 1
+                if tr is not None:
+                    tr["rejects_by_kind"][(cur_kind, "orbit_not_owned")] += 1
                 continue
             accept = (lambda sc, _split=split: orbit_owner(sc.content_key(), cfg) == _split) if partition else None
             try:
-                ops = _sample_ops(rng, base, kinds, accept)
+                ops = _sample_ops(rng, base, kinds, accept, tr["filter"] if tr is not None else None)
             except InvalidOp:
                 rejects["no_applicable_op"] += 1
+                if tr is not None:
+                    tr["rejects_by_kind"][(cur_kind, "no_applicable_op")] += 1
                 continue
             para = cap.sample_paraphrase(rng, base, spec["templates"], with_relation=True)
             gid = f"{split}-{len(groups):05d}"
@@ -164,28 +190,44 @@ def build_dataset(cfg, log=None):
             except InvalidGroup as e:
                 reason = str(e).split(":")[0][:60]
                 rejects[f"invalid_group:{reason}"] += 1
+                if tr is not None:
+                    tr["rejects_by_kind"][(cur_kind, f"invalid_group:{reason}")] += 1
                 continue
             if partition and any(orbit_owner(s.content_key(), cfg) != split for s in g.scenes):
                 rejects["edited_orbit_not_owned"] += 1
+                if tr is not None:
+                    tr["rejects_by_kind"][(cur_kind, "edited_orbit_not_owned")] += 1
                 continue
             if spec["heldout"] == "exclude" and any_heldout(g, H):
                 rejects["heldout_pair_present"] += 1
+                if tr is not None:
+                    tr["rejects_by_kind"][(cur_kind, "heldout_pair_present")] += 1
                 continue
             if spec["heldout"] == "require_touched" and not touched_heldout(g, H):
                 rejects["heldout_pair_not_touched"] += 1
+                if tr is not None:
+                    tr["rejects_by_kind"][(cur_kind, "heldout_pair_not_touched")] += 1
                 continue
             keys = group_keys(g, units)
             if any(registry.get(k, split) != split for k in keys):
                 rejects["cross_split_key_conflict"] += 1
+                if tr is not None:
+                    tr["rejects_by_kind"][(cur_kind, "cross_split_key_conflict")] += 1
                 continue
             dedup = (frozenset(s.canonical_key() for s in g.scenes), para.template)
             if dedup in seen:
                 rejects["duplicate_group"] += 1
+                if tr is not None:
+                    tr["rejects_by_kind"][(cur_kind, "duplicate_group")] += 1
                 continue
             seen.add(dedup)
             for k in keys:
                 registry[k] = split
             groups.append(g)
+            if tr is not None:
+                tr["accepted"][cur_kind] += 1
+                for op in g.ops:
+                    tr["accepted_ops"][(op.name, op.args[0] if op.name in ("swap_attr", "replace_attr") else "-")] += 1
         out[split] = groups
         stats[split] = {"n_groups": len(groups), "attempts": attempts, "rejects": dict(sorted(rejects.items()))}
         if log:

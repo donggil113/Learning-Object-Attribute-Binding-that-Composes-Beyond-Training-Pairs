@@ -1,0 +1,8 @@
+[22:55:00] train: 2000 groups / 6743 attempts, orbits owned 1241 used 758, content filter keep 0.5007147232999796, BN 0.500
+[22:55:00] dev: 300 groups / 7063 attempts, orbits owned 173 used 97, content filter keep 0.10417258018734034, BN 0.500
+[22:55:00] calib: 300 groups / 19334 attempts, orbits owned 176 used 91, content filter keep 0.046857428464325876, BN 0.500
+[22:55:00] test_iid: 400 groups / 6858 attempts, orbits owned 241 used 121, content filter keep 0.10578621908127209, BN 0.500
+[22:55:00] test_heldout_pairs: 400 groups / 14309 attempts, orbits owned 243 used 146, content filter keep 0.10026827632461435, BN 0.500
+[22:55:00] test_composition: 400 groups / 25297 attempts, orbits owned 245 used 149, content filter keep 0.10852894886649031, BN 0.300
+[22:55:00] test_heldout_template: 400 groups / 80837 attempts, orbits owned 121 used 68, content filter keep 0.0341148311560977, BN 0.500
+[22:55:00] panel: train 512 groups / 427 orbits, dev 128 groups / 74 orbits, overlap 0

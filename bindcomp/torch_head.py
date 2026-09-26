@@ -124,8 +124,14 @@ def grad_norm_of(head, loss):
     return float(torch.sqrt(sum((g * g).sum() for g in grads if g is not None)))
 
 
-def train(head, groups, tcfg, hard_neg, seed, log=None):
-    """Same batch-order rule and optimizer semantics as train.train (Adam, decoupled decay)."""
+def train(head, groups, tcfg, hard_neg, seed, log=None, lam_eq=0.0, tau_eq=0.1, monitor_edit=False,
+          grad_split_every=None):
+    """Same batch-order rule and optimizer semantics as train.train (Adam, decoupled decay).
+
+    ``lam_eq`` adds the edit-consistency term. ``monitor_edit`` records the edit loss (no gradient
+    when ``lam_eq`` is 0) and ``grad_split_every`` records ||grad L_task|| and ||grad L_edit|| on the
+    current batch before the update. With the defaults this is the original hard-negative loop.
+    """
     rng = random.Random(f"train-order:{seed}")
     opt = torch.optim.AdamW(head.parameters(), lr=tcfg["lr"], betas=(0.9, 0.999), eps=1e-8,
                             weight_decay=tcfg["weight_decay"])
@@ -138,15 +144,27 @@ def train(head, groups, tcfg, hard_neg, seed, log=None):
                 order = list(range(len(groups)))
                 rng.shuffle(order)
             batch.append(groups[order.pop()])
-        loss, l_task, _ = batch_loss(head, batch, hard_neg, 0.0, tcfg["logit_scale"])
+        rec = {"step": step}
+        if lam_eq or monitor_edit or grad_split_every:
+            eI, eT = batch_embeddings(head, batch)
+            l_task = info_nce(eI @ eT.T, negative_mask(batch, hard_neg), tcfg["logit_scale"])
+            l_edit = edit_consistency(eI[1::2] - eI[0::2], eT[1::2] - eT[0::2], tau_eq)
+            loss = l_task + lam_eq * l_edit if lam_eq else l_task
+            rec["edit"] = l_edit.item()
+            if grad_split_every and (step == 1 or step % grad_split_every == 0):
+                rec["grad_task"] = grad_norm_of(head, l_task)
+                rec["grad_edit"] = grad_norm_of(head, l_edit)
+        else:
+            loss, l_task, _ = batch_loss(head, batch, hard_neg, 0.0, tcfg["logit_scale"])
         opt.zero_grad()
         loss.backward()
         gn = float(torch.sqrt(sum((p.grad * p.grad).sum() for p in head.parameters())))
         opt.step()
-        hist.append({"step": step, "task": l_task.item(), "grad_norm": gn,
-                     "elapsed_s": round(time.perf_counter() - t0, 3)})
+        rec.update(task=l_task.item(), loss=loss.item(), grad_norm=gn, elapsed_s=round(time.perf_counter() - t0, 3))
+        hist.append(rec)
         if log and (step == 1 or step % tcfg["log_every"] == 0 or step == tcfg["steps"]):
-            log(f"  step {step} task={l_task.item():.4f} |g|={gn:.4f}")
+            extra = f" edit={rec['edit']:.4f}" if "edit" in rec else ""
+            log(f"  step {step} task={l_task.item():.4f}{extra} |g|={gn:.4f}")
     return hist
 
 

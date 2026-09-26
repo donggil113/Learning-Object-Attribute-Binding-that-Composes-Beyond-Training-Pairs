@@ -65,15 +65,15 @@ def render_members(groups, seed_offset=None):
     return imgs
 
 
-def build_feature_groups(groups, encoder, images=None, log=None):
+def build_feature_groups(groups, encoder, images=None, log=None, text_batch=None):
     """Render (unless given) + encode. The encoder only ever sees PIL images and caption strings."""
     images = render_members(groups) if images is None else images
     img_pooled, img_tok = encoder.encode_images(images)
     caps_hp = [hp_captions(g) for g in groups]
     texts = [" ".join(c) for g in groups for c in g.captions]
     texts_hp = [" ".join(c) for ch in caps_hp for c in ch]
-    t_pooled, t_tok = encoder.encode_texts(texts)
-    h_pooled, h_tok = encoder.encode_texts(texts_hp)
+    t_pooled, t_tok = encoder.encode_texts(texts, batch=text_batch) if text_batch else encoder.encode_texts(texts)
+    h_pooled, h_tok = encoder.encode_texts(texts_hp, batch=text_batch) if text_batch else encoder.encode_texts(texts_hp)
     out = []
     for i, g in enumerate(groups):
         a, b = 2 * i, 2 * i + 2

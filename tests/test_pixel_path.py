@@ -109,6 +109,53 @@ class TestTorchBridge(unittest.TestCase):
                 self.assertTrue(torch.allclose(p.grad, torch.tensor(grads[k], dtype=DTYPE), atol=1e-10), (variant, k))
 
 
+def _reference_train_121fdab(head, groups, tcfg, hard_neg, seed):
+    """Verbatim copy of torch_head.train at commit 121fdab (the loop used by pixel_baseline_v1)."""
+    import random as _random
+    from bindcomp.torch_head import batch_loss as _batch_loss
+    rng = _random.Random(f"train-order:{seed}")
+    opt = torch.optim.AdamW(head.parameters(), lr=tcfg["lr"], betas=(0.9, 0.999), eps=1e-8,
+                            weight_decay=tcfg["weight_decay"])
+    order = []
+    for step in range(1, tcfg["steps"] + 1):
+        batch = []
+        while len(batch) < min(tcfg["batch_groups"], len(groups)):
+            if not order:
+                order = list(range(len(groups)))
+                rng.shuffle(order)
+            batch.append(groups[order.pop()])
+        loss, l_task, _ = _batch_loss(head, batch, hard_neg, 0.0, tcfg["logit_scale"])
+        opt.zero_grad()
+        loss.backward()
+        opt.step()
+
+
+@unittest.skipUnless(HAS_TORCH, "requires the repo .venv (torch)")
+class TestTrainLoopRegression(unittest.TestCase):
+    def test_lambda_zero_paths_match_the_original_loop(self):
+        from bindcomp.torch_head import train
+        feats = [to_feat(eg) for eg in make_enc_groups(6, seed=13)]
+        tcfg = dict(lr=0.01, weight_decay=1e-4, steps=12, batch_groups=4, logit_scale=1.0, log_every=100)
+        ref = TorchFactorizedHead(d=24, seed=4)
+        _reference_train_121fdab(ref, feats, tcfg, True, seed=4)
+        for kw in ({}, {"monitor_edit": True, "grad_split_every": 5}):
+            head = TorchFactorizedHead(d=24, seed=4)
+            hist = train(head, feats, tcfg, True, seed=4, **kw)
+            for k in ref.p:
+                self.assertTrue(torch.equal(ref.p[k], head.p[k]), (kw, k))
+        self.assertIn("edit", hist[0])
+        self.assertIn("grad_edit", hist[0])
+
+    def test_edit_term_changes_training(self):
+        from bindcomp.torch_head import train
+        feats = [to_feat(eg) for eg in make_enc_groups(6, seed=13)]
+        tcfg = dict(lr=0.01, weight_decay=1e-4, steps=5, batch_groups=4, logit_scale=1.0, log_every=100)
+        a, b = TorchFactorizedHead(d=24, seed=4), TorchFactorizedHead(d=24, seed=4)
+        train(a, feats, tcfg, True, seed=4)
+        train(b, feats, tcfg, True, seed=4, lam_eq=0.01)
+        self.assertFalse(all(torch.equal(a.p[k], b.p[k]) for k in a.p))
+
+
 @unittest.skipUnless(HAS_TORCH, "requires the repo .venv (torch)")
 class TestProvenanceGuard(unittest.TestCase):
     def test_model_scorers_never_read_metadata(self):

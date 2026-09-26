@@ -1,0 +1,50 @@
+[22:58:47] data_v1 b8ec4ff27a0ceeb4 | panel train 8 dev 8 (dev dev-00032..dev-00039) gids sha f140b7710816e354
+[22:58:48] renderer audit: 40 images, 0 decode mismatches (0.95 CPU s)
+[22:59:40] encoded 16 images and 32 captions
+[22:59:43] encoded 16 images and 32 captions
+[22:59:44] encoder: 40 images + 64 captions, 14.38 CPU s
+[22:59:44] controls: oracle bn group 1.0, zero-shot bn group 0.000 match 0.750; random bn group 0.166
+[22:59:44] [A seed 0] init: L_task=2.783 L_edit=4.795 grad ratio edit/task=15.29 (x lam=0.0: 0.000)
+[22:59:44]   step 1 task=2.7833 edit=4.7952 |g|=2.5440
+[22:59:44]   step 2 task=1.9376 edit=3.2448 |g|=5.1632
+[22:59:44]   step 3 task=1.6018 edit=0.9615 |g|=7.1623
+[22:59:44]   step 4 task=0.8061 edit=1.5900 |g|=2.9370
+[22:59:44]   step 5 task=0.5490 edit=1.5002 |g|=1.2899
+[22:59:44] [A seed 0] loss 2.783->0.549 edit 4.795->1.500 | dev BN group 0.000 match 0.250 auc 0.516 | all group 0.000 | train BN group 0.250 | 0.1 CPU s
+[22:59:44] [B seed 0] init: L_task=2.783 L_edit=4.795 grad ratio edit/task=15.29 (x lam=0.01: 0.153)
+[22:59:44]   step 1 task=2.7833 edit=4.7952 |g|=2.6279
+[22:59:44]   step 2 task=1.7387 edit=1.1051 |g|=3.8003
+[22:59:44]   step 3 task=1.2201 edit=0.3319 |g|=9.3827
+[22:59:44]   step 4 task=0.6170 edit=0.4364 |g|=5.4309
+[22:59:44]   step 5 task=0.4022 edit=0.4388 |g|=2.5634
+[22:59:44] [B seed 0] loss 2.783->0.402 edit 4.795->0.439 | dev BN group 0.000 match 0.250 auc 0.453 | all group 0.000 | train BN group 0.750 | 0.1 CPU s
+[22:59:44] [A seed 1] init: L_task=2.767 L_edit=3.440 grad ratio edit/task=13.00 (x lam=0.0: 0.000)
+[22:59:44]   step 1 task=2.7671 edit=3.4395 |g|=2.8149
+[22:59:44]   step 2 task=1.6830 edit=2.1461 |g|=3.6353
+[22:59:44]   step 3 task=1.0216 edit=1.6877 |g|=4.4522
+[22:59:44]   step 4 task=1.1788 edit=0.6824 |g|=13.8246
+[22:59:44]   step 5 task=0.7393 edit=0.9467 |g|=5.2727
+[22:59:44] [A seed 1] loss 2.767->0.739 edit 3.440->0.947 | dev BN group 0.000 match 0.000 auc 0.469 | all group 0.000 | train BN group 0.000 | 0.1 CPU s
+[22:59:44] [B seed 1] init: L_task=2.767 L_edit=3.440 grad ratio edit/task=13.00 (x lam=0.01: 0.130)
+[22:59:44]   step 1 task=2.7671 edit=3.4395 |g|=2.8992
+[22:59:44]   step 2 task=1.5993 edit=0.3844 |g|=3.2596
+[22:59:44]   step 3 task=1.0625 edit=0.5808 |g|=6.0647
+[22:59:44]   step 4 task=2.7938 edit=0.6378 |g|=37.2952
+[22:59:44]   step 5 task=1.0379 edit=0.5150 |g|=13.1060
+[22:59:44] [B seed 1] loss 2.767->1.038 edit 3.440->0.515 | dev BN group 0.000 match 0.000 auc 0.484 | all group 0.000 | train BN group 0.000 | 0.1 CPU s
+[22:59:44] [A seed 2] init: L_task=2.933 L_edit=3.747 grad ratio edit/task=11.87 (x lam=0.0: 0.000)
+[22:59:44]   step 1 task=2.9329 edit=3.7472 |g|=2.6639
+[22:59:44]   step 2 task=1.9264 edit=3.1836 |g|=3.7569
+[22:59:44]   step 3 task=1.3092 edit=1.6817 |g|=9.4542
+[22:59:44]   step 4 task=1.6061 edit=0.6562 |g|=18.7269
+[22:59:44]   step 5 task=0.6588 edit=0.8132 |g|=3.1807
+[22:59:44] [A seed 2] loss 2.933->0.659 edit 3.747->0.813 | dev BN group 0.000 match 1.000 auc 0.516 | all group 0.000 | train BN group 0.250 | 0.0 CPU s
+[22:59:44] [B seed 2] init: L_task=2.933 L_edit=3.747 grad ratio edit/task=11.87 (x lam=0.01: 0.119)
+[22:59:45]   step 1 task=2.9329 edit=3.7472 |g|=2.7519
+[22:59:45]   step 2 task=1.9005 edit=1.6006 |g|=3.5901
+[22:59:45]   step 3 task=1.7651 edit=0.5962 |g|=13.8239
+[22:59:45]   step 4 task=0.6381 edit=0.6294 |g|=4.9339
+[22:59:45]   step 5 task=0.7583 edit=0.6847 |g|=7.3239
+[22:59:45] [B seed 2] loss 2.933->0.758 edit 3.747->0.685 | dev BN group 0.000 match 0.250 auc 0.500 | all group 0.000 | train BN group 0.250 | 0.1 CPU s
+[22:59:45] verdict: {"label": "OPTIMIZATION_OR_INPUT_UNRESOLVED", "fits": {"A": false, "B": false}, "at_chance": {"A": true, "B": true}}
+[22:59:45] paired BN group diff 0.000 CI [0.0, 0.0] per-seed [0.0, 0.0, 0.0]

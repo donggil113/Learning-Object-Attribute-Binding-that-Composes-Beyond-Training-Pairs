@@ -54,9 +54,13 @@ class ClipEncoder:
         return torch.cat(pooled), torch.cat(tokens)
 
     @torch.no_grad()
-    def encode_texts(self, texts):
+    def encode_texts(self, texts, batch=None):
+        """``batch=None`` encodes all captions in one forward pass (the pixel_baseline_v1 behaviour)."""
         if not all(isinstance(t, str) for t in texts):
             raise TypeError("encode_texts accepts caption strings only")
+        if batch:
+            parts = [self.encode_texts(texts[i:i + batch]) for i in range(0, len(texts), batch)]
+            return torch.cat([p for p, _ in parts]), [t for _, ts in parts for t in ts]
         m = self.model
         ids = self.tokenizer(texts)
         x = m.token_embedding(ids) + m.positional_embedding
@@ -66,7 +70,7 @@ class ClipEncoder:
         pooled = x[torch.arange(len(texts)), eot]
         if (eot >= ids.shape[1] - 1).any():
             raise ValueError("caption reached the context length; EOT may be truncated")
-        return pooled, [x[i, : int(eot[i]) + 1] for i in range(len(texts))]
+        return pooled, [x[i, : int(eot[i]) + 1].clone() for i in range(len(texts))]
 
     def describe(self):
         return json.loads(json.dumps(self.cfg))

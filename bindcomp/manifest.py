@@ -37,12 +37,14 @@ def git_info():
             return None
 
     head = run("rev-parse", "HEAD")
-    status = run("status", "--porcelain")
+    status = run("status", "--porcelain", "--untracked-files=all") or ""
+    # Outputs of earlier runs under runs/ are not code; anything else counts as dirty.
+    dirty = [ln for ln in status.splitlines() if not ln[3:].startswith("runs/")]
     return {
         "commit": head or "NO_COMMIT",
         "branch": run("rev-parse", "--abbrev-ref", "HEAD"),
-        "dirty": bool(status),
-        "dirty_files": status.splitlines()[:50] if status else [],
+        "dirty": bool(dirty),
+        "dirty_files": dirty[:50],
     }
 
 

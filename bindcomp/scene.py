@@ -86,6 +86,14 @@ class Scene:
         """Position-free identity: which objects exist (attributes bound)."""
         return tuple(sorted(o.triple for o in self.objects))
 
+    def content_key(self):
+        """Edit-orbit identity: object/attribute multisets without their assignment.
+
+        Invariant under binding swaps and relation swaps, so every scene reachable
+        from this one by binding-necessary edits shares the key.
+        """
+        return tuple(tuple(sorted(o.get(f) for o in self.objects)) for f in ("shape", "color", "material"))
+
     def multiset(self, field):
         return Counter(o.get(field) for o in self.objects)
 

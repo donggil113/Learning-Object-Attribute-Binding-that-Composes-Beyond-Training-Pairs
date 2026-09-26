@@ -25,7 +25,7 @@ from math import factorial
 
 from . import captions as cap
 from .groups import Group, InvalidGroup, make_group, validate_group
-from .ops import KINDS, InvalidOp, sample_op
+from .ops import KINDS, InvalidOp, applicable_ops, sample_op
 from .scene import sample_scene
 
 SPLITS = (
@@ -67,18 +67,54 @@ def any_heldout(g: Group, H):
     return set().union(*(s.shape_color_pairs() for s in g.scenes)) & H
 
 
-def group_keys(g: Group):
-    keys = {("scene", s.canonical_key()) for s in g.scenes}
-    keys |= {("desc", d.canonical()) for d in g.descs}
+# data_v0 used scene + caption-content units; data_v1 adds the edit orbit.
+DEFAULT_LEAKAGE_UNITS = ("scene", "desc")
+
+
+def leakage_units(cfg):
+    return tuple(cfg.get("leakage_units", DEFAULT_LEAKAGE_UNITS))
+
+
+def group_keys(g: Group, units=DEFAULT_LEAKAGE_UNITS):
+    keys = set()
+    if "scene" in units:
+        keys |= {("scene", s.canonical_key()) for s in g.scenes}
+    if "desc" in units:
+        keys |= {("desc", d.canonical()) for d in g.descs}
+    if "orbit" in units:
+        keys |= {("orbit", s.content_key()) for s in g.scenes}
     return keys
 
 
-def _sample_ops(rng, base, kinds):
+def orbit_owner(key, cfg):
+    """Deterministic partition of edit orbits over splits (data_v1).
+
+    Pre-assigning orbits avoids exhausting them with a first-come registry: a
+    split only ever samples base scenes whose orbit it owns, and a group is kept
+    only if every scene's orbit is owned by that split.
+    """
+    h = int(hashlib.sha256(f"{cfg['seed']}:{key!r}".encode()).hexdigest(), 16) % 10**9 / 10**9
+    acc = 0.0
+    for split in SPLITS:
+        acc += cfg["orbit_partition"].get(split, 0.0)
+        if h < acc:
+            return split
+    return None
+
+
+def _sample_ops(rng, base, kinds, accept=None):
+    """Sample one op per kind; ``accept(scene)`` optionally restricts the result scenes."""
     kinds = list(kinds)
     rng.shuffle(kinds)
     ops, s = [], base
     for k in kinds:
-        op = sample_op(rng, s, k)
+        if accept is None:
+            op = sample_op(rng, s, k)
+        else:
+            cands = [op for op in applicable_ops(s, (k,)) if accept(op.apply(s))]
+            if not cands:
+                raise InvalidOp(f"no applicable {k} op inside the owned orbits")
+            op = rng.choice(cands)
         ops.append(op)
         s = op.apply(s)
     return ops
@@ -87,6 +123,10 @@ def _sample_ops(rng, base, kinds):
 def build_dataset(cfg, log=None):
     """Return ({split: [Group]}, stats). Deterministic given ``cfg``."""
     H = heldout_set(cfg)
+    units = leakage_units(cfg)
+    partition = "orbit_partition" in cfg
+    if partition and "orbit" not in units:
+        raise ValueError("orbit_partition requires the orbit leakage unit")
     registry = {}
     out = {}
     stats = {}
@@ -108,8 +148,12 @@ def build_dataset(cfg, log=None):
             n_obj = rng.choices(n_obj_choices, n_obj_weights)[0]
             forbid = H if spec["heldout"] == "exclude" else frozenset()
             base = sample_scene(rng, n_obj, forbid)
+            if partition and orbit_owner(base.content_key(), cfg) != split:
+                rejects["orbit_not_owned"] += 1
+                continue
+            accept = (lambda sc, _split=split: orbit_owner(sc.content_key(), cfg) == _split) if partition else None
             try:
-                ops = _sample_ops(rng, base, kinds)
+                ops = _sample_ops(rng, base, kinds, accept)
             except InvalidOp:
                 rejects["no_applicable_op"] += 1
                 continue
@@ -121,13 +165,16 @@ def build_dataset(cfg, log=None):
                 reason = str(e).split(":")[0][:60]
                 rejects[f"invalid_group:{reason}"] += 1
                 continue
+            if partition and any(orbit_owner(s.content_key(), cfg) != split for s in g.scenes):
+                rejects["edited_orbit_not_owned"] += 1
+                continue
             if spec["heldout"] == "exclude" and any_heldout(g, H):
                 rejects["heldout_pair_present"] += 1
                 continue
             if spec["heldout"] == "require_touched" and not touched_heldout(g, H):
                 rejects["heldout_pair_not_touched"] += 1
                 continue
-            keys = group_keys(g)
+            keys = group_keys(g, units)
             if any(registry.get(k, split) != split for k in keys):
                 rejects["cross_split_key_conflict"] += 1
                 continue
@@ -182,6 +229,7 @@ def _rate(flags):
 def audit(dataset, cfg):
     """Structural and leakage audit. Returns dict with ``checks`` (name -> PASS/FAIL detail)."""
     H = heldout_set(cfg)
+    units = leakage_units(cfg)
     checks = {}
 
     def check(name, ok, detail=None):
@@ -200,11 +248,11 @@ def audit(dataset, cfg):
     owners = defaultdict(set)
     for split, gs in dataset.items():
         for g in gs:
-            for k in group_keys(g):
+            for k in group_keys(g, units):
                 owners[k].add(split)
             for c in g.captions:
                 owners[("caption_string", c)].add(split)
-    for kind in ("scene", "desc", "caption_string"):
+    for kind in (*units, "caption_string"):
         leaks = [k for k, v in owners.items() if k[0] == kind and len(v) > 1]
         check(f"no_cross_split_{kind}", not leaks, {"n_leaked": len(leaks)})
 

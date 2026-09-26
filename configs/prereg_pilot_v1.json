@@ -1,0 +1,20 @@
+{
+  "name": "prereg_pilot_v1",
+  "status": "NOT_RUN (not approved)",
+  "fixed_on": "2026-09-26",
+  "supersedes_for_future_use": "configs/prereg_pilot_v0.json (kept unchanged; its synthetic-feature pilot is withdrawn because its image tokens are oracle metadata)",
+  "scope_revision_disclosure": "Revised AFTER smoke_v0 (which opened data_v0 test subsamples and showed content-only shortcuts on the full composition split) and after the pixel_baseline_v1 development panel. The primary endpoint moved from the full composition split to its binding-necessary subset; the full composition score is secondary. data_v0 test splits are development material now.",
+  "data_config": "configs/data_v1.json (orbit-level split, fresh seed, split sizes identical to v0, test splits unopened)",
+  "input": "pixel path of pixel_baseline_v1 (rendered RGB -> frozen CLIP ViT-B-32 laion2b tokens; raw captions -> frozen CLIP text tokens)",
+  "comparison": {"treatment": "hardneg_eq", "same_data_baseline": "hardneg"},
+  "primary_endpoint": {
+    "metric": "Winoground group score (strict, 1e-9 tie tolerance)",
+    "split": "data_v1 test_composition",
+    "subset": "binding_necessary: every op kind in {binding, relation} (metadata rule; 120 of 400 groups by construction)",
+    "minimum_effect_of_interest": 0.05,
+    "decision": {"SUPPORTED": "effect >= 0.05 and CI lower bound > 0", "REJECTED": "CI upper bound < 0.05", "INCONCLUSIVE": "otherwise"}
+  },
+  "secondary_endpoints": ["group on full test_composition", "group on binding_necessary test_heldout_pairs", "match (GroupMatch) on the primary subset", "pair AUC"],
+  "power_note": "120 primary groups: a 0.05 effect will likely be INCONCLUSIVE. Test splits are NOT enlarged to seek significance.",
+  "open_items_before_approval": ["seeds, tuning grid and CPU cap must be re-fixed for the pixel path", "calibration panel for pair accuracy"]
+}

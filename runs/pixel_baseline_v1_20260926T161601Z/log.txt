@@ -1,0 +1,67 @@
+[16:16:12] data_v1 sha256 b8ec4ff27a0ceeb4a18506b68d1993b29ae2d4a4904a671997542590b933e506 | panels {"train": {"attribute": 16, "binding": 16, "object": 16, "relation": 16}, "dev": {"attribute": 8, "binding": 8, "object": 8, "relation": 8}, "fit": {"attribute": 4, "binding": 4, "object": 4, "relation": 4}}
+[16:16:19] renderer audit: 288 images, 0 decode mismatches
+[16:16:54] encoded 128 images and 256 captions
+[16:17:07] encoded 64 images and 128 captions
+[16:17:14] encoder: 288 images + 384 captions, 48.77 CPU s (load 4.69 s)
+[16:17:14] nuisance ratio (edit/nuisance, pooled CLIP): {"attribute": 2.27, "binding": 1.49, "object": 4.04, "relation": 1.04}
+[16:17:14] base-vs-edited pooled-image detectability AUC=0.471 CI95=(0.3128205128205128, 0.6101190476190477)
+[16:17:15] dev oracle: BN(n=16) group=1.000 match=1.000 text=1.000 image=1.000 | ALL(n=32) group=1.000 match=1.000 | pairAUC bn=1.000 all=1.000 | ties bn=0.00
+[16:17:15] dev zero_shot_clip: BN(n=16) group=0.000 match=0.688 text=0.000 image=0.000 | ALL(n=32) group=0.312 match=0.844 | pairAUC bn=0.497 all=0.583 | ties bn=0.00
+[16:17:15] dev text_only: BN(n=16) group=0.000 match=0.000 text=0.000 image=0.000 | ALL(n=32) group=0.000 match=0.000 | pairAUC bn=0.500 all=0.500 | ties bn=1.00
+[16:17:15] dev image_only_clip: BN(n=16) group=0.000 match=0.000 text=0.000 image=0.000 | ALL(n=32) group=0.000 match=0.000 | pairAUC bn=0.500 all=0.500 | ties bn=1.00
+[16:17:15] fit sanity: 16 groups, 200 steps (head params 24586)
+[16:17:15]   step 1 task=3.5154 |g|=2.4651
+[16:17:16]   step 50 task=0.0001 |g|=0.0086
+[16:17:17]   step 100 task=0.0000 |g|=0.0010
+[16:17:18]   step 150 task=0.0000 |g|=0.0006
+[16:17:19]   step 200 task=0.0000 |g|=0.0004
+[16:17:19] fit sanity train-fit: BN(n=8) group=1.000 match=1.000 text=1.000 image=1.000 | ALL(n=16) group=1.000 match=1.000 | pairAUC bn=0.785 all=0.811 | ties bn=0.00
+[16:17:19] hardneg seed 0: training 300 steps on 64 groups
+[16:17:19]   step 1 task=3.5275 |g|=2.1794
+[16:17:19]   step 50 task=0.2437 |g|=2.6122
+[16:17:20]   step 100 task=0.1781 |g|=6.5637
+[16:17:21]   step 150 task=0.4934 |g|=11.8677
+[16:17:22]   step 200 task=0.0558 |g|=6.4694
+[16:17:23]   step 250 task=0.3401 |g|=8.8687
+[16:17:24]   step 300 task=0.1288 |g|=4.9901
+[16:17:24]   seed 0: loss 3.528->0.129 grad ratio init=11.69 end=0.55 content residual median=0.234
+[16:17:24]   seed 0 train-fit: BN(n=32) group=0.750 match=1.000 text=0.812 image=0.938 | ALL(n=64) group=0.844 match=1.000 | pairAUC bn=0.716 all=0.758 | ties bn=0.00
+[16:17:24]   seed 0 dev[all]: BN(n=16) group=0.062 match=0.625 text=0.188 image=0.062 | ALL(n=32) group=0.375 match=0.812 | pairAUC bn=0.508 all=0.579 | ties bn=0.00
+[16:17:24]   seed 0 dev[content]: BN(n=16) group=0.000 match=0.562 text=0.125 image=0.062 | ALL(n=32) group=0.219 match=0.781 | pairAUC bn=0.506 all=0.579 | ties bn=0.00
+[16:17:24]   seed 0 dev[binding]: BN(n=16) group=0.125 match=0.625 text=0.188 image=0.188 | ALL(n=32) group=0.062 match=0.500 | pairAUC bn=0.515 all=0.507 | ties bn=0.00
+[16:17:24]   seed 0 dev[image_shuffled]: BN(n=16) group=0.000 match=0.312 text=0.062 image=0.000 | ALL(n=32) group=0.000 match=0.312 | pairAUC bn=0.488 all=0.498 | ties bn=0.00
+[16:17:24]   seed 0 dev[text_shuffled]: BN(n=16) group=0.000 match=0.375 text=0.000 image=0.062 | ALL(n=32) group=0.062 match=0.469 | pairAUC bn=0.502 all=0.519 | ties bn=0.00
+[16:17:24] hardneg seed 1: training 300 steps on 64 groups
+[16:17:24]   step 1 task=3.4327 |g|=2.2544
+[16:17:25]   step 50 task=0.5259 |g|=3.1246
+[16:17:26]   step 100 task=0.1527 |g|=6.3705
+[16:17:27]   step 150 task=0.3744 |g|=11.5384
+[16:17:28]   step 200 task=0.6314 |g|=12.4937
+[16:17:29]   step 250 task=1.8978 |g|=94.8556
+[16:17:30]   step 300 task=1.1518 |g|=40.3185
+[16:17:30]   seed 1: loss 3.433->1.152 grad ratio init=11.86 end=0.54 content residual median=0.284
+[16:17:30]   seed 1 train-fit: BN(n=32) group=0.562 match=1.000 text=0.656 image=0.875 | ALL(n=64) group=0.781 match=1.000 | pairAUC bn=0.621 all=0.725 | ties bn=0.00
+[16:17:30]   seed 1 dev[all]: BN(n=16) group=0.000 match=0.500 text=0.062 image=0.062 | ALL(n=32) group=0.156 match=0.750 | pairAUC bn=0.500 all=0.571 | ties bn=0.00
+[16:17:30]   seed 1 dev[content]: BN(n=16) group=0.000 match=0.562 text=0.062 image=0.062 | ALL(n=32) group=0.156 match=0.781 | pairAUC bn=0.504 all=0.570 | ties bn=0.00
+[16:17:30]   seed 1 dev[binding]: BN(n=16) group=0.062 match=0.625 text=0.125 image=0.125 | ALL(n=32) group=0.062 match=0.562 | pairAUC bn=0.537 all=0.514 | ties bn=0.00
+[16:17:30]   seed 1 dev[image_shuffled]: BN(n=16) group=0.000 match=0.312 text=0.062 image=0.000 | ALL(n=32) group=0.062 match=0.406 | pairAUC bn=0.496 all=0.493 | ties bn=0.00
+[16:17:30]   seed 1 dev[text_shuffled]: BN(n=16) group=0.000 match=0.500 text=0.188 image=0.000 | ALL(n=32) group=0.000 match=0.562 | pairAUC bn=0.487 all=0.490 | ties bn=0.00
+[16:17:30] hardneg seed 2: training 300 steps on 64 groups
+[16:17:30]   step 1 task=3.4932 |g|=1.9495
+[16:17:31]   step 50 task=0.4809 |g|=7.7991
+[16:17:32]   step 100 task=0.1518 |g|=2.0027
+[16:17:32]   step 150 task=0.2147 |g|=4.7599
+[16:17:33]   step 200 task=0.4991 |g|=13.3534
+[16:17:34]   step 250 task=0.7391 |g|=15.9566
+[16:17:35]   step 300 task=0.1575 |g|=9.1366
+[16:17:35]   seed 2: loss 3.493->0.158 grad ratio init=14.03 end=0.27 content residual median=0.264
+[16:17:35]   seed 2 train-fit: BN(n=32) group=0.875 match=1.000 text=1.000 image=0.875 | ALL(n=64) group=0.938 match=1.000 | pairAUC bn=0.657 all=0.745 | ties bn=0.00
+[16:17:35]   seed 2 dev[all]: BN(n=16) group=0.000 match=0.438 text=0.125 image=0.000 | ALL(n=32) group=0.188 match=0.719 | pairAUC bn=0.508 all=0.572 | ties bn=0.00
+[16:17:35]   seed 2 dev[content]: BN(n=16) group=0.000 match=0.438 text=0.000 image=0.000 | ALL(n=32) group=0.188 match=0.719 | pairAUC bn=0.494 all=0.569 | ties bn=0.00
+[16:17:35]   seed 2 dev[binding]: BN(n=16) group=0.000 match=0.562 text=0.000 image=0.188 | ALL(n=32) group=0.000 match=0.562 | pairAUC bn=0.511 all=0.513 | ties bn=0.00
+[16:17:35]   seed 2 dev[image_shuffled]: BN(n=16) group=0.000 match=0.375 text=0.062 image=0.000 | ALL(n=32) group=0.031 match=0.438 | pairAUC bn=0.488 all=0.500 | ties bn=0.00
+[16:17:35]   seed 2 dev[text_shuffled]: BN(n=16) group=0.000 match=0.750 text=0.000 image=0.000 | ALL(n=32) group=0.000 match=0.656 | pairAUC bn=0.494 all=0.497 | ties bn=0.00
+[16:17:39]   oracle-token control seed 0 dev: BN(n=16) group=0.312 match=0.812 text=0.375 image=0.375 | ALL(n=32) group=0.312 match=0.906 | pairAUC bn=0.619 all=0.620 | ties bn=0.00
+[16:17:42]   oracle-token control seed 1 dev: BN(n=16) group=0.125 match=0.750 text=0.312 image=0.188 | ALL(n=32) group=0.094 match=0.781 | pairAUC bn=0.548 all=0.571 | ties bn=0.00
+[16:17:45]   oracle-token control seed 2 dev: BN(n=16) group=0.188 match=0.750 text=0.312 image=0.250 | ALL(n=32) group=0.188 match=0.875 | pairAUC bn=0.569 all=0.576 | ties bn=0.00
+[16:17:45] decisions: {"Q1_pixel_input_and_eval_path": "PASS_PENDING_FINAL_TESTS", "Q2_baseline_trains": "PASS", "Q3_binding_necessary_evaluable": "PASS"}

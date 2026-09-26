@@ -1,0 +1,136 @@
+{
+  "argv": [
+    "scripts/pixel_baseline.py",
+    "--config",
+    "runs/debug_pixel_baseline_tiny_config.json",
+    "--out",
+    "runs/debug_pixel_baseline_tiny_20260926T161518Z"
+  ],
+  "caps": {
+    "remaining_before_s": 3370.59,
+    "rlimit_as_bytes": 3221225472,
+    "rlimit_cpu_soft_s": 3368,
+    "threads_env": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1"
+    }
+  },
+  "config_sha256": "3ea390265b813dc2c89a80717eb542469708874587d7d52485aeca32492b4067",
+  "cpu_time_s": 22.256,
+  "data_config_sha256": "5041e56fea30dfa2239c6f815d4fa76faaa24a68d3f0b25168e913d5d2f48b3c",
+  "data_sha256": "b8ec4ff27a0ceeb4a18506b68d1993b29ae2d4a4904a671997542590b933e506",
+  "decisions": {
+    "Q1_pixel_input_and_eval_path": "PASS_PENDING_FINAL_TESTS",
+    "Q2_baseline_trains": "FAIL",
+    "Q3_binding_necessary_evaluable": "FAIL"
+  },
+  "encoder": {
+    "arch": "ViT-B-32",
+    "checkpoint_sha256": "ac4f8c4b88af6d963118cbf40ad93176d092abbedfcb752601ae1866352656e6",
+    "n_params_frozen": 151277313,
+    "revision": "1a25a446712ba5ee05982a381eed697ef9b435cf"
+  },
+  "encoder_config_sha256": "463ae911e584cf4bc8d849ff8aa24887cc626cb89613950d7d9169a930a2cda5",
+  "env": {
+    "PYTHONHASHSEED": null,
+    "cpu_count": 4,
+    "machine": "x86_64",
+    "optional_packages_present": {
+      "PIL": true,
+      "numpy": true,
+      "pytest": false,
+      "torch": true
+    },
+    "platform": "Linux-6.18.44-fc-v37-x86_64-with-glibc2.39",
+    "python": "3.11.15 (main, Mar  3 2026, 09:26:23) [GCC 13.3.0]"
+  },
+  "finished_utc": "2026-09-26T16:15:44.624358+00:00",
+  "git": {
+    "branch": "claude/peaceful-fermat-q0u3wu",
+    "commit": "f60679569ead0c9c318a575607afc66b31d98335",
+    "dirty": true,
+    "dirty_files": [
+      "M .gitignore",
+      " M bindcomp/dataset.py",
+      " M bindcomp/encode.py",
+      " M bindcomp/evaluate.py",
+      " M bindcomp/render.py",
+      " M bindcomp/scene.py",
+      " M bindcomp/shortcuts.py",
+      " M scripts/check_metadata.py",
+      "?? bindcomp/budget.py",
+      "?? bindcomp/clip_features.py",
+      "?? bindcomp/pixel.py",
+      "?? bindcomp/pixel_render.py",
+      "?? bindcomp/torch_head.py",
+      "?? configs/data_v1.json",
+      "?? configs/encoder_pixel_v1.json",
+      "?? configs/pixel_baseline_v1.json",
+      "?? configs/prereg_pilot_v1.json",
+      "?? requirements-pixel.lock",
+      "?? scripts/fetch_encoder.py",
+      "?? scripts/ledger_run.py",
+      "?? scripts/pixel_baseline.py",
+      "?? tests/test_data_v1.py",
+      "?? tests/test_pixel_path.py"
+    ]
+  },
+  "head_n_params": 24586,
+  "name": "debug_pixel_baseline_tiny",
+  "panel": {
+    "dev": {
+      "gids": [
+        "dev-00000",
+        "dev-00001",
+        "dev-00002",
+        "dev-00003"
+      ],
+      "kinds": {
+        "attribute": 1,
+        "binding": 1,
+        "object": 1,
+        "relation": 1
+      }
+    },
+    "fit": {
+      "gids": [
+        "train-00000",
+        "train-00001"
+      ],
+      "kinds": {
+        "attribute": 1,
+        "binding": 1
+      }
+    },
+    "train": {
+      "gids": [
+        "train-00000",
+        "train-00001",
+        "train-00002",
+        "train-00003"
+      ],
+      "kinds": {
+        "attribute": 1,
+        "binding": 1,
+        "object": 1,
+        "relation": 1
+      }
+    }
+  },
+  "peak_rss_mib": 1564.5,
+  "science_status": "SCIENCE_NOT_EVALUATED",
+  "software_status": "COMPLETED",
+  "standardizer_sha256": "20f3c19e61b59d79672073b139e0c894411f7a90293866c2c1abf6f829b2aba4",
+  "started_utc": "2026-09-26T16:15:21.966736+00:00",
+  "status": "COMPLETED",
+  "timing": {
+    "encoder_captions": 32,
+    "encoder_features_cpu_s": 4.97,
+    "encoder_images": 28,
+    "encoder_load_cpu_s": 5.07,
+    "render_and_audit_cpu_s": 0.68
+  },
+  "torch_threads": 1,
+  "torch_version": "2.14.0+cpu",
+  "wall_time_s": 22.658
+}

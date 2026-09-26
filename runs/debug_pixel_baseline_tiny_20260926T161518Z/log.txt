@@ -1,0 +1,29 @@
+[16:15:33] data_v1 sha256 b8ec4ff27a0ceeb4a18506b68d1993b29ae2d4a4904a671997542590b933e506 | panels {"train": {"attribute": 1, "binding": 1, "object": 1, "relation": 1}, "dev": {"attribute": 1, "binding": 1, "object": 1, "relation": 1}, "fit": {"attribute": 1, "binding": 1}}
+[16:15:33] renderer audit: 28 images, 0 decode mismatches
+[16:15:41] encoded 8 images and 16 captions
+[16:15:43] encoded 8 images and 16 captions
+[16:15:44] encoder: 28 images + 32 captions, 4.97 CPU s (load 5.07 s)
+[16:15:44] nuisance ratio (edit/nuisance, pooled CLIP): {"attribute": 2.19, "binding": 1.38, "object": 2.82, "relation": 0.85}
+[16:15:44] base-vs-edited pooled-image detectability AUC=0.500 CI95=(0.0, 1.0)
+[16:15:44] dev oracle: BN(n=2) group=1.000 match=1.000 text=1.000 image=1.000 | ALL(n=4) group=1.000 match=1.000 | pairAUC bn=1.000 all=1.000 | ties bn=0.00
+[16:15:44] dev zero_shot_clip: BN(n=2) group=0.000 match=0.500 text=0.000 image=0.000 | ALL(n=4) group=0.250 match=0.750 | pairAUC bn=0.375 all=0.594 | ties bn=0.00
+[16:15:44] dev text_only: BN(n=2) group=0.000 match=0.000 text=0.000 image=0.000 | ALL(n=4) group=0.000 match=0.000 | pairAUC bn=0.500 all=0.500 | ties bn=1.00
+[16:15:44] dev image_only_clip: BN(n=2) group=0.000 match=0.000 text=0.000 image=0.000 | ALL(n=4) group=0.000 match=0.000 | pairAUC bn=0.500 all=0.500 | ties bn=1.00
+[16:15:44] fit sanity: 2 groups, 3 steps (head params 24586)
+[16:15:44]   step 1 task=1.4407 |g|=3.3080
+[16:15:44]   step 2 task=0.4207 |g|=4.7472
+[16:15:44]   step 3 task=3.8196 |g|=24.0988
+[16:15:44] fit sanity train-fit: BN(n=1) group=1.000 match=1.000 text=1.000 image=1.000 | ALL(n=2) group=0.500 match=1.000 | pairAUC bn=1.000 all=0.812 | ties bn=0.00
+[16:15:44] hardneg seed 0: training 3 steps on 4 groups
+[16:15:44]   step 1 task=2.0847 |g|=3.1869
+[16:15:44]   step 2 task=1.0796 |g|=6.0026
+[16:15:44]   step 3 task=0.6923 |g|=2.7293
+[16:15:44]   seed 0: loss 2.085->0.692 grad ratio init=16.12 end=1.13 content residual median=0.490
+[16:15:44]   seed 0 train-fit: BN(n=2) group=0.500 match=0.500 text=0.500 image=0.500 | ALL(n=4) group=0.500 match=0.750 | pairAUC bn=0.625 all=0.594 | ties bn=0.00
+[16:15:44]   seed 0 dev[all]: BN(n=2) group=0.000 match=1.000 text=0.500 image=0.000 | ALL(n=4) group=0.000 match=0.750 | pairAUC bn=0.500 all=0.500 | ties bn=0.00
+[16:15:44]   seed 0 dev[content]: BN(n=2) group=0.000 match=0.500 text=0.000 image=0.000 | ALL(n=4) group=0.000 match=0.750 | pairAUC bn=0.500 all=0.500 | ties bn=0.00
+[16:15:44]   seed 0 dev[binding]: BN(n=2) group=0.000 match=1.000 text=0.000 image=0.500 | ALL(n=4) group=0.000 match=0.750 | pairAUC bn=0.625 all=0.516 | ties bn=0.00
+[16:15:44]   seed 0 dev[image_shuffled]: BN(n=2) group=0.000 match=0.500 text=0.000 image=0.000 | ALL(n=4) group=0.000 match=0.250 | pairAUC bn=0.500 all=0.516 | ties bn=0.00
+[16:15:44]   seed 0 dev[text_shuffled]: BN(n=2) group=0.000 match=0.000 text=0.000 image=0.000 | ALL(n=4) group=0.000 match=0.500 | pairAUC bn=0.500 all=0.484 | ties bn=0.00
+[16:15:44]   oracle-token control seed 0 dev: BN(n=2) group=0.000 match=0.500 text=0.500 image=0.000 | ALL(n=4) group=0.000 match=0.750 | pairAUC bn=0.562 all=0.547 | ties bn=0.00
+[16:15:44] decisions: {"Q1_pixel_input_and_eval_path": "PASS_PENDING_FINAL_TESTS", "Q2_baseline_trains": "FAIL", "Q3_binding_necessary_evaluable": "FAIL"}

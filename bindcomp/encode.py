@@ -47,6 +47,10 @@ class EncGroup:
     def same_words(self):
         return self.group.same_words
 
+    @property
+    def captions(self):
+        return self.group.captions
+
 
 def hard_positive_paraphrase(para: cap.Paraphrase) -> cap.Paraphrase:
     return cap.Paraphrase(para.template, tuple(reversed(para.mention_order)), para.rel_pair, 1 - para.rel_dir)

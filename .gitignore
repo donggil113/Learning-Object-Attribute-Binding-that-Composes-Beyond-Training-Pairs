@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 # Generated datasets are deterministic from configs/ + code; only their sha256 is kept (manifest.json).
 runs/**/data.jsonl
+.venv/
+.cache/

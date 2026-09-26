@@ -1,0 +1,36 @@
+{
+  "name": "data_v1",
+  "note": "v0 kept unchanged. v1 adds the edit orbit (object/attribute multisets without assignment) as a leakage unit, so no split sees a content multiset another split uses, and draws a fresh seed because v0 test splits were opened by smoke_v0 and are development material now. Split sizes are identical to v0 (not enlarged).",
+  "seed": 20261001,
+  "heldout_pairs": [["cube", "red"], ["sphere", "blue"], ["cylinder", "green"], ["cone", "yellow"]],
+  "n_objects_weights": {"3": 1.0},
+  "max_attempts_per_split": 400000,
+  "leakage_units": ["scene", "desc", "orbit"],
+  "orbit_partition": {
+    "train": 0.5,
+    "dev": 0.075,
+    "calib": 0.075,
+    "test_iid": 0.1,
+    "test_heldout_pairs": 0.1,
+    "test_composition": 0.1,
+    "test_heldout_template": 0.05
+  },
+  "generation_order": [
+    "test_heldout_pairs",
+    "test_composition",
+    "test_heldout_template",
+    "test_iid",
+    "calib",
+    "dev",
+    "train"
+  ],
+  "splits": {
+    "train": {"n_groups": 2000, "n_ops": 1, "templates": [0, 1], "heldout": "exclude"},
+    "dev": {"n_groups": 300, "n_ops": 1, "templates": [0, 1], "heldout": "exclude"},
+    "calib": {"n_groups": 300, "n_ops": 1, "templates": [0, 1], "heldout": "exclude"},
+    "test_iid": {"n_groups": 400, "n_ops": 1, "templates": [0, 1], "heldout": "exclude"},
+    "test_heldout_pairs": {"n_groups": 400, "n_ops": 1, "templates": [0, 1], "heldout": "require_touched"},
+    "test_composition": {"n_groups": 400, "n_ops": 2, "templates": [0, 1], "heldout": "exclude"},
+    "test_heldout_template": {"n_groups": 400, "n_ops": 1, "templates": [2], "heldout": "exclude"}
+  }
+}

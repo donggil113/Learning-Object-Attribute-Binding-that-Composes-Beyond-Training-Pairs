@@ -1,0 +1,73 @@
+{
+  "cap_cpu_s": 3600.0,
+  "entries": [
+    {
+      "name": "pre_ledger_development_ESTIMATE",
+      "status": "ESTIMATE",
+      "cpu_s": 200.0,
+      "wall_s": null,
+      "note": "Not measured: renderer audits (3x decode over 500/500/2000 scenes), one contact sheet, one open_clip model load, three data_v1 build attempts, before the ledger existed. Booked as a conservative estimate (~160 s by timing notes)."
+    },
+    {
+      "name": "probe_rlimit_as_torch",
+      "cmd": [
+        ".venv/bin/python",
+        "-c",
+        "\nimport torch, open_clip, resource\ntorch.set_num_threads(1)\nm = open_clip.create_model('ViT-B-32', pretrained='.cache/models/clip_vit_b32_laion2b/open_clip_model.safetensors').eval()\nwith torch.no_grad(): y = m.encode_image(torch.zeros(8,3,224,224))\nprint('ok under RLIMIT_AS', y.shape, 'threads', torch.get_num_threads(), 'maxrss MiB', resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024)\n"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 9.22,
+      "wall_s": 9.32,
+      "children_peak_rss_mib": 1530.2,
+      "rlimit_cpu_s": 3400,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "dev_tests_pixel_path_1",
+      "cmd": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "tests.test_pixel_path",
+        "tests.test_data_v1"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 20.19,
+      "wall_s": 20.41,
+      "children_peak_rss_mib": 1532.2,
+      "rlimit_cpu_s": 3390,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "debug_pixel_baseline_tiny",
+      "run_dir": "runs/debug_pixel_baseline_tiny_20260926T161518Z",
+      "status": "COMPLETED",
+      "cpu_s": 22.27,
+      "wall_s": 22.66,
+      "peak_rss_mib": 1564.5
+    },
+    {
+      "name": "pixel_baseline_v1",
+      "run_dir": "/home/user/Learning-Object-Attribute-Binding-that-Composes-Beyond-Training-Pairs/runs/pixel_baseline_v1_20260926T161601Z",
+      "status": "COMPLETED",
+      "cpu_s": 103.0,
+      "wall_s": 104.05,
+      "peak_rss_mib": 1632.2
+    }
+  ],
+  "used_cpu_s": 354.68
+}

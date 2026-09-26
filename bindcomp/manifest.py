@@ -40,11 +40,18 @@ def git_info():
     status = run("status", "--porcelain", "--untracked-files=all") or ""
     # Outputs of earlier runs under runs/ are not code; anything else counts as dirty.
     dirty = [ln for ln in status.splitlines() if not ln[3:].startswith("runs/")]
+    # Content hash of every tracked or untracked (non-ignored) file outside runs/,
+    # so a run on a dirty tree still identifies the exact code it used.
+    files = sorted(f for f in (run("ls-files", "-co", "--exclude-standard") or "").splitlines()
+                   if f and not f.startswith("runs/") and (ROOT / f).is_file())
+    tree = hashlib.sha256("\n".join(f"{f}:{sha256_file(ROOT / f)}" for f in files).encode()).hexdigest()
     return {
         "commit": head or "NO_COMMIT",
         "branch": run("rev-parse", "--abbrev-ref", "HEAD"),
         "dirty": bool(dirty),
         "dirty_files": dirty[:50],
+        "source_tree_sha256": tree,
+        "source_files": len(files),
     }
 
 

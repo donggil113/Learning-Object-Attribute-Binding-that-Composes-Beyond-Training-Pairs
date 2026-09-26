@@ -72,6 +72,20 @@ def evaluate_groups(scorer, enc_groups):
 METRICS = ("text", "image", "group", "match", "aug", "aug_group")
 
 
+def tie_rate(rows):
+    """Fraction of groups where any compared pair of scores ties (same tolerance as ``gt``)."""
+    def tied(a, b):
+        return not gt(a, b) and not gt(b, a)
+
+    n = 0
+    for r in rows:
+        S = r["S"]
+        pairs = [(S[0][0], S[0][1]), (S[1][1], S[1][0]), (S[0][0], S[1][0]), (S[1][1], S[0][1]),
+                 (S[0][0] + S[1][1], S[0][1] + S[1][0])]
+        n += any(tied(a, b) for a, b in pairs)
+    return n / len(rows) if rows else None
+
+
 def summarize(rows, key=None):
     if key is None:
         buckets = {"all": rows}

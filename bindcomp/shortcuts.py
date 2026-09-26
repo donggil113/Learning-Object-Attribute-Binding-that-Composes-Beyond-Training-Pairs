@@ -139,16 +139,17 @@ def _train_pairs(enc_groups, n_random, seed):
 
 class TextOnlyScorer:
     name = "text_only"
+    provenance = "caption text only"
 
     def fit(self, enc_groups, n_random=2, seed=0):
         pairs = _train_pairs(enc_groups, n_random, seed)
-        X = [text_features(eg_t.group.captions[t]) for _, _, eg_t, t, _ in pairs]
+        X = [text_features(eg_t.captions[t]) for _, _, eg_t, t, _ in pairs]
         y = [lab for *_, lab in pairs]
         self.model = LogReg(seed=seed).fit(X, y)
         return self
 
     def score_group(self, eg):
-        f = [self.model.decision(text_features(eg.group.captions[t])) for t in (0, 1)]
+        f = [self.model.decision(text_features(eg.captions[t])) for t in (0, 1)]
         h = [self.model.decision(text_features(eg.captions_hp[t])) for t in (0, 1)]
         return [[f[0], f[1]], [f[0], f[1]]], h
 

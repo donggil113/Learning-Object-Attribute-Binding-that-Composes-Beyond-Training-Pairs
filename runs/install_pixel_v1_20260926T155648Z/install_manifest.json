@@ -1,0 +1,51 @@
+{
+  "finished_utc": "2026-09-26T15:57:37.981876+00:00",
+  "steps": [
+    {
+      "cmd": [
+        "python3",
+        "-m",
+        "venv",
+        ".venv"
+      ],
+      "returncode": 0,
+      "wall_s": 4.5,
+      "cpu_s": 4.2,
+      "children_peak_rss_mib": 74.7
+    },
+    {
+      "cmd": [
+        ".venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-cache-dir",
+        "--index-url",
+        "https://download.pytorch.org/whl/cpu",
+        "torch==2.14.0+cpu",
+        "torchvision==0.29.0+cpu"
+      ],
+      "returncode": 0,
+      "wall_s": 37.0,
+      "cpu_s": 33.9,
+      "children_peak_rss_mib": 166.5
+    },
+    {
+      "cmd": [
+        ".venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-cache-dir",
+        "numpy",
+        "pillow",
+        "open_clip_torch==3.3.0"
+      ],
+      "returncode": 0,
+      "wall_s": 7.5,
+      "cpu_s": 5.7,
+      "children_peak_rss_mib": 166.5
+    }
+  ],
+  "note": "install cost, recorded separately from the 3600 s experiment CPU cap"
+}

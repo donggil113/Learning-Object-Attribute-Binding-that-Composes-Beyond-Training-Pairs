@@ -35,6 +35,8 @@ def main():
     ap.add_argument("--encoder-config", default="configs/encoder_v0.json")
     ap.add_argument("--out", default=None)
     ap.add_argument("--save-data", action="store_true")
+    ap.add_argument("--blind-eval-splits", default="dev,calib,test_iid",
+                    help="splits scored by the blind detectors (data_v1 keeps test splits unscored)")
     args = ap.parse_args()
 
     cfg = json.loads((ROOT / args.config).read_text())
@@ -65,7 +67,9 @@ def main():
 
         enc = ProxyEncoder(**{k: ecfg[k] for k in ("dim", "seed", "jitter", "lighting", "pos_scale")})
         train_enc = encode_groups(ds["train"], enc)
-        eval_enc = encode_groups(ds["dev"] + ds["calib"] + ds["test_iid"], enc)
+        eval_splits = args.blind_eval_splits.split(",")
+        rec.extra["blind_eval_splits"] = eval_splits
+        eval_enc = encode_groups([g for s in eval_splits for g in ds[s]], enc)
         blind = {}
         for modality in ("text", "image"):
             r = blind_detectability(train_enc, eval_enc, modality, seed=0)

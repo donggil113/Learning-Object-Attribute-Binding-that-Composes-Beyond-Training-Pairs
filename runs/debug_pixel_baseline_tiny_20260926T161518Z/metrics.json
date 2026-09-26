@@ -1,0 +1,958 @@
+{
+ "renderer_audit": {
+  "images": 28,
+  "decode_mismatches": 0
+ },
+ "feature_integrity": {
+  "all_finite": true,
+  "min_mean_token_std_image": 0.17183652520179749
+ },
+ "nuisance_ratio": {
+  "attribute": {
+   "median_edit": 0.03460949659347534,
+   "median_nuisance": 0.015791654586791992,
+   "ratio": 2.191632067637956,
+   "n": 1
+  },
+  "binding": {
+   "median_edit": 0.017237305641174316,
+   "median_nuisance": 0.012472450733184814,
+   "ratio": 1.382030365156055,
+   "n": 1
+  },
+  "object": {
+   "median_edit": 0.03140115737915039,
+   "median_nuisance": 0.011143118143081665,
+   "ratio": 2.8179865793351717,
+   "n": 1
+  },
+  "relation": {
+   "median_edit": 0.01453489065170288,
+   "median_nuisance": 0.017076969146728516,
+   "ratio": 0.8511399491804652,
+   "n": 1
+  }
+ },
+ "base_vs_edited_detectability": {
+  "auc": 0.5,
+  "auc_ci95": [
+   0.0,
+   1.0
+  ],
+  "n_eval": 8
+ },
+ "oracle": {
+  "provenance": "n/a",
+  "binding_necessary": {
+   "n": 2,
+   "text": 1.0,
+   "image": 1.0,
+   "group": 1.0,
+   "match": 1.0,
+   "aug": 1.0,
+   "aug_group": 1.0
+  },
+  "all": {
+   "n": 4,
+   "text": 1.0,
+   "image": 1.0,
+   "group": 1.0,
+   "match": 1.0,
+   "aug": 1.0,
+   "aug_group": 1.0
+  },
+  "by_kind": {
+   "attribute": {
+    "n": 1,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "binding": {
+    "n": 1,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "object": {
+    "n": 1,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "relation": {
+    "n": 1,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   }
+  },
+  "binding_necessary_group_ci95": [
+   1.0,
+   1.0
+  ],
+  "pair_auc_all": 1.0,
+  "pair_auc_binding_necessary": 1.0,
+  "tie_rate_all": 0.0,
+  "tie_rate_binding_necessary": 0.0
+ },
+ "zero_shot_clip": {
+  "provenance": "pixels + caption text",
+  "binding_necessary": {
+   "n": 2,
+   "text": 0.0,
+   "image": 0.0,
+   "group": 0.0,
+   "match": 0.5,
+   "aug": 0.25,
+   "aug_group": 0.0
+  },
+  "all": {
+   "n": 4,
+   "text": 0.25,
+   "image": 0.25,
+   "group": 0.25,
+   "match": 0.75,
+   "aug": 0.5,
+   "aug_group": 0.25
+  },
+  "by_kind": {
+   "attribute": {
+    "n": 1,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "binding": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 1.0,
+    "aug": 0.5,
+    "aug_group": 0.0
+   },
+   "object": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 1.0,
+    "aug": 0.5,
+    "aug_group": 0.0
+   },
+   "relation": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   }
+  },
+  "binding_necessary_group_ci95": [
+   0.0,
+   0.0
+  ],
+  "pair_auc_all": 0.59375,
+  "pair_auc_binding_necessary": 0.375,
+  "tie_rate_all": 0.0,
+  "tie_rate_binding_necessary": 0.0
+ },
+ "text_only": {
+  "provenance": "caption text only",
+  "binding_necessary": {
+   "n": 2,
+   "text": 0.0,
+   "image": 0.0,
+   "group": 0.0,
+   "match": 0.0,
+   "aug": 0.25,
+   "aug_group": 0.0
+  },
+  "all": {
+   "n": 4,
+   "text": 0.0,
+   "image": 0.0,
+   "group": 0.0,
+   "match": 0.0,
+   "aug": 0.375,
+   "aug_group": 0.0
+  },
+  "by_kind": {
+   "attribute": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.5,
+    "aug_group": 0.0
+   },
+   "binding": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.5,
+    "aug_group": 0.0
+   },
+   "object": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.5,
+    "aug_group": 0.0
+   },
+   "relation": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   }
+  },
+  "binding_necessary_group_ci95": [
+   0.0,
+   0.0
+  ],
+  "pair_auc_all": 0.5,
+  "pair_auc_binding_necessary": 0.5,
+  "tie_rate_all": 1.0,
+  "tie_rate_binding_necessary": 1.0
+ },
+ "image_only_clip": {
+  "provenance": "pixels only",
+  "binding_necessary": {
+   "n": 2,
+   "text": 0.0,
+   "image": 0.0,
+   "group": 0.0,
+   "match": 0.0,
+   "aug": 0.0,
+   "aug_group": 0.0
+  },
+  "all": {
+   "n": 4,
+   "text": 0.0,
+   "image": 0.0,
+   "group": 0.0,
+   "match": 0.0,
+   "aug": 0.0,
+   "aug_group": 0.0
+  },
+  "by_kind": {
+   "attribute": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "binding": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "object": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "relation": {
+    "n": 1,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   }
+  },
+  "binding_necessary_group_ci95": [
+   0.0,
+   0.0
+  ],
+  "pair_auc_all": 0.5,
+  "pair_auc_binding_necessary": 0.5,
+  "tie_rate_all": 1.0,
+  "tie_rate_binding_necessary": 1.0
+ },
+ "random_mc500": {
+  "text": 0.2545,
+  "image": 0.259,
+  "group": 0.1765,
+  "match": 0.505,
+  "aug": 0.344
+ },
+ "chance_analytic": {
+  "text": 0.25,
+  "image": 0.25,
+  "group": 0.16666666666666666,
+  "match": 0.5,
+  "aug": 0.3333333333333333
+ },
+ "fit_sanity": {
+  "train_fit": {
+   "provenance": "pixels + caption text",
+   "binding_necessary": {
+    "n": 1,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "all": {
+    "n": 2,
+    "text": 1.0,
+    "image": 0.5,
+    "group": 0.5,
+    "match": 1.0,
+    "aug": 0.5,
+    "aug_group": 0.5
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 1,
+     "text": 1.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding": {
+     "n": 1,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_necessary_group_ci95": [
+    1.0,
+    1.0
+   ],
+   "pair_auc_all": 0.8125,
+   "pair_auc_binding_necessary": 1.0,
+   "tie_rate_all": 0.0,
+   "tie_rate_binding_necessary": 0.0
+  },
+  "loss_first": 1.4406849689895744,
+  "loss_last": 3.8195755629132515
+ },
+ "hardneg": {
+  "seed0": {
+   "param_sha256": "1e1572d61a01bff331ede9a9275d8bc40f7880f690f838819334297bcacaea89",
+   "train_cpu_s": 0.02,
+   "loss_first": 2.084672057463508,
+   "loss_last": 0.6922831570888994,
+   "grad_ratio_edit_over_task": {
+    "init": 16.123112281996075,
+    "end": 1.128473380191117
+   },
+   "train_fit": {
+    "provenance": "pixels + caption text",
+    "binding_necessary": {
+     "n": 2,
+     "text": 0.5,
+     "image": 0.5,
+     "group": 0.5,
+     "match": 0.5,
+     "aug": 0.5,
+     "aug_group": 0.5
+    },
+    "all": {
+     "n": 4,
+     "text": 0.5,
+     "image": 0.5,
+     "group": 0.5,
+     "match": 0.75,
+     "aug": 0.25,
+     "aug_group": 0.25
+    },
+    "by_kind": {
+     "attribute": {
+      "n": 1,
+      "text": 1.0,
+      "image": 1.0,
+      "group": 1.0,
+      "match": 1.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     },
+     "binding": {
+      "n": 1,
+      "text": 1.0,
+      "image": 1.0,
+      "group": 1.0,
+      "match": 1.0,
+      "aug": 1.0,
+      "aug_group": 1.0
+     },
+     "object": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     },
+     "relation": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     }
+    },
+    "binding_necessary_group_ci95": [
+     0.0,
+     1.0
+    ],
+    "pair_auc_all": 0.59375,
+    "pair_auc_binding_necessary": 0.625,
+    "tie_rate_all": 0.0,
+    "tie_rate_binding_necessary": 0.0
+   },
+   "history": [
+    {
+     "step": 1,
+     "task": 2.084672057463508,
+     "grad_norm": 3.186944762676404,
+     "elapsed_s": 0.006
+    },
+    {
+     "step": 2,
+     "task": 1.0796188701399059,
+     "grad_norm": 6.002615915136587,
+     "elapsed_s": 0.011
+    },
+    {
+     "step": 3,
+     "task": 0.6922831570888994,
+     "grad_norm": 2.7292928834766017,
+     "elapsed_s": 0.019
+    }
+   ],
+   "dev[all]": {
+    "provenance": "pixels + caption text",
+    "binding_necessary": {
+     "n": 2,
+     "text": 0.5,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 1.0,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "all": {
+     "n": 4,
+     "text": 0.25,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.75,
+     "aug": 0.375,
+     "aug_group": 0.0
+    },
+    "by_kind": {
+     "attribute": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "binding": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "object": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "relation": {
+      "n": 1,
+      "text": 1.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     }
+    },
+    "binding_necessary_group_ci95": [
+     0.0,
+     0.0
+    ],
+    "pair_auc_all": 0.5,
+    "pair_auc_binding_necessary": 0.5,
+    "tie_rate_all": 0.0,
+    "tie_rate_binding_necessary": 0.0
+   },
+   "dev[content]": {
+    "provenance": "pixels + caption text",
+    "binding_necessary": {
+     "n": 2,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "all": {
+     "n": 4,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.75,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "by_kind": {
+     "attribute": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "binding": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     },
+     "object": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "relation": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     }
+    },
+    "binding_necessary_group_ci95": [
+     0.0,
+     0.0
+    ],
+    "pair_auc_all": 0.5,
+    "pair_auc_binding_necessary": 0.5,
+    "tie_rate_all": 0.0,
+    "tie_rate_binding_necessary": 0.0
+   },
+   "dev[binding]": {
+    "provenance": "pixels + caption text",
+    "binding_necessary": {
+     "n": 2,
+     "text": 0.0,
+     "image": 0.5,
+     "group": 0.0,
+     "match": 1.0,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "all": {
+     "n": 4,
+     "text": 0.0,
+     "image": 0.25,
+     "group": 0.0,
+     "match": 0.75,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "by_kind": {
+     "attribute": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     },
+     "binding": {
+      "n": 1,
+      "text": 0.0,
+      "image": 1.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "object": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "relation": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     }
+    },
+    "binding_necessary_group_ci95": [
+     0.0,
+     0.0
+    ],
+    "pair_auc_all": 0.515625,
+    "pair_auc_binding_necessary": 0.625,
+    "tie_rate_all": 0.0,
+    "tie_rate_binding_necessary": 0.0
+   },
+   "dev[image_shuffled]": {
+    "provenance": "pixels + caption text",
+    "binding_necessary": {
+     "n": 2,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "all": {
+     "n": 4,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.25,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "by_kind": {
+     "attribute": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     },
+     "binding": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "object": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "relation": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     }
+    },
+    "binding_necessary_group_ci95": [
+     0.0,
+     0.0
+    ],
+    "pair_auc_all": 0.515625,
+    "pair_auc_binding_necessary": 0.5,
+    "tie_rate_all": 0.0,
+    "tie_rate_binding_necessary": 0.0
+   },
+   "dev[text_shuffled]": {
+    "provenance": "pixels + caption text",
+    "binding_necessary": {
+     "n": 2,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "all": {
+     "n": 4,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "by_kind": {
+     "attribute": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     },
+     "binding": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "object": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "relation": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     }
+    },
+    "binding_necessary_group_ci95": [
+     0.0,
+     0.0
+    ],
+    "pair_auc_all": 0.484375,
+    "pair_auc_binding_necessary": 0.5,
+    "tie_rate_all": 0.0,
+    "tie_rate_binding_necessary": 0.0
+   },
+   "content_residual_binding_necessary": {
+    "median": 0.4900799618880818,
+    "max": 0.6979203765408709,
+    "n": 2
+   }
+  }
+ },
+ "oracle_token_control": {
+  "seed0": {
+   "loss_first": 2.4335890496176926,
+   "loss_last": 2.013947553709911,
+   "train_fit": {
+    "provenance": "pixels + caption text",
+    "binding_necessary": {
+     "n": 2,
+     "text": 0.5,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 1.0,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "all": {
+     "n": 4,
+     "text": 0.25,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "by_kind": {
+     "attribute": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     },
+     "binding": {
+      "n": 1,
+      "text": 1.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "object": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "relation": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     }
+    },
+    "binding_necessary_group_ci95": [
+     0.0,
+     0.0
+    ],
+    "pair_auc_all": 0.5,
+    "pair_auc_binding_necessary": 0.625,
+    "tie_rate_all": 0.0,
+    "tie_rate_binding_necessary": 0.0
+   },
+   "dev": {
+    "provenance": "ORACLE metadata proxy tokens + proxy text (control)",
+    "binding_necessary": {
+     "n": 2,
+     "text": 0.5,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.75,
+     "aug_group": 0.5
+    },
+    "all": {
+     "n": 4,
+     "text": 0.5,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.75,
+     "aug": 0.625,
+     "aug_group": 0.5
+    },
+    "by_kind": {
+     "attribute": {
+      "n": 1,
+      "text": 1.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 1.0,
+      "aug_group": 1.0
+     },
+     "binding": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 0.0,
+      "aug": 0.5,
+      "aug_group": 0.0
+     },
+     "object": {
+      "n": 1,
+      "text": 0.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 0.0,
+      "aug_group": 0.0
+     },
+     "relation": {
+      "n": 1,
+      "text": 1.0,
+      "image": 0.0,
+      "group": 0.0,
+      "match": 1.0,
+      "aug": 1.0,
+      "aug_group": 1.0
+     }
+    },
+    "binding_necessary_group_ci95": [
+     0.0,
+     0.0
+    ],
+    "pair_auc_all": 0.546875,
+    "pair_auc_binding_necessary": 0.5625,
+    "tie_rate_all": 0.0,
+    "tie_rate_binding_necessary": 0.0
+   }
+  }
+ }
+}

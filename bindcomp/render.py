@@ -25,6 +25,11 @@ from math import sqrt
 
 from . import vocab
 
+# Every token below is computed from scene METADATA (shape/color/material/slot of
+# each object, one token per object). Since the pixel stage these features are an
+# ORACLE CONTROL only and must not be reported as visual input.
+PROVENANCE = "ORACLE metadata -> per-object tokens (control only)"
+
 
 def _gvec(rng, d, std):
     return [rng.gauss(0.0, std) for _ in range(d)]

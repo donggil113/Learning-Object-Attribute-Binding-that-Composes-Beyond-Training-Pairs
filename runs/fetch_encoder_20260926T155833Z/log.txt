@@ -1,0 +1,2 @@
+[15:58:33] GET https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K/resolve/1a25a446712ba5ee05982a381eed697ef9b435cf/open_clip_model.safetensors
+[15:58:40] verified 605143316 bytes sha256=ac4f8c4b88af6d963118cbf40ad93176d092abbedfcb752601ae1866352656e6 -> /home/user/Learning-Object-Attribute-Binding-that-Composes-Beyond-Training-Pairs/.cache/models/clip_vit_b32_laion2b/open_clip_model.safetensors

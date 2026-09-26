@@ -1,0 +1,23 @@
+{
+  "Q1_pixel_input_and_eval_path": {
+    "renderer_mismatches": 0,
+    "features_finite": true,
+    "min_image_token_std": 0.17183652520179749,
+    "oracle_control_all_1.0": true,
+    "all_cells_present": true,
+    "provenance_guard_test": "see final unittest run (tests/test_pixel_path.py)",
+    "verdict": "PASS_PENDING_FINAL_TESTS"
+  },
+  "Q2_baseline_trains": {
+    "fit_sanity_group": 0.5,
+    "fit_rule": "group score on the same 16 train groups >= 0.75",
+    "mean_loss_ratio": 0.3320825232968413,
+    "trains_rule": "mean over seeds of (final-step task loss / step-1 task loss) <= 0.7",
+    "verdict": "FAIL"
+  },
+  "Q3_binding_necessary_evaluable": {
+    "n_binding_necessary_dev": 2,
+    "oracle_on_subset": 1.0,
+    "verdict": "FAIL"
+  }
+}

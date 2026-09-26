@@ -1,0 +1,110 @@
+{
+ "name": "debug_pixel_baseline_tiny",
+ "fixed_on": "2026-09-26",
+ "status_when_fixed": "NOT_RUN",
+ "scope": "PIXEL_BASELINE_FEASIBILITY only. Question: can model inputs be built from rendered pixels and raw captions alone, does the same-data hard-negative baseline train on them, and can binding-necessary cases be evaluated without giving the model any ground truth. Not a test of the edit loss, not natural images, no test split.",
+ "prior_exposure": "smoke_v0 evaluated data_v0 test splits (subsampled) and showed the content-only shortcut; this stage uses data_v1 (fresh seed, orbit-level split) and only its train/dev panels.",
+ "data_config": "configs/data_v1.json",
+ "encoder_config": "configs/encoder_pixel_v1.json",
+ "oracle_token_control_encoder_config": "configs/encoder_v0.json",
+ "panel": {
+  "train": {
+   "split": "train",
+   "first_n_groups": 4
+  },
+  "dev": {
+   "split": "dev",
+   "first_n_groups": 4
+  },
+  "fit_subset": {
+   "of": "train panel",
+   "first_n_groups": 2
+  },
+  "selection_rule": "first N groups in generation order (kinds cycle binding, attribute, object, relation); never chosen by model performance",
+  "test_splits": "NOT_RUN: not rendered, not encoded, not evaluated"
+ },
+ "subsets": {
+  "primary_for_panel": "binding_necessary: every op kind in {binding, relation} (metadata rule)",
+  "secondary": "all kinds"
+ },
+ "input": {
+  "image": "pixel_render.render(scene, render_seed) -> 224x224 RGB -> frozen CLIP tokens (50 x 512)",
+  "text": "raw caption string -> frozen CLIP per-token states (L x 512)",
+  "bridge": "per-dimension standardization of image and of text tokens with TRAIN-panel statistics only"
+ },
+ "head": {
+  "class": "TorchFactorizedHead (torch bridge of FactorizedHead; same init and math)",
+  "d": 512,
+  "hc": 8,
+  "hb": 8,
+  "window": 5,
+  "init_scale": 1.0
+ },
+ "train": {
+  "variant": "hardneg",
+  "lr": 0.01,
+  "weight_decay": 0.0001,
+  "steps": 3,
+  "batch_groups": 16,
+  "logit_scale": 1.0,
+  "log_every": 1
+ },
+ "seeds": [
+  0
+ ],
+ "fit_sanity": {
+  "groups": 16,
+  "steps": 3,
+  "seed": 0,
+  "pass_rule": "group score on the same 16 train groups >= 0.75"
+ },
+ "trains_rule": "mean over seeds of (final-step task loss / step-1 task loss) <= 0.7",
+ "gradient_ratio": {
+  "where": "the first training batch of each seed (train panel only)",
+  "when": [
+   "init",
+   "after training"
+  ],
+  "quantity": "||grad L_edit|| / ||grad L_task|| at lambda = 1, tau_eq = 0.1; reported only, not read as utility"
+ },
+ "controls": [
+  "random scorer: analytic chance and Monte-Carlo mean over 500 draws on the dev panel",
+  "oracle scorer (metadata; control, must be 1.0)",
+  "zero-shot CLIP (pooled cosine, no training)",
+  "trained pixel head, content-only and binding-only channels",
+  "trained pixel head with dev images shuffled across groups; with dev captions shuffled across groups",
+  "image-only logistic regression on pooled CLIP image features; text-only n-gram logistic regression (both fit on the train panel)",
+  "oracle-object-token control: v0 metadata proxy tokens, same head class, same training setting and seeds"
+ ],
+ "diagnostics": {
+  "nuisance_ratio": "dev: median CLIP pooled cosine distance between the two group members / median distance between two renders (different seeds) of the same member, per op kind",
+  "content_residual": "dev binding-necessary groups rendered with ONE shared seed: ||c(I1) - c(I0)|| / ||c(I0)|| of the trained pixel head (v0 proxy: exactly 0 by construction)",
+  "base_vs_edited_detectability": "pooled-image logistic regression, train panel -> dev panel AUC with bootstrap CI (small n: weak evidence either way)",
+  "ties": "fraction of groups with any tied comparison (1e-9 relative tolerance)",
+  "pair_auc": "threshold-free; pair accuracy at a calibrated threshold is NOT_RUN (no calibration panel in this stage)"
+ },
+ "decision_rules": {
+  "Q1_pixel_input_and_eval_path": "PASS iff renderer decode mismatches = 0 on every rendered panel image, all features finite with nonzero variance, oracle control = 1.0 on every dev metric, every planned scorer produced every cell, and the provenance-guard test passes in the final test run",
+  "Q2_baseline_trains": "PASS iff fit_sanity pass_rule and trains_rule hold",
+  "Q2_bottleneck_reading": "descriptive only: compare train fit, dev binding-necessary scores, the oracle-token control and the nuisance ratio; no significance claims (n = 16 binding-necessary dev groups)",
+  "Q3_binding_necessary_evaluable": "PASS iff >= 12 binding-necessary dev groups are scored from pixel/caption inputs only, the oracle control is 1.0 on them, and the shuffle and blind controls are reported with pair AUC, ties and chance levels"
+ },
+ "caps": {
+  "cpu_s_total_stage": 3600,
+  "ledger": "runs/pixel_v1_cpu_ledger.json",
+  "workers": 1,
+  "torch_threads": 1,
+  "max_address_space_gib": 3.0,
+  "note": "install and checkpoint download are recorded separately (runs/install_pixel_v1_*, runs/fetch_encoder_*)"
+ },
+ "not_run": [
+  "edit-loss (hardneg_eq) training and its 12-setting sweep",
+  "inbatch training",
+  "natural-image transfer",
+  "data_v1 test splits",
+  "pair accuracy at a calibrated threshold",
+  "any architecture or encoder sweep"
+ ],
+ "supervision_disclosure": "labels and false-negative masks come from oracle truth on metadata; the hard negative is the group partner (metadata pairing). No op kind, base/edited flag, held-out flag, scene ID or parser output enters any model input.",
+ "purpose": "DEBUG plumbing run on a tiny panel; results meaningless"
+}

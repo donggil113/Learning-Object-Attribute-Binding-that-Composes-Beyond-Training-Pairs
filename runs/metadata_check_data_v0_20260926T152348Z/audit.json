@@ -1,0 +1,397 @@
+{
+  "checks": {
+    "groups_valid": {
+      "status": "PASS",
+      "detail": {
+        "n_invalid": 0,
+        "examples": {}
+      }
+    },
+    "no_cross_split_scene": {
+      "status": "PASS",
+      "detail": {
+        "n_leaked": 0
+      }
+    },
+    "no_cross_split_desc": {
+      "status": "PASS",
+      "detail": {
+        "n_leaked": 0
+      }
+    },
+    "no_cross_split_caption_string": {
+      "status": "PASS",
+      "detail": {
+        "n_leaked": 0
+      }
+    },
+    "render_seeds_unique": {
+      "status": "PASS",
+      "detail": {
+        "n": 8400,
+        "n_unique": 8400
+      }
+    },
+    "train:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "train:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 994,
+        "0": 1006
+      }
+    },
+    "train:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 2000
+      }
+    },
+    "dev:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "dev:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 149,
+        "0": 151
+      }
+    },
+    "dev:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 300
+      }
+    },
+    "calib:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "calib:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "0": 162,
+        "1": 138
+      }
+    },
+    "calib:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 300
+      }
+    },
+    "test_iid:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "test_iid:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 195,
+        "0": 205
+      }
+    },
+    "test_iid:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 400
+      }
+    },
+    "test_heldout_pairs:heldout_touched_in_all": {
+      "status": "PASS",
+      "detail": {
+        "n_touched": 400,
+        "n": 400
+      }
+    },
+    "test_heldout_pairs:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "0": 190,
+        "1": 210
+      }
+    },
+    "test_heldout_pairs:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 400
+      }
+    },
+    "test_composition:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "test_composition:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "0": 212,
+        "1": 188
+      }
+    },
+    "test_composition:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "2": 400
+      }
+    },
+    "test_heldout_template:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "test_heldout_template:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "2": 400
+      }
+    },
+    "test_heldout_template:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 400
+      }
+    },
+    "info:object_set_overlap_with_train": {
+      "status": "INFO",
+      "detail": {
+        "dev": 0.37,
+        "calib": 0.3633,
+        "test_iid": 0.3725,
+        "test_heldout_pairs": 0.0862,
+        "test_composition": 0.3575,
+        "test_heldout_template": 0.3113
+      }
+    },
+    "info:balance": {
+      "status": "INFO",
+      "detail": {
+        "train": {
+          "mention_order_is_left_to_right": 0.1605,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.4865,
+          "base_member_1_rate": 0.5155,
+          "kinds": {
+            "binding": 500,
+            "attribute": 500,
+            "object": 500,
+            "relation": 500
+          },
+          "n_objects": {
+            "3": 2000
+          },
+          "same_word_multiset_rate_binding_relation": 0.671
+        },
+        "dev": {
+          "mention_order_is_left_to_right": 0.1733,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.49,
+          "base_member_1_rate": 0.5633,
+          "kinds": {
+            "binding": 75,
+            "attribute": 75,
+            "object": 75,
+            "relation": 75
+          },
+          "n_objects": {
+            "3": 300
+          },
+          "same_word_multiset_rate_binding_relation": 0.7333
+        },
+        "calib": {
+          "mention_order_is_left_to_right": 0.18,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.5033,
+          "base_member_1_rate": 0.46,
+          "kinds": {
+            "binding": 75,
+            "attribute": 75,
+            "object": 75,
+            "relation": 75
+          },
+          "n_objects": {
+            "3": 300
+          },
+          "same_word_multiset_rate_binding_relation": 0.6867
+        },
+        "test_iid": {
+          "mention_order_is_left_to_right": 0.155,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.515,
+          "base_member_1_rate": 0.5275,
+          "kinds": {
+            "binding": 100,
+            "attribute": 100,
+            "object": 100,
+            "relation": 100
+          },
+          "n_objects": {
+            "3": 400
+          },
+          "same_word_multiset_rate_binding_relation": 0.665
+        },
+        "test_heldout_pairs": {
+          "mention_order_is_left_to_right": 0.1875,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.495,
+          "base_member_1_rate": 0.49,
+          "kinds": {
+            "binding": 100,
+            "attribute": 100,
+            "object": 100,
+            "relation": 100
+          },
+          "n_objects": {
+            "3": 400
+          },
+          "same_word_multiset_rate_binding_relation": 0.66
+        },
+        "test_composition": {
+          "mention_order_is_left_to_right": 0.1475,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.5075,
+          "base_member_1_rate": 0.4925,
+          "kinds": {
+            "binding+binding": 40,
+            "attribute+binding": 40,
+            "binding+object": 40,
+            "binding+relation": 40,
+            "attribute+attribute": 40,
+            "attribute+object": 40,
+            "attribute+relation": 40,
+            "object+object": 40,
+            "object+relation": 40,
+            "relation+relation": 40
+          },
+          "n_objects": {
+            "3": 400
+          },
+          "same_word_multiset_rate_binding_relation": 0.4833
+        },
+        "test_heldout_template": {
+          "mention_order_is_left_to_right": 0.14,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.485,
+          "base_member_1_rate": 0.515,
+          "kinds": {
+            "binding": 100,
+            "attribute": 100,
+            "object": 100,
+            "relation": 100
+          },
+          "n_objects": {
+            "3": 400
+          },
+          "same_word_multiset_rate_binding_relation": 0.67
+        }
+      }
+    }
+  },
+  "n_fail": 0,
+  "generation_stats": {
+    "test_heldout_pairs": {
+      "n_groups": 400,
+      "attempts": 1319,
+      "rejects": {
+        "heldout_pair_not_touched": 599,
+        "invalid_group:bind_color_equal": 10,
+        "invalid_group:bind_material_equal": 7,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 253,
+        "invalid_group:triples_equal": 50
+      }
+    },
+    "test_composition": {
+      "n_groups": 400,
+      "attempts": 801,
+      "rejects": {
+        "cross_split_key_conflict": 9,
+        "heldout_pair_present": 216,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 98,
+        "invalid_group:composition is reachable by a single op": 71,
+        "invalid_group:composition is reachable by a single op; caption true for th": 4,
+        "invalid_group:composition is reachable by a single op; content edit did no": 1,
+        "invalid_group:content edit did not change the word multiset": 1,
+        "no_applicable_op": 1
+      }
+    },
+    "test_heldout_template": {
+      "n_groups": 400,
+      "attempts": 723,
+      "rejects": {
+        "cross_split_key_conflict": 47,
+        "heldout_pair_present": 111,
+        "invalid_group:bind_color_equal": 9,
+        "invalid_group:bind_material_equal": 15,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 98,
+        "invalid_group:triples_equal": 41,
+        "no_applicable_op": 2
+      }
+    },
+    "test_iid": {
+      "n_groups": 400,
+      "attempts": 828,
+      "rejects": {
+        "cross_split_key_conflict": 103,
+        "heldout_pair_present": 145,
+        "invalid_group:bind_color_equal": 17,
+        "invalid_group:bind_material_equal": 12,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 107,
+        "invalid_group:triples_equal": 41,
+        "no_applicable_op": 3
+      }
+    },
+    "calib": {
+      "n_groups": 300,
+      "attempts": 651,
+      "rejects": {
+        "cross_split_key_conflict": 113,
+        "heldout_pair_present": 115,
+        "invalid_group:bind_color_equal": 11,
+        "invalid_group:bind_material_equal": 6,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 71,
+        "invalid_group:triples_equal": 34,
+        "no_applicable_op": 1
+      }
+    },
+    "dev": {
+      "n_groups": 300,
+      "attempts": 752,
+      "rejects": {
+        "cross_split_key_conflict": 148,
+        "heldout_pair_present": 126,
+        "invalid_group:bind_color_equal": 9,
+        "invalid_group:bind_material_equal": 11,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 105,
+        "invalid_group:triples_equal": 52,
+        "no_applicable_op": 1
+      }
+    },
+    "train": {
+      "n_groups": 2000,
+      "attempts": 5060,
+      "rejects": {
+        "cross_split_key_conflict": 1084,
+        "duplicate_group": 7,
+        "heldout_pair_present": 926,
+        "invalid_group:bind_color_equal": 109,
+        "invalid_group:bind_material_equal": 94,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 539,
+        "invalid_group:triples_equal": 293,
+        "no_applicable_op": 8
+      }
+    }
+  }
+}

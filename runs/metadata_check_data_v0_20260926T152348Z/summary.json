@@ -1,0 +1,10 @@
+{
+  "software_status": "TECHNICAL_TEST_PASS",
+  "science_status": "SCIENCE_NOT_EVALUATED",
+  "audit_failures": 0,
+  "blind": {
+    "text": "PASS",
+    "image": "PASS"
+  },
+  "data_sha256": "af7de8f60c227fe2b266ddc1ac226300b70366c4e26cb8e14593c95dd4a93068"
+}

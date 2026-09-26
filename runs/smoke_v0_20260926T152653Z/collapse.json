@@ -1,0 +1,254 @@
+{
+ "inbatch_seed0:init": {
+  "c_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.636177931086975,
+   "mean_std": 0.1767057085146883,
+   "rel_std": 0.2777614561586073,
+   "participation_ratio": 3.7361961114092086,
+   "flags": []
+  },
+  "b_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.24016773966353033,
+   "mean_std": 0.07668027440724459,
+   "rel_std": 0.31927799509905846,
+   "participation_ratio": 5.430899431407886,
+   "flags": []
+  },
+  "c_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.1980517634965615,
+   "mean_std": 0.03732169201526991,
+   "rel_std": 0.188444128728588,
+   "participation_ratio": 2.543284334665701,
+   "flags": []
+  },
+  "b_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.009494026312929641,
+   "mean_std": 0.002160203389746054,
+   "rel_std": 0.2275329052758296,
+   "participation_ratio": 2.566833924227554,
+   "flags": []
+  },
+  "binding_sensitivity_img": 0.6668851479388443,
+  "binding_sensitivity_txt": 0.18467685314458468,
+  "content_residual_img": 2.6822662150691843e-16,
+  "flags": []
+ },
+ "inbatch_seed0:final": {
+  "c_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 2.0039723802272422,
+   "mean_std": 0.735783397624096,
+   "rel_std": 0.36716244439489787,
+   "participation_ratio": 2.450135097428808,
+   "flags": []
+  },
+  "b_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 5.882027438977634,
+   "mean_std": 1.4572119492559483,
+   "rel_std": 0.2477397401446378,
+   "participation_ratio": 4.129003345331876,
+   "flags": []
+  },
+  "c_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.34745779691637774,
+   "mean_std": 0.11913779795041743,
+   "rel_std": 0.34288422653842526,
+   "participation_ratio": 2.0907196848376306,
+   "flags": []
+  },
+  "b_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.8964603872248033,
+   "mean_std": 0.3013359334208839,
+   "rel_std": 0.336139708697824,
+   "participation_ratio": 3.9206455506253777,
+   "flags": []
+  },
+  "binding_sensitivity_img": 0.16722027062605724,
+  "binding_sensitivity_txt": 0.2301044850448159,
+  "content_residual_img": 1.046738527695383e-15,
+  "flags": []
+ },
+ "hardneg_seed0:init": {
+  "c_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.636177931086975,
+   "mean_std": 0.1767057085146883,
+   "rel_std": 0.2777614561586073,
+   "participation_ratio": 3.7361961114092086,
+   "flags": []
+  },
+  "b_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.24016773966353033,
+   "mean_std": 0.07668027440724459,
+   "rel_std": 0.31927799509905846,
+   "participation_ratio": 5.430899431407886,
+   "flags": []
+  },
+  "c_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.1980517634965615,
+   "mean_std": 0.03732169201526991,
+   "rel_std": 0.188444128728588,
+   "participation_ratio": 2.543284334665701,
+   "flags": []
+  },
+  "b_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.009494026312929641,
+   "mean_std": 0.002160203389746054,
+   "rel_std": 0.2275329052758296,
+   "participation_ratio": 2.566833924227554,
+   "flags": []
+  },
+  "binding_sensitivity_img": 0.6668851479388443,
+  "binding_sensitivity_txt": 0.18467685314458468,
+  "content_residual_img": 2.6822662150691843e-16,
+  "flags": []
+ },
+ "hardneg_seed0:final": {
+  "c_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 1.9889428791998862,
+   "mean_std": 0.7296490852142473,
+   "rel_std": 0.36685270997212915,
+   "participation_ratio": 2.4639724913813312,
+   "flags": []
+  },
+  "b_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 5.788956849976509,
+   "mean_std": 1.4277461123961241,
+   "rel_std": 0.24663270938043313,
+   "participation_ratio": 4.163808216959994,
+   "flags": []
+  },
+  "c_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.3449432303034584,
+   "mean_std": 0.11786624532923398,
+   "rel_std": 0.34169751708286317,
+   "participation_ratio": 2.1030028534084186,
+   "flags": []
+  },
+  "b_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.862747331088709,
+   "mean_std": 0.29108710155593553,
+   "rel_std": 0.33739553988374554,
+   "participation_ratio": 3.9516399799382906,
+   "flags": []
+  },
+  "binding_sensitivity_img": 0.16467561867879624,
+  "binding_sensitivity_txt": 0.23164023419714225,
+  "content_residual_img": 6.758924343478424e-16,
+  "flags": []
+ },
+ "hardneg_eq_seed0:init": {
+  "c_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.636177931086975,
+   "mean_std": 0.1767057085146883,
+   "rel_std": 0.2777614561586073,
+   "participation_ratio": 3.7361961114092086,
+   "flags": []
+  },
+  "b_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.24016773966353033,
+   "mean_std": 0.07668027440724459,
+   "rel_std": 0.31927799509905846,
+   "participation_ratio": 5.430899431407886,
+   "flags": []
+  },
+  "c_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.1980517634965615,
+   "mean_std": 0.03732169201526991,
+   "rel_std": 0.188444128728588,
+   "participation_ratio": 2.543284334665701,
+   "flags": []
+  },
+  "b_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.009494026312929641,
+   "mean_std": 0.002160203389746054,
+   "rel_std": 0.2275329052758296,
+   "participation_ratio": 2.566833924227554,
+   "flags": []
+  },
+  "binding_sensitivity_img": 0.6668851479388443,
+  "binding_sensitivity_txt": 0.18467685314458468,
+  "content_residual_img": 2.6822662150691843e-16,
+  "flags": []
+ },
+ "hardneg_eq_seed0:final": {
+  "c_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.868000941931979,
+   "mean_std": 0.24837144418504026,
+   "rel_std": 0.28614190628897257,
+   "participation_ratio": 3.3000631036288732,
+   "flags": []
+  },
+  "b_img": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.4368836483227085,
+   "mean_std": 0.13357960720242196,
+   "rel_std": 0.30575556607637566,
+   "participation_ratio": 2.926492111969601,
+   "flags": []
+  },
+  "c_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.22407451016011104,
+   "mean_std": 0.04512440834252679,
+   "rel_std": 0.2013812651438284,
+   "participation_ratio": 2.586852458418079,
+   "flags": []
+  },
+  "b_txt": {
+   "n": 200,
+   "dim": 8,
+   "mean_norm": 0.015331877516609574,
+   "mean_std": 0.004188149943733449,
+   "rel_std": 0.2731661493640473,
+   "participation_ratio": 4.181792549357444,
+   "flags": []
+  },
+  "binding_sensitivity_img": 0.5797608262610489,
+  "binding_sensitivity_txt": 0.35276784741207334,
+  "content_residual_img": 3.212940164695817e-16,
+  "flags": []
+ }
+}

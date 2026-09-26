@@ -1,0 +1,6047 @@
+{
+ "random": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.21,
+    "image": 0.24,
+    "group": 0.16,
+    "match": 0.5,
+    "aug": 0.315,
+    "aug_group": 0.06
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.2,
+     "image": 0.16,
+     "group": 0.16,
+     "match": 0.56,
+     "aug": 0.3,
+     "aug_group": 0.04
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.2,
+     "image": 0.24,
+     "group": 0.16,
+     "match": 0.36,
+     "aug": 0.32,
+     "aug_group": 0.04
+    },
+    "object": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.36,
+     "group": 0.2,
+     "match": 0.6,
+     "aug": 0.34,
+     "aug_group": 0.12
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.2,
+     "group": 0.12,
+     "match": 0.48,
+     "aug": 0.3,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.12121212121212122,
+    "image": 0.18181818181818182,
+    "group": 0.09090909090909091,
+    "match": 0.45454545454545453,
+    "aug": 0.3181818181818182,
+    "aug_group": 0.06060606060606061
+   },
+   "group_ci95": [
+    0.09,
+    0.24
+   ],
+   "match_ci95": [
+    0.39,
+    0.61
+   ],
+   "pair_auc": 0.5159,
+   "pair_acc_at_calib_threshold": 0.525
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.26,
+    "image": 0.31,
+    "group": 0.17,
+    "match": 0.54,
+    "aug": 0.355,
+    "aug_group": 0.13
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.36,
+     "group": 0.28,
+     "match": 0.56,
+     "aug": 0.44,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.24,
+     "group": 0.04,
+     "match": 0.44,
+     "aug": 0.32,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.32,
+     "group": 0.2,
+     "match": 0.48,
+     "aug": 0.32,
+     "aug_group": 0.08
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.32,
+     "group": 0.16,
+     "match": 0.68,
+     "aug": 0.34,
+     "aug_group": 0.12
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.2702702702702703,
+    "image": 0.32432432432432434,
+    "group": 0.13513513513513514,
+    "match": 0.6486486486486487,
+    "aug": 0.3783783783783784,
+    "aug_group": 0.13513513513513514
+   },
+   "group_ci95": [
+    0.1,
+    0.25
+   ],
+   "match_ci95": [
+    0.45,
+    0.63
+   ],
+   "pair_auc": 0.516925,
+   "pair_acc_at_calib_threshold": 0.4875
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.25,
+    "group": 0.16,
+    "match": 0.45,
+    "aug": 0.305,
+    "aug_group": 0.1
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.4,
+     "group": 0.28,
+     "match": 0.68,
+     "aug": 0.46,
+     "aug_group": 0.2
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.2,
+     "image": 0.36,
+     "group": 0.2,
+     "match": 0.44,
+     "aug": 0.26,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.12,
+     "group": 0.12,
+     "match": 0.32,
+     "aug": 0.22,
+     "aug_group": 0.04
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.12,
+     "group": 0.04,
+     "match": 0.36,
+     "aug": 0.28,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.17647058823529413,
+    "image": 0.17647058823529413,
+    "group": 0.08823529411764706,
+    "match": 0.35294117647058826,
+    "aug": 0.29411764705882354,
+    "aug_group": 0.058823529411764705
+   },
+   "group_ci95": [
+    0.09,
+    0.23
+   ],
+   "match_ci95": [
+    0.36,
+    0.54
+   ],
+   "pair_auc": 0.466175,
+   "pair_acc_at_calib_threshold": 0.4925
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.28,
+    "image": 0.26,
+    "group": 0.18,
+    "match": 0.49,
+    "aug": 0.33,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.16,
+     "group": 0.16,
+     "match": 0.44,
+     "aug": 0.32,
+     "aug_group": 0.16
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.28,
+     "group": 0.12,
+     "match": 0.56,
+     "aug": 0.36,
+     "aug_group": 0.04
+    },
+    "object": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.36,
+     "group": 0.28,
+     "match": 0.48,
+     "aug": 0.34,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.24,
+     "group": 0.16,
+     "match": 0.48,
+     "aug": 0.3,
+     "aug_group": 0.12
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.24242424242424243,
+    "image": 0.21212121212121213,
+    "group": 0.15151515151515152,
+    "match": 0.42424242424242425,
+    "aug": 0.2878787878787879,
+    "aug_group": 0.09090909090909091
+   },
+   "group_ci95": [
+    0.12,
+    0.27
+   ],
+   "match_ci95": [
+    0.37,
+    0.59
+   ],
+   "pair_auc": 0.5018,
+   "pair_acc_at_calib_threshold": 0.4875
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.22,
+    "group": 0.14,
+    "match": 0.45,
+    "aug": 0.275,
+    "aug_group": 0.08
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 0.2,
+     "aug": 0.25,
+     "aug_group": 0.1
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.3,
+     "group": 0.2,
+     "match": 0.4,
+     "aug": 0.15,
+     "aug_group": 0.0
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.2,
+     "aug": 0.15,
+     "aug_group": 0.1
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.2,
+     "group": 0.0,
+     "match": 0.4,
+     "aug": 0.2,
+     "aug_group": 0.0
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.4,
+     "group": 0.4,
+     "match": 0.8,
+     "aug": 0.5,
+     "aug_group": 0.2
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.2,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.2,
+     "group": 0.2,
+     "match": 0.4,
+     "aug": 0.4,
+     "aug_group": 0.3
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.2,
+     "group": 0.2,
+     "match": 0.6,
+     "aug": 0.25,
+     "aug_group": 0.1
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.4,
+     "group": 0.2,
+     "match": 0.6,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 0.4,
+     "aug": 0.3,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.25,
+    "image": 0.1875,
+    "group": 0.1875,
+    "match": 0.5,
+    "aug": 0.40625,
+    "aug_group": 0.1875
+   },
+   "group_ci95": [
+    0.07,
+    0.2
+   ],
+   "match_ci95": [
+    0.36,
+    0.54
+   ],
+   "pair_auc": 0.4903,
+   "pair_acc_at_calib_threshold": 0.5125
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.26,
+    "image": 0.24,
+    "group": 0.17,
+    "match": 0.47,
+    "aug": 0.375,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.08,
+     "group": 0.04,
+     "match": 0.48,
+     "aug": 0.4,
+     "aug_group": 0.12
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.28,
+     "group": 0.2,
+     "match": 0.52,
+     "aug": 0.4,
+     "aug_group": 0.2
+    },
+    "object": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.32,
+     "group": 0.2,
+     "match": 0.48,
+     "aug": 0.36,
+     "aug_group": 0.08
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.28,
+     "group": 0.24,
+     "match": 0.4,
+     "aug": 0.34,
+     "aug_group": 0.16
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.35714285714285715,
+    "image": 0.32142857142857145,
+    "group": 0.2857142857142857,
+    "match": 0.4642857142857143,
+    "aug": 0.4107142857142857,
+    "aug_group": 0.25
+   },
+   "group_ci95": [
+    0.11,
+    0.25
+   ],
+   "match_ci95": [
+    0.38,
+    0.58
+   ],
+   "pair_auc": 0.4849,
+   "pair_acc_at_calib_threshold": 0.475
+  },
+  "calib_threshold": 0.8130163949196363
+ },
+ "oracle": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "object": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "group_ci95": [
+    1.0,
+    1.0
+   ],
+   "match_ci95": [
+    1.0,
+    1.0
+   ],
+   "pair_auc": 1.0,
+   "pair_acc_at_calib_threshold": 1.0
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "object": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "group_ci95": [
+    1.0,
+    1.0
+   ],
+   "match_ci95": [
+    1.0,
+    1.0
+   ],
+   "pair_auc": 1.0,
+   "pair_acc_at_calib_threshold": 1.0
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "object": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "group_ci95": [
+    1.0,
+    1.0
+   ],
+   "match_ci95": [
+    1.0,
+    1.0
+   ],
+   "pair_auc": 1.0,
+   "pair_acc_at_calib_threshold": 1.0
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "object": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "group_ci95": [
+    1.0,
+    1.0
+   ],
+   "match_ci95": [
+    1.0,
+    1.0
+   ],
+   "pair_auc": 1.0,
+   "pair_acc_at_calib_threshold": 1.0
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "group_ci95": [
+    1.0,
+    1.0
+   ],
+   "match_ci95": [
+    1.0,
+    1.0
+   ],
+   "pair_auc": 1.0,
+   "pair_acc_at_calib_threshold": 1.0
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "object": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 1.0,
+     "image": 1.0,
+     "group": 1.0,
+     "match": 1.0,
+     "aug": 1.0,
+     "aug_group": 1.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 1.0,
+    "image": 1.0,
+    "group": 1.0,
+    "match": 1.0,
+    "aug": 1.0,
+    "aug_group": 1.0
+   },
+   "group_ci95": [
+    1.0,
+    1.0
+   ],
+   "match_ci95": [
+    1.0,
+    1.0
+   ],
+   "pair_auc": 1.0,
+   "pair_acc_at_calib_threshold": 1.0
+  },
+  "calib_threshold": 0.5
+ },
+ "text_only": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.315,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.34,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.28,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.42,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.22,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.21212121212121213,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.36,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.44,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.36,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.44,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.2,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.21621621621621623,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.325,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.38,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.38,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.34,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.2,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.22058823529411764,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.32,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.4,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.28,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.4,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.2,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.16666666666666666,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.395,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.35,
+     "aug_group": 0.0
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.5,
+     "aug_group": 0.0
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.5,
+     "aug_group": 0.0
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.35,
+     "aug_group": 0.0
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.4,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.4,
+     "aug_group": 0.0
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.45,
+     "aug_group": 0.0
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.5,
+     "aug_group": 0.0
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.2,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.1875,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.27,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.26,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.4,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.42,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.017857142857142856,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "calib_threshold": -2.2156087475654767
+ },
+ "image_only": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.0,
+    0.0
+   ],
+   "pair_auc": 0.5,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "calib_threshold": -2.3292020019077224
+ },
+ "inbatch_seed0[all]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.25,
+    "image": 0.13,
+    "group": 0.09,
+    "match": 0.75,
+    "aug": 0.455,
+    "aug_group": 0.16
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.32,
+     "group": 0.2,
+     "match": 0.92,
+     "aug": 0.58,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.04,
+     "group": 0.04,
+     "match": 0.52,
+     "aug": 0.3,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.12,
+     "group": 0.12,
+     "match": 0.92,
+     "aug": 0.62,
+     "aug_group": 0.28
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.64,
+     "aug": 0.32,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.09090909090909091,
+    "image": 0.06060606060606061,
+    "group": 0.030303030303030304,
+    "match": 0.5757575757575758,
+    "aug": 0.3484848484848485,
+    "aug_group": 0.09090909090909091
+   },
+   "group_ci95": [
+    0.05,
+    0.15
+   ],
+   "match_ci95": [
+    0.66,
+    0.83
+   ],
+   "pair_auc": 0.54055,
+   "pair_acc_at_calib_threshold": 0.5525
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.25,
+    "image": 0.14,
+    "group": 0.05,
+    "match": 0.69,
+    "aug": 0.495,
+    "aug_group": 0.2
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.32,
+     "group": 0.12,
+     "match": 0.96,
+     "aug": 0.64,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.08,
+     "group": 0.0,
+     "match": 0.4,
+     "aug": 0.36,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.96,
+     "aug": 0.64,
+     "aug_group": 0.4
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.34,
+     "aug_group": 0.08
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.08108108108108109,
+    "image": 0.08108108108108109,
+    "group": 0.0,
+    "match": 0.43243243243243246,
+    "aug": 0.35135135135135137,
+    "aug_group": 0.05405405405405406
+   },
+   "group_ci95": [
+    0.02,
+    0.1
+   ],
+   "match_ci95": [
+    0.59,
+    0.78
+   ],
+   "pair_auc": 0.5264,
+   "pair_acc_at_calib_threshold": 0.5175
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.23,
+    "image": 0.12,
+    "group": 0.07,
+    "match": 0.76,
+    "aug": 0.455,
+    "aug_group": 0.13
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.28,
+     "group": 0.2,
+     "match": 0.92,
+     "aug": 0.54,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.4,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.16,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.58,
+     "aug_group": 0.2
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.3,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.08823529411764706,
+    "image": 0.029411764705882353,
+    "group": 0.0,
+    "match": 0.5588235294117647,
+    "aug": 0.3235294117647059,
+    "aug_group": 0.029411764705882353
+   },
+   "group_ci95": [
+    0.03,
+    0.12
+   ],
+   "match_ci95": [
+    0.68,
+    0.84
+   ],
+   "pair_auc": 0.5272,
+   "pair_acc_at_calib_threshold": 0.4975
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.21,
+    "image": 0.18,
+    "group": 0.05,
+    "match": 0.74,
+    "aug": 0.47,
+    "aug_group": 0.15
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.48,
+     "group": 0.16,
+     "match": 0.96,
+     "aug": 0.64,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.32,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.2,
+     "group": 0.04,
+     "match": 0.96,
+     "aug": 0.62,
+     "aug_group": 0.32
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.3,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.030303030303030304,
+    "group": 0.0,
+    "match": 0.5454545454545454,
+    "aug": 0.3181818181818182,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.01,
+    0.11
+   ],
+   "match_ci95": [
+    0.66,
+    0.83
+   ],
+   "pair_auc": 0.524525,
+   "pair_acc_at_calib_threshold": 0.52
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.36,
+    "image": 0.22,
+    "group": 0.12,
+    "match": 0.82,
+    "aug": 0.505,
+    "aug_group": 0.23
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.3,
+     "group": 0.3,
+     "match": 0.9,
+     "aug": 0.65,
+     "aug_group": 0.4
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.7,
+     "image": 0.4,
+     "group": 0.3,
+     "match": 0.9,
+     "aug": 0.7,
+     "aug_group": 0.4
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.65,
+     "aug_group": 0.3
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.5,
+     "group": 0.3,
+     "match": 1.0,
+     "aug": 0.55,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.5,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.5,
+     "aug_group": 0.3
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.8,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.5
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.5,
+     "aug_group": 0.2
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.3,
+     "aug": 0.25,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0625,
+    "group": 0.0,
+    "match": 0.4375,
+    "aug": 0.21875,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.06,
+    0.18
+   ],
+   "match_ci95": [
+    0.74,
+    0.89
+   ],
+   "pair_auc": 0.56195,
+   "pair_acc_at_calib_threshold": 0.53
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.28,
+    "image": 0.21,
+    "group": 0.1,
+    "match": 0.75,
+    "aug": 0.43,
+    "aug_group": 0.16
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.4,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.56,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.16,
+     "group": 0.08,
+     "match": 0.56,
+     "aug": 0.32,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.24,
+     "group": 0.12,
+     "match": 0.88,
+     "aug": 0.6,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.56,
+     "aug": 0.24,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.10714285714285714,
+    "image": 0.07142857142857142,
+    "group": 0.03571428571428571,
+    "match": 0.5357142857142857,
+    "aug": 0.25,
+    "aug_group": 0.07142857142857142
+   },
+   "group_ci95": [
+    0.05,
+    0.16
+   ],
+   "match_ci95": [
+    0.67,
+    0.82
+   ],
+   "pair_auc": 0.53875,
+   "pair_acc_at_calib_threshold": 0.505
+  },
+  "calib_threshold": 4.03547734736939
+ },
+ "inbatch_seed0[content]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.2,
+    "image": 0.1,
+    "group": 0.05,
+    "match": 0.56,
+    "aug": 0.375,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.12,
+     "match": 1.0,
+     "aug": 0.64,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.32,
+     "aug": 0.26,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.16,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.6,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.01,
+    0.1
+   ],
+   "match_ci95": [
+    0.47,
+    0.67
+   ],
+   "pair_auc": 0.5316,
+   "pair_acc_at_calib_threshold": 0.53
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.16,
+    "image": 0.09,
+    "group": 0.05,
+    "match": 0.5,
+    "aug": 0.315,
+    "aug_group": 0.1
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.12,
+     "match": 0.88,
+     "aug": 0.52,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.2,
+     "aug": 0.2,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.16,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.54,
+     "aug_group": 0.16
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.02,
+    0.1
+   ],
+   "match_ci95": [
+    0.41,
+    0.61
+   ],
+   "pair_auc": 0.5172375,
+   "pair_acc_at_calib_threshold": 0.51
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.13,
+    "group": 0.08,
+    "match": 0.54,
+    "aug": 0.36,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.24,
+     "group": 0.16,
+     "match": 0.92,
+     "aug": 0.54,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.24,
+     "aug": 0.28,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.24,
+     "group": 0.16,
+     "match": 1.0,
+     "aug": 0.62,
+     "aug_group": 0.28
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.04,
+    0.14
+   ],
+   "match_ci95": [
+    0.44,
+    0.65
+   ],
+   "pair_auc": 0.5222,
+   "pair_acc_at_calib_threshold": 0.515
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.12,
+    "group": 0.09,
+    "match": 0.51,
+    "aug": 0.37,
+    "aug_group": 0.17
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.28,
+     "group": 0.2,
+     "match": 0.76,
+     "aug": 0.6,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.08,
+     "group": 0.08,
+     "match": 0.28,
+     "aug": 0.28,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 1.0,
+     "aug": 0.6,
+     "aug_group": 0.28
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.04,
+    0.16
+   ],
+   "match_ci95": [
+    0.41,
+    0.61
+   ],
+   "pair_auc": 0.5295,
+   "pair_acc_at_calib_threshold": 0.5275
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.2,
+    "image": 0.16,
+    "group": 0.08,
+    "match": 0.65,
+    "aug": 0.45,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.8,
+     "aug": 0.4,
+     "aug_group": 0.1
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 0.6,
+     "aug": 0.5,
+     "aug_group": 0.2
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.3,
+     "group": 0.2,
+     "match": 0.9,
+     "aug": 0.65,
+     "aug_group": 0.4
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.6,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 0.3,
+     "aug": 0.5,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.3,
+     "group": 0.1,
+     "match": 0.9,
+     "aug": 0.6,
+     "aug_group": 0.2
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.3,
+     "aug": 0.2,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 0.9,
+     "aug": 0.6,
+     "aug_group": 0.3
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.3,
+     "group": 0.1,
+     "match": 0.8,
+     "aug": 0.45,
+     "aug_group": 0.0
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.04,
+    0.14
+   ],
+   "match_ci95": [
+    0.55,
+    0.74
+   ],
+   "pair_auc": 0.530975,
+   "pair_acc_at_calib_threshold": 0.51
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.08,
+    "group": 0.06,
+    "match": 0.56,
+    "aug": 0.435,
+    "aug_group": 0.19
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.16,
+     "group": 0.12,
+     "match": 0.96,
+     "aug": 0.64,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.36,
+     "aug": 0.42,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.16,
+     "group": 0.12,
+     "match": 0.92,
+     "aug": 0.68,
+     "aug_group": 0.36
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.02,
+    0.11
+   ],
+   "match_ci95": [
+    0.46,
+    0.65
+   ],
+   "pair_auc": 0.5286,
+   "pair_acc_at_calib_threshold": 0.5225
+  },
+  "calib_threshold": 0.1858877076942253
+ },
+ "inbatch_seed0[binding]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.19,
+    "image": 0.12,
+    "group": 0.07,
+    "match": 0.73,
+    "aug": 0.425,
+    "aug_group": 0.13
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.2,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.56,
+     "aug_group": 0.2
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.52,
+     "aug": 0.28,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.12,
+     "group": 0.12,
+     "match": 0.84,
+     "aug": 0.54,
+     "aug_group": 0.2
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.64,
+     "aug": 0.32,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.09090909090909091,
+    "image": 0.09090909090909091,
+    "group": 0.06060606060606061,
+    "match": 0.5757575757575758,
+    "aug": 0.3484848484848485,
+    "aug_group": 0.09090909090909091
+   },
+   "group_ci95": [
+    0.02,
+    0.13
+   ],
+   "match_ci95": [
+    0.65,
+    0.82
+   ],
+   "pair_auc": 0.537275,
+   "pair_acc_at_calib_threshold": 0.5425
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.23,
+    "image": 0.15,
+    "group": 0.05,
+    "match": 0.71,
+    "aug": 0.505,
+    "aug_group": 0.21
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.32,
+     "group": 0.12,
+     "match": 0.96,
+     "aug": 0.6,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.08,
+     "group": 0.0,
+     "match": 0.48,
+     "aug": 0.36,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.96,
+     "aug": 0.68,
+     "aug_group": 0.48
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.08,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.38,
+     "aug_group": 0.08
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.08108108108108109,
+    "image": 0.08108108108108109,
+    "group": 0.0,
+    "match": 0.43243243243243246,
+    "aug": 0.3783783783783784,
+    "aug_group": 0.05405405405405406
+   },
+   "group_ci95": [
+    0.02,
+    0.1
+   ],
+   "match_ci95": [
+    0.61,
+    0.79
+   ],
+   "pair_auc": 0.528425,
+   "pair_acc_at_calib_threshold": 0.5325
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.24,
+    "image": 0.12,
+    "group": 0.08,
+    "match": 0.75,
+    "aug": 0.475,
+    "aug_group": 0.16
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.32,
+     "group": 0.24,
+     "match": 0.92,
+     "aug": 0.54,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.42,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.88,
+     "aug": 0.58,
+     "aug_group": 0.2
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.36,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.08823529411764706,
+    "image": 0.029411764705882353,
+    "group": 0.0,
+    "match": 0.5588235294117647,
+    "aug": 0.36764705882352944,
+    "aug_group": 0.058823529411764705
+   },
+   "group_ci95": [
+    0.03,
+    0.13
+   ],
+   "match_ci95": [
+    0.67,
+    0.82
+   ],
+   "pair_auc": 0.52625,
+   "pair_acc_at_calib_threshold": 0.4975
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.16,
+    "image": 0.13,
+    "group": 0.04,
+    "match": 0.73,
+    "aug": 0.455,
+    "aug_group": 0.11
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.32,
+     "group": 0.12,
+     "match": 0.92,
+     "aug": 0.6,
+     "aug_group": 0.2
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.32,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.04,
+     "match": 0.96,
+     "aug": 0.6,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.3,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.5454545454545454,
+    "aug": 0.30303030303030304,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.01,
+    0.09
+   ],
+   "match_ci95": [
+    0.65,
+    0.83
+   ],
+   "pair_auc": 0.52185,
+   "pair_acc_at_calib_threshold": 0.515
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.34,
+    "image": 0.23,
+    "group": 0.14,
+    "match": 0.8,
+    "aug": 0.5,
+    "aug_group": 0.22
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.4,
+     "group": 0.4,
+     "match": 0.8,
+     "aug": 0.65,
+     "aug_group": 0.4
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.6,
+     "image": 0.5,
+     "group": 0.4,
+     "match": 0.9,
+     "aug": 0.65,
+     "aug_group": 0.3
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.4,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.65,
+     "aug_group": 0.3
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.5,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.55,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.45,
+     "aug_group": 0.2
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.8,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.5
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 0.9,
+     "aug": 0.55,
+     "aug_group": 0.3
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.3,
+     "aug": 0.25,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.4375,
+    "aug": 0.21875,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.09,
+    0.21
+   ],
+   "match_ci95": [
+    0.72,
+    0.87
+   ],
+   "pair_auc": 0.561225,
+   "pair_acc_at_calib_threshold": 0.5225
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.18,
+    "group": 0.11,
+    "match": 0.75,
+    "aug": 0.395,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.32,
+     "group": 0.16,
+     "match": 1.0,
+     "aug": 0.52,
+     "aug_group": 0.16
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.16,
+     "group": 0.08,
+     "match": 0.56,
+     "aug": 0.28,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.2,
+     "match": 0.88,
+     "aug": 0.54,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.56,
+     "aug": 0.24,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.10714285714285714,
+    "image": 0.07142857142857142,
+    "group": 0.03571428571428571,
+    "match": 0.5357142857142857,
+    "aug": 0.25,
+    "aug_group": 0.07142857142857142
+   },
+   "group_ci95": [
+    0.06,
+    0.17
+   ],
+   "match_ci95": [
+    0.68,
+    0.82
+   ],
+   "pair_auc": 0.535,
+   "pair_acc_at_calib_threshold": 0.52
+  },
+  "calib_threshold": 3.0774198906955954
+ },
+ "hardneg_seed0[all]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.25,
+    "image": 0.12,
+    "group": 0.08,
+    "match": 0.75,
+    "aug": 0.455,
+    "aug_group": 0.16
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.32,
+     "group": 0.16,
+     "match": 0.92,
+     "aug": 0.56,
+     "aug_group": 0.2
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.04,
+     "group": 0.04,
+     "match": 0.52,
+     "aug": 0.3,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.12,
+     "group": 0.12,
+     "match": 0.92,
+     "aug": 0.62,
+     "aug_group": 0.32
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.64,
+     "aug": 0.34,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.09090909090909091,
+    "image": 0.030303030303030304,
+    "group": 0.030303030303030304,
+    "match": 0.5757575757575758,
+    "aug": 0.36363636363636365,
+    "aug_group": 0.09090909090909091
+   },
+   "group_ci95": [
+    0.04,
+    0.13
+   ],
+   "match_ci95": [
+    0.66,
+    0.83
+   ],
+   "pair_auc": 0.54145,
+   "pair_acc_at_calib_threshold": 0.5475
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.23,
+    "image": 0.13,
+    "group": 0.04,
+    "match": 0.7,
+    "aug": 0.49,
+    "aug_group": 0.18
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.28,
+     "group": 0.08,
+     "match": 0.96,
+     "aug": 0.64,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.08,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.36,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.96,
+     "aug": 0.62,
+     "aug_group": 0.36
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.34,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.05405405405405406,
+    "image": 0.08108108108108109,
+    "group": 0.0,
+    "match": 0.4594594594594595,
+    "aug": 0.35135135135135137,
+    "aug_group": 0.02702702702702703
+   },
+   "group_ci95": [
+    0.01,
+    0.08
+   ],
+   "match_ci95": [
+    0.61,
+    0.78
+   ],
+   "pair_auc": 0.52675,
+   "pair_acc_at_calib_threshold": 0.515
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.25,
+    "image": 0.15,
+    "group": 0.09,
+    "match": 0.75,
+    "aug": 0.465,
+    "aug_group": 0.17
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.36,
+     "group": 0.28,
+     "match": 0.92,
+     "aug": 0.54,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.4,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.2,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.6,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.56,
+     "aug": 0.32,
+     "aug_group": 0.08
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.11764705882352941,
+    "image": 0.029411764705882353,
+    "group": 0.0,
+    "match": 0.5294117647058824,
+    "aug": 0.3382352941176471,
+    "aug_group": 0.08823529411764706
+   },
+   "group_ci95": [
+    0.03,
+    0.15
+   ],
+   "match_ci95": [
+    0.67,
+    0.83
+   ],
+   "pair_auc": 0.528375,
+   "pair_acc_at_calib_threshold": 0.495
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.2,
+    "image": 0.17,
+    "group": 0.04,
+    "match": 0.74,
+    "aug": 0.46,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.44,
+     "group": 0.12,
+     "match": 0.96,
+     "aug": 0.64,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.2,
+     "group": 0.04,
+     "match": 0.96,
+     "aug": 0.6,
+     "aug_group": 0.28
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.3,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.030303030303030304,
+    "group": 0.0,
+    "match": 0.5454545454545454,
+    "aug": 0.30303030303030304,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.01,
+    0.09
+   ],
+   "match_ci95": [
+    0.66,
+    0.83
+   ],
+   "pair_auc": 0.524725,
+   "pair_acc_at_calib_threshold": 0.5225
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.36,
+    "image": 0.22,
+    "group": 0.12,
+    "match": 0.81,
+    "aug": 0.5,
+    "aug_group": 0.23
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.3,
+     "group": 0.3,
+     "match": 0.9,
+     "aug": 0.65,
+     "aug_group": 0.4
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.7,
+     "image": 0.4,
+     "group": 0.3,
+     "match": 0.9,
+     "aug": 0.7,
+     "aug_group": 0.4
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.65,
+     "aug_group": 0.3
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.5,
+     "group": 0.3,
+     "match": 1.0,
+     "aug": 0.55,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.5,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.5,
+     "aug_group": 0.3
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.25,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.8,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.5
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.5,
+     "aug_group": 0.2
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.3,
+     "aug": 0.2,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0625,
+    "group": 0.0,
+    "match": 0.375,
+    "aug": 0.1875,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.06,
+    0.18
+   ],
+   "match_ci95": [
+    0.73,
+    0.89
+   ],
+   "pair_auc": 0.5628,
+   "pair_acc_at_calib_threshold": 0.53
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.25,
+    "image": 0.19,
+    "group": 0.08,
+    "match": 0.75,
+    "aug": 0.415,
+    "aug_group": 0.13
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.36,
+     "group": 0.16,
+     "match": 1.0,
+     "aug": 0.56,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.16,
+     "group": 0.04,
+     "match": 0.56,
+     "aug": 0.28,
+     "aug_group": 0.04
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.24,
+     "group": 0.12,
+     "match": 0.88,
+     "aug": 0.58,
+     "aug_group": 0.2
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.56,
+     "aug": 0.24,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.07142857142857142,
+    "image": 0.03571428571428571,
+    "group": 0.0,
+    "match": 0.5357142857142857,
+    "aug": 0.23214285714285715,
+    "aug_group": 0.03571428571428571
+   },
+   "group_ci95": [
+    0.03,
+    0.13
+   ],
+   "match_ci95": [
+    0.67,
+    0.82
+   ],
+   "pair_auc": 0.538025,
+   "pair_acc_at_calib_threshold": 0.5025
+  },
+  "calib_threshold": 3.8633922234629194
+ },
+ "hardneg_seed0[content]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.2,
+    "image": 0.1,
+    "group": 0.05,
+    "match": 0.56,
+    "aug": 0.375,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.12,
+     "match": 1.0,
+     "aug": 0.64,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.32,
+     "aug": 0.26,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.16,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.6,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.01,
+    0.1
+   ],
+   "match_ci95": [
+    0.47,
+    0.67
+   ],
+   "pair_auc": 0.5319125,
+   "pair_acc_at_calib_threshold": 0.5275
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.16,
+    "image": 0.09,
+    "group": 0.05,
+    "match": 0.5,
+    "aug": 0.315,
+    "aug_group": 0.1
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.12,
+     "match": 0.88,
+     "aug": 0.52,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.2,
+     "aug": 0.2,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.16,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.54,
+     "aug_group": 0.16
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.02,
+    0.1
+   ],
+   "match_ci95": [
+    0.41,
+    0.61
+   ],
+   "pair_auc": 0.51765,
+   "pair_acc_at_calib_threshold": 0.51
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.15,
+    "group": 0.1,
+    "match": 0.54,
+    "aug": 0.36,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.24,
+     "group": 0.16,
+     "match": 0.92,
+     "aug": 0.54,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.24,
+     "aug": 0.28,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.32,
+     "group": 0.24,
+     "match": 1.0,
+     "aug": 0.62,
+     "aug_group": 0.28
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.05,
+    0.17
+   ],
+   "match_ci95": [
+    0.44,
+    0.65
+   ],
+   "pair_auc": 0.522625,
+   "pair_acc_at_calib_threshold": 0.505
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.23,
+    "image": 0.11,
+    "group": 0.08,
+    "match": 0.51,
+    "aug": 0.37,
+    "aug_group": 0.17
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.24,
+     "group": 0.16,
+     "match": 0.76,
+     "aug": 0.6,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.04,
+     "group": 0.04,
+     "match": 0.28,
+     "aug": 0.28,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.16,
+     "group": 0.12,
+     "match": 1.0,
+     "aug": 0.6,
+     "aug_group": 0.28
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.04,
+    0.13
+   ],
+   "match_ci95": [
+    0.41,
+    0.61
+   ],
+   "pair_auc": 0.530375,
+   "pair_acc_at_calib_threshold": 0.525
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.2,
+    "image": 0.16,
+    "group": 0.08,
+    "match": 0.66,
+    "aug": 0.45,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.8,
+     "aug": 0.4,
+     "aug_group": 0.1
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 0.6,
+     "aug": 0.5,
+     "aug_group": 0.2
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.3,
+     "group": 0.2,
+     "match": 0.9,
+     "aug": 0.65,
+     "aug_group": 0.4
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.6,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 0.3,
+     "aug": 0.5,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.3,
+     "group": 0.1,
+     "match": 0.9,
+     "aug": 0.6,
+     "aug_group": 0.2
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.3,
+     "aug": 0.2,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 0.9,
+     "aug": 0.6,
+     "aug_group": 0.3
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.3,
+     "group": 0.1,
+     "match": 0.9,
+     "aug": 0.45,
+     "aug_group": 0.0
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.04,
+    0.14
+   ],
+   "match_ci95": [
+    0.57,
+    0.75
+   ],
+   "pair_auc": 0.5312125,
+   "pair_acc_at_calib_threshold": 0.525
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.09,
+    "group": 0.07,
+    "match": 0.56,
+    "aug": 0.435,
+    "aug_group": 0.19
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.16,
+     "group": 0.12,
+     "match": 0.96,
+     "aug": 0.64,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.36,
+     "aug": 0.42,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.2,
+     "group": 0.16,
+     "match": 0.92,
+     "aug": 0.68,
+     "aug_group": 0.36
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.03,
+    0.13
+   ],
+   "match_ci95": [
+    0.46,
+    0.65
+   ],
+   "pair_auc": 0.5282375,
+   "pair_acc_at_calib_threshold": 0.5175
+  },
+  "calib_threshold": 0.13600019934213992
+ },
+ "hardneg_seed0[binding]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.2,
+    "image": 0.12,
+    "group": 0.07,
+    "match": 0.73,
+    "aug": 0.43,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.2,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.56,
+     "aug_group": 0.2
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.52,
+     "aug": 0.26,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.12,
+     "group": 0.12,
+     "match": 0.84,
+     "aug": 0.54,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.64,
+     "aug": 0.36,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.09090909090909091,
+    "image": 0.09090909090909091,
+    "group": 0.06060606060606061,
+    "match": 0.5757575757575758,
+    "aug": 0.3787878787878788,
+    "aug_group": 0.09090909090909091
+   },
+   "group_ci95": [
+    0.02,
+    0.13
+   ],
+   "match_ci95": [
+    0.65,
+    0.82
+   ],
+   "pair_auc": 0.5376,
+   "pair_acc_at_calib_threshold": 0.54
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.15,
+    "group": 0.05,
+    "match": 0.72,
+    "aug": 0.49,
+    "aug_group": 0.19
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.32,
+     "group": 0.12,
+     "match": 0.96,
+     "aug": 0.6,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.08,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.36,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.96,
+     "aug": 0.66,
+     "aug_group": 0.44
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.08,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.34,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.05405405405405406,
+    "image": 0.08108108108108109,
+    "group": 0.0,
+    "match": 0.4594594594594595,
+    "aug": 0.35135135135135137,
+    "aug_group": 0.02702702702702703
+   },
+   "group_ci95": [
+    0.02,
+    0.1
+   ],
+   "match_ci95": [
+    0.62,
+    0.79
+   ],
+   "pair_auc": 0.52915,
+   "pair_acc_at_calib_threshold": 0.52
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.26,
+    "image": 0.13,
+    "group": 0.08,
+    "match": 0.74,
+    "aug": 0.47,
+    "aug_group": 0.17
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.36,
+     "group": 0.24,
+     "match": 0.92,
+     "aug": 0.54,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.42,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.88,
+     "aug": 0.56,
+     "aug_group": 0.2
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.56,
+     "aug": 0.36,
+     "aug_group": 0.08
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.11764705882352941,
+    "image": 0.029411764705882353,
+    "group": 0.0,
+    "match": 0.5294117647058824,
+    "aug": 0.36764705882352944,
+    "aug_group": 0.08823529411764706
+   },
+   "group_ci95": [
+    0.03,
+    0.13
+   ],
+   "match_ci95": [
+    0.66,
+    0.82
+   ],
+   "pair_auc": 0.527075,
+   "pair_acc_at_calib_threshold": 0.5175
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.17,
+    "image": 0.14,
+    "group": 0.04,
+    "match": 0.73,
+    "aug": 0.455,
+    "aug_group": 0.12
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.32,
+     "group": 0.12,
+     "match": 0.92,
+     "aug": 0.62,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.32,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.04,
+     "match": 0.96,
+     "aug": 0.58,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.3,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.5454545454545454,
+    "aug": 0.30303030303030304,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.01,
+    0.09
+   ],
+   "match_ci95": [
+    0.65,
+    0.83
+   ],
+   "pair_auc": 0.522775,
+   "pair_acc_at_calib_threshold": 0.52
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.35,
+    "image": 0.25,
+    "group": 0.15,
+    "match": 0.8,
+    "aug": 0.495,
+    "aug_group": 0.22
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.4,
+     "group": 0.4,
+     "match": 0.8,
+     "aug": 0.65,
+     "aug_group": 0.4
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.6,
+     "image": 0.5,
+     "group": 0.4,
+     "match": 0.9,
+     "aug": 0.65,
+     "aug_group": 0.3
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.4,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.65,
+     "aug_group": 0.3
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.5,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.55,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 0.9,
+     "aug": 0.4,
+     "aug_group": 0.2
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.8,
+     "image": 0.1,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.5
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 0.9,
+     "aug": 0.55,
+     "aug_group": 0.3
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.3,
+     "aug": 0.2,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0625,
+    "group": 0.0,
+    "match": 0.375,
+    "aug": 0.21875,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.1,
+    0.22
+   ],
+   "match_ci95": [
+    0.72,
+    0.88
+   ],
+   "pair_auc": 0.561125,
+   "pair_acc_at_calib_threshold": 0.535
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.21,
+    "image": 0.18,
+    "group": 0.1,
+    "match": 0.75,
+    "aug": 0.395,
+    "aug_group": 0.13
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.32,
+     "group": 0.16,
+     "match": 1.0,
+     "aug": 0.52,
+     "aug_group": 0.16
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.16,
+     "group": 0.04,
+     "match": 0.56,
+     "aug": 0.26,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.2,
+     "match": 0.88,
+     "aug": 0.56,
+     "aug_group": 0.24
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.56,
+     "aug": 0.24,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.07142857142857142,
+    "image": 0.07142857142857142,
+    "group": 0.0,
+    "match": 0.5357142857142857,
+    "aug": 0.23214285714285715,
+    "aug_group": 0.03571428571428571
+   },
+   "group_ci95": [
+    0.04,
+    0.16
+   ],
+   "match_ci95": [
+    0.68,
+    0.82
+   ],
+   "pair_auc": 0.53535,
+   "pair_acc_at_calib_threshold": 0.5225
+  },
+  "calib_threshold": 0.6273440491133051
+ },
+ "hardneg_eq_seed0[all]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.34,
+    "image": 0.05,
+    "group": 0.01,
+    "match": 0.71,
+    "aug": 0.45,
+    "aug_group": 0.22
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.12,
+     "group": 0.0,
+     "match": 0.96,
+     "aug": 0.68,
+     "aug_group": 0.4
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.24,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.52,
+     "image": 0.08,
+     "group": 0.04,
+     "match": 0.96,
+     "aug": 0.7,
+     "aug_group": 0.44
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.48,
+     "aug": 0.18,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.2727272727272727,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.5151515151515151,
+    "aug": 0.18181818181818182,
+    "aug_group": 0.030303030303030304
+   },
+   "group_ci95": [
+    0.0,
+    0.03
+   ],
+   "match_ci95": [
+    0.62,
+    0.81
+   ],
+   "pair_auc": 0.5166,
+   "pair_acc_at_calib_threshold": 0.525
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.29,
+    "image": 0.04,
+    "group": 0.01,
+    "match": 0.86,
+    "aug": 0.425,
+    "aug_group": 0.19
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.92,
+     "aug": 0.6,
+     "aug_group": 0.36
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.68,
+     "aug": 0.24,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.12,
+     "group": 0.04,
+     "match": 1.0,
+     "aug": 0.6,
+     "aug_group": 0.28
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.84,
+     "aug": 0.26,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.21621621621621623,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.8378378378378378,
+    "aug": 0.25675675675675674,
+    "aug_group": 0.08108108108108109
+   },
+   "group_ci95": [
+    0.0,
+    0.03
+   ],
+   "match_ci95": [
+    0.8,
+    0.92
+   ],
+   "pair_auc": 0.5129,
+   "pair_acc_at_calib_threshold": 0.5075
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.3,
+    "image": 0.07,
+    "group": 0.02,
+    "match": 0.79,
+    "aug": 0.47,
+    "aug_group": 0.19
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.12,
+     "group": 0.0,
+     "match": 0.96,
+     "aug": 0.56,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.68,
+     "aug": 0.34,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.6,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.44
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.28,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.17647058823529413,
+    "image": 0.029411764705882353,
+    "group": 0.0,
+    "match": 0.5882352941176471,
+    "aug": 0.27941176470588236,
+    "aug_group": 0.029411764705882353
+   },
+   "group_ci95": [
+    0.0,
+    0.06
+   ],
+   "match_ci95": [
+    0.72,
+    0.87
+   ],
+   "pair_auc": 0.516775,
+   "pair_acc_at_calib_threshold": 0.505
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.31,
+    "image": 0.06,
+    "group": 0.02,
+    "match": 0.76,
+    "aug": 0.47,
+    "aug_group": 0.17
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.08,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.62,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.4,
+     "aug": 0.36,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.16,
+     "group": 0.0,
+     "match": 1.0,
+     "aug": 0.54,
+     "aug_group": 0.2
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.2,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.72,
+     "aug": 0.36,
+     "aug_group": 0.12
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.18181818181818182,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.6060606060606061,
+    "aug": 0.3181818181818182,
+    "aug_group": 0.09090909090909091
+   },
+   "group_ci95": [
+    0.0,
+    0.06
+   ],
+   "match_ci95": [
+    0.67,
+    0.83
+   ],
+   "pair_auc": 0.5173,
+   "pair_acc_at_calib_threshold": 0.5025
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.31,
+    "image": 0.1,
+    "group": 0.05,
+    "match": 0.88,
+    "aug": 0.5,
+    "aug_group": 0.2
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.55,
+     "aug_group": 0.2
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.6,
+     "aug_group": 0.2
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.3,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.55,
+     "aug_group": 0.1
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.6,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.7,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 1.0,
+     "aug": 0.65,
+     "aug_group": 0.3
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.15,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.6,
+     "image": 0.2,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.5
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.6,
+     "image": 0.3,
+     "group": 0.1,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.4
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.2,
+     "aug_group": 0.1
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.25,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.625,
+    "aug": 0.1875,
+    "aug_group": 0.0625
+   },
+   "group_ci95": [
+    0.02,
+    0.1
+   ],
+   "match_ci95": [
+    0.82,
+    0.94
+   ],
+   "pair_auc": 0.5239,
+   "pair_acc_at_calib_threshold": 0.5075
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.28,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.72,
+    "aug": 0.48,
+    "aug_group": 0.2
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.92,
+     "aug": 0.56,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.04,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.4,
+     "aug_group": 0.04
+    },
+    "object": {
+     "n": 25,
+     "text": 0.52,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.96,
+     "aug": 0.72,
+     "aug_group": 0.44
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.48,
+     "aug": 0.24,
+     "aug_group": 0.08
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.25,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.4642857142857143,
+    "aug": 0.26785714285714285,
+    "aug_group": 0.10714285714285714
+   },
+   "group_ci95": [
+    0.0,
+    0.0
+   ],
+   "match_ci95": [
+    0.63,
+    0.79
+   ],
+   "pair_auc": 0.5134,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "calib_threshold": 0.03655176196141016
+ },
+ "hardneg_eq_seed0[content]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.25,
+    "image": 0.05,
+    "group": 0.01,
+    "match": 0.54,
+    "aug": 0.385,
+    "aug_group": 0.2
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.12,
+     "group": 0.0,
+     "match": 0.96,
+     "aug": 0.66,
+     "aug_group": 0.36
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.24,
+     "aug": 0.18,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.52,
+     "image": 0.08,
+     "group": 0.04,
+     "match": 0.96,
+     "aug": 0.7,
+     "aug_group": 0.44
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.03
+   ],
+   "match_ci95": [
+    0.45,
+    0.64
+   ],
+   "pair_auc": 0.5165375,
+   "pair_acc_at_calib_threshold": 0.5225
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.21,
+    "image": 0.05,
+    "group": 0.02,
+    "match": 0.53,
+    "aug": 0.33,
+    "aug_group": 0.15
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.44,
+     "image": 0.08,
+     "group": 0.04,
+     "match": 0.92,
+     "aug": 0.58,
+     "aug_group": 0.32
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.2,
+     "aug": 0.14,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.4,
+     "image": 0.12,
+     "group": 0.04,
+     "match": 1.0,
+     "aug": 0.6,
+     "aug_group": 0.28
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.05
+   ],
+   "match_ci95": [
+    0.43,
+    0.63
+   ],
+   "pair_auc": 0.5132375,
+   "pair_acc_at_calib_threshold": 0.495
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.22,
+    "image": 0.05,
+    "group": 0.02,
+    "match": 0.57,
+    "aug": 0.355,
+    "aug_group": 0.15
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.08,
+     "group": 0.0,
+     "match": 0.96,
+     "aug": 0.54,
+     "aug_group": 0.2
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.32,
+     "aug": 0.2,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.6,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 1.0,
+     "aug": 0.68,
+     "aug_group": 0.4
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.06
+   ],
+   "match_ci95": [
+    0.47,
+    0.67
+   ],
+   "pair_auc": 0.5168875,
+   "pair_acc_at_calib_threshold": 0.515
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.27,
+    "image": 0.06,
+    "group": 0.02,
+    "match": 0.56,
+    "aug": 0.35,
+    "aug_group": 0.14
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.08,
+     "group": 0.08,
+     "match": 0.92,
+     "aug": 0.58,
+     "aug_group": 0.28
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.32,
+     "aug": 0.28,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.48,
+     "image": 0.16,
+     "group": 0.0,
+     "match": 1.0,
+     "aug": 0.54,
+     "aug_group": 0.2
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.06
+   ],
+   "match_ci95": [
+    0.47,
+    0.66
+   ],
+   "pair_auc": 0.517025,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.28,
+    "image": 0.09,
+    "group": 0.06,
+    "match": 0.76,
+    "aug": 0.45,
+    "aug_group": 0.18
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.55,
+     "aug_group": 0.2
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.8,
+     "aug": 0.5,
+     "aug_group": 0.2
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.3,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.45,
+     "aug_group": 0.0
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.6,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.7,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.65,
+     "aug_group": 0.3
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.4,
+     "aug": 0.05,
+     "aug_group": 0.0
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.6,
+     "image": 0.2,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.5
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.7,
+     "image": 0.3,
+     "group": 0.2,
+     "match": 1.0,
+     "aug": 0.7,
+     "aug_group": 0.4
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.03,
+    0.11
+   ],
+   "match_ci95": [
+    0.67,
+    0.84
+   ],
+   "pair_auc": 0.522825,
+   "pair_acc_at_calib_threshold": 0.52
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.21,
+    "image": 0.01,
+    "group": 0.01,
+    "match": 0.58,
+    "aug": 0.395,
+    "aug_group": 0.17
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.04,
+     "group": 0.04,
+     "match": 0.92,
+     "aug": 0.56,
+     "aug_group": 0.24
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.3,
+     "aug_group": 0.0
+    },
+    "object": {
+     "n": 25,
+     "text": 0.56,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.96,
+     "aug": 0.72,
+     "aug_group": 0.44
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.0,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.0,
+     "aug": 0.0,
+     "aug_group": 0.0
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.0,
+    "image": 0.0,
+    "group": 0.0,
+    "match": 0.0,
+    "aug": 0.0,
+    "aug_group": 0.0
+   },
+   "group_ci95": [
+    0.0,
+    0.04
+   ],
+   "match_ci95": [
+    0.49,
+    0.68
+   ],
+   "pair_auc": 0.513275,
+   "pair_acc_at_calib_threshold": 0.51
+  },
+  "calib_threshold": 0.08008565687892169
+ },
+ "hardneg_eq_seed0[binding]": {
+  "calib": {
+   "overall": {
+    "n": 100,
+    "text": 0.19,
+    "image": 0.08,
+    "group": 0.05,
+    "match": 0.51,
+    "aug": 0.39,
+    "aug_group": 0.1
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.38,
+     "aug_group": 0.04
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.08,
+     "group": 0.04,
+     "match": 0.64,
+     "aug": 0.46,
+     "aug_group": 0.12
+    },
+    "object": {
+     "n": 25,
+     "text": 0.12,
+     "image": 0.04,
+     "group": 0.04,
+     "match": 0.48,
+     "aug": 0.36,
+     "aug_group": 0.08
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.16,
+     "group": 0.12,
+     "match": 0.48,
+     "aug": 0.36,
+     "aug_group": 0.16
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.2727272727272727,
+    "image": 0.12121212121212122,
+    "group": 0.09090909090909091,
+    "match": 0.5151515151515151,
+    "aug": 0.3787878787878788,
+    "aug_group": 0.15151515151515152
+   },
+   "group_ci95": [
+    0.01,
+    0.09
+   ],
+   "match_ci95": [
+    0.4,
+    0.61
+   ],
+   "pair_auc": 0.507,
+   "pair_acc_at_calib_threshold": 0.5225
+  },
+  "dev": {
+   "overall": {
+    "n": 100,
+    "text": 0.18,
+    "image": 0.03,
+    "group": 0.03,
+    "match": 0.68,
+    "aug": 0.32,
+    "aug_group": 0.09
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.04,
+     "group": 0.04,
+     "match": 0.4,
+     "aug": 0.34,
+     "aug_group": 0.08
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.08,
+     "group": 0.08,
+     "match": 0.84,
+     "aug": 0.48,
+     "aug_group": 0.2
+    },
+    "object": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.64,
+     "aug": 0.16,
+     "aug_group": 0.0
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.84,
+     "aug": 0.3,
+     "aug_group": 0.08
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 37,
+    "text": 0.21621621621621623,
+    "image": 0.02702702702702703,
+    "group": 0.02702702702702703,
+    "match": 0.8378378378378378,
+    "aug": 0.3918918918918919,
+    "aug_group": 0.13513513513513514
+   },
+   "group_ci95": [
+    0.0,
+    0.07
+   ],
+   "match_ci95": [
+    0.58,
+    0.78
+   ],
+   "pair_auc": 0.510375,
+   "pair_acc_at_calib_threshold": 0.5175
+  },
+  "test_iid": {
+   "overall": {
+    "n": 100,
+    "text": 0.23,
+    "image": 0.07,
+    "group": 0.03,
+    "match": 0.6,
+    "aug": 0.34,
+    "aug_group": 0.1
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.32,
+     "aug": 0.26,
+     "aug_group": 0.04
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.36,
+     "image": 0.2,
+     "group": 0.12,
+     "match": 0.84,
+     "aug": 0.44,
+     "aug_group": 0.2
+    },
+    "object": {
+     "n": 25,
+     "text": 0.32,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.72,
+     "aug": 0.4,
+     "aug_group": 0.08
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.52,
+     "aug": 0.26,
+     "aug_group": 0.08
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 34,
+    "text": 0.17647058823529413,
+    "image": 0.058823529411764705,
+    "group": 0.029411764705882353,
+    "match": 0.5882352941176471,
+    "aug": 0.29411764705882354,
+    "aug_group": 0.08823529411764706
+   },
+   "group_ci95": [
+    0.0,
+    0.06
+   ],
+   "match_ci95": [
+    0.49,
+    0.71
+   ],
+   "pair_auc": 0.5129,
+   "pair_acc_at_calib_threshold": 0.5025
+  },
+  "test_heldout_pairs": {
+   "overall": {
+    "n": 100,
+    "text": 0.15,
+    "image": 0.08,
+    "group": 0.04,
+    "match": 0.6,
+    "aug": 0.345,
+    "aug_group": 0.06
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.08,
+     "image": 0.16,
+     "group": 0.04,
+     "match": 0.76,
+     "aug": 0.42,
+     "aug_group": 0.08
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.44,
+     "aug": 0.32,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.16,
+     "image": 0.08,
+     "group": 0.08,
+     "match": 0.48,
+     "aug": 0.32,
+     "aug_group": 0.04
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.2,
+     "image": 0.08,
+     "group": 0.04,
+     "match": 0.72,
+     "aug": 0.32,
+     "aug_group": 0.04
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 33,
+    "text": 0.18181818181818182,
+    "image": 0.06060606060606061,
+    "group": 0.030303030303030304,
+    "match": 0.6060606060606061,
+    "aug": 0.30303030303030304,
+    "aug_group": 0.030303030303030304
+   },
+   "group_ci95": [
+    0.01,
+    0.08
+   ],
+   "match_ci95": [
+    0.48,
+    0.7
+   ],
+   "pair_auc": 0.501475,
+   "pair_acc_at_calib_threshold": 0.5
+  },
+  "test_composition": {
+   "overall": {
+    "n": 100,
+    "text": 0.29,
+    "image": 0.07,
+    "group": 0.01,
+    "match": 0.72,
+    "aug": 0.465,
+    "aug_group": 0.19
+   },
+   "by_kind": {
+    "attribute+attribute": {
+     "n": 10,
+     "text": 0.0,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.5,
+     "aug_group": 0.0
+    },
+    "attribute+binding": {
+     "n": 10,
+     "text": 0.5,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.7,
+     "aug": 0.55,
+     "aug_group": 0.3
+    },
+    "attribute+object": {
+     "n": 10,
+     "text": 0.1,
+     "image": 0.2,
+     "group": 0.0,
+     "match": 0.7,
+     "aug": 0.4,
+     "aug_group": 0.1
+    },
+    "attribute+relation": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.45,
+     "aug_group": 0.2
+    },
+    "binding+binding": {
+     "n": 10,
+     "text": 0.6,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.7,
+     "aug_group": 0.4
+    },
+    "binding+object": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.2,
+     "group": 0.1,
+     "match": 0.8,
+     "aug": 0.5,
+     "aug_group": 0.3
+    },
+    "binding+relation": {
+     "n": 10,
+     "text": 0.3,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.5,
+     "aug_group": 0.2
+    },
+    "object+object": {
+     "n": 10,
+     "text": 0.4,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.9,
+     "aug": 0.45,
+     "aug_group": 0.2
+    },
+    "object+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.3,
+     "aug_group": 0.1
+    },
+    "relation+relation": {
+     "n": 10,
+     "text": 0.2,
+     "image": 0.1,
+     "group": 0.0,
+     "match": 0.5,
+     "aug": 0.3,
+     "aug_group": 0.1
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 16,
+    "text": 0.25,
+    "image": 0.0625,
+    "group": 0.0,
+    "match": 0.625,
+    "aug": 0.375,
+    "aug_group": 0.125
+   },
+   "group_ci95": [
+    0.0,
+    0.03
+   ],
+   "match_ci95": [
+    0.62,
+    0.82
+   ],
+   "pair_auc": 0.527175,
+   "pair_acc_at_calib_threshold": 0.5325
+  },
+  "test_heldout_template": {
+   "overall": {
+    "n": 100,
+    "text": 0.23,
+    "image": 0.05,
+    "group": 0.02,
+    "match": 0.53,
+    "aug": 0.295,
+    "aug_group": 0.08
+   },
+   "by_kind": {
+    "attribute": {
+     "n": 25,
+     "text": 0.2,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.6,
+     "aug": 0.4,
+     "aug_group": 0.08
+    },
+    "binding": {
+     "n": 25,
+     "text": 0.28,
+     "image": 0.12,
+     "group": 0.08,
+     "match": 0.48,
+     "aug": 0.26,
+     "aug_group": 0.08
+    },
+    "object": {
+     "n": 25,
+     "text": 0.2,
+     "image": 0.0,
+     "group": 0.0,
+     "match": 0.56,
+     "aug": 0.34,
+     "aug_group": 0.08
+    },
+    "relation": {
+     "n": 25,
+     "text": 0.24,
+     "image": 0.04,
+     "group": 0.0,
+     "match": 0.48,
+     "aug": 0.18,
+     "aug_group": 0.08
+    }
+   },
+   "binding_relation_same_words": {
+    "n": 28,
+    "text": 0.25,
+    "image": 0.03571428571428571,
+    "group": 0.0,
+    "match": 0.4642857142857143,
+    "aug": 0.17857142857142858,
+    "aug_group": 0.07142857142857142
+   },
+   "group_ci95": [
+    0.0,
+    0.05
+   ],
+   "match_ci95": [
+    0.43,
+    0.63
+   ],
+   "pair_auc": 0.49735,
+   "pair_acc_at_calib_threshold": 0.4925
+  },
+  "calib_threshold": 0.0005333514803271897
+ }
+}

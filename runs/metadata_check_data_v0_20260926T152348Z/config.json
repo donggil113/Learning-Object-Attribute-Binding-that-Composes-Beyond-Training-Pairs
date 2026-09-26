@@ -1,0 +1,110 @@
+{
+  "data": {
+    "name": "data_v0",
+    "seed": 20260926,
+    "heldout_pairs": [
+      [
+        "cube",
+        "red"
+      ],
+      [
+        "sphere",
+        "blue"
+      ],
+      [
+        "cylinder",
+        "green"
+      ],
+      [
+        "cone",
+        "yellow"
+      ]
+    ],
+    "n_objects_weights": {
+      "3": 1.0
+    },
+    "max_attempts_per_split": 200000,
+    "generation_order": [
+      "test_heldout_pairs",
+      "test_composition",
+      "test_heldout_template",
+      "test_iid",
+      "calib",
+      "dev",
+      "train"
+    ],
+    "splits": {
+      "train": {
+        "n_groups": 2000,
+        "n_ops": 1,
+        "templates": [
+          0,
+          1
+        ],
+        "heldout": "exclude"
+      },
+      "dev": {
+        "n_groups": 300,
+        "n_ops": 1,
+        "templates": [
+          0,
+          1
+        ],
+        "heldout": "exclude"
+      },
+      "calib": {
+        "n_groups": 300,
+        "n_ops": 1,
+        "templates": [
+          0,
+          1
+        ],
+        "heldout": "exclude"
+      },
+      "test_iid": {
+        "n_groups": 400,
+        "n_ops": 1,
+        "templates": [
+          0,
+          1
+        ],
+        "heldout": "exclude"
+      },
+      "test_heldout_pairs": {
+        "n_groups": 400,
+        "n_ops": 1,
+        "templates": [
+          0,
+          1
+        ],
+        "heldout": "require_touched"
+      },
+      "test_composition": {
+        "n_groups": 400,
+        "n_ops": 2,
+        "templates": [
+          0,
+          1
+        ],
+        "heldout": "exclude"
+      },
+      "test_heldout_template": {
+        "n_groups": 400,
+        "n_ops": 1,
+        "templates": [
+          2
+        ],
+        "heldout": "exclude"
+      }
+    }
+  },
+  "encoder": {
+    "name": "proxy_encoder_v0",
+    "note": "Synthetic frozen proxy features (oracle object tokens + word/position embeddings). Not a pretrained encoder, not pixels.",
+    "dim": 24,
+    "seed": 0,
+    "jitter": 0.1,
+    "lighting": 0.1,
+    "pos_scale": 0.5
+  }
+}

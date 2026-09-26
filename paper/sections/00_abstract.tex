@@ -1,0 +1,28 @@
+\begin{abstract}
+Evaluations of attribute--object binding in vision--language models can be invalidated in ways
+that are easy to miss: the model may receive the binding through its input features, a metric may
+be solvable by a binding-blind content signal, or a single-modality control may look harmless only
+because of how the metric is constructed. We describe an evaluation setting for compositional
+binding in which a scene-graph generator produces minimal-change groups of two images and two
+captions, every group is validated by an oracle over the scene graph, and the model sees only
+rendered pixels and raw caption strings. Splits keep each edit orbit (all scenes with the same
+multisets of shapes, colours and materials, which differ only in how these are assigned to objects
+and positions) inside a single split, and the endpoint is restricted to binding-necessary groups, whose two scenes lie in
+the same orbit. We use this setting to examine a small trainable head on frozen CLIP ViT-B/32
+tokens trained with a hard-negative contrastive loss. On a development panel of \SPtrainGroups{}
+training and \SPdevGroups{} development groups, the head largely fits its training groups
+(binding-necessary training group score \SPtrainBNGroupMin--\SPtrainBNGroupMax), but on the
+\SPdevBNn{} binding-necessary development groups its group score ranges from \SPdevBNGroupMin{} to
+\SPdevBNGroupMax{} over three optimization repeats (the chance level for independent continuous
+scores is $1/6$), and most of its full-panel score is reproduced by a binding-blind content channel.
+We also show that single-modality scorers are structurally zero on $2{\times}2$ group metrics and
+exactly $0.5$ on balanced pair AUC, so they cannot certify the absence of shortcuts.
+\ifhavepaired
+\input{sections/00_abstract_paired}
+\else
+A paired comparison of the hard-negative loss with an added edit-consistency objective has not been
+run in this draft.
+\fi
+All results concern synthetic renders, a frozen encoder and development data; the held-out test
+splits remain unopened.
+\end{abstract}

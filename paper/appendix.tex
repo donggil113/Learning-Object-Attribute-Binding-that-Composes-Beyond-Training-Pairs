@@ -1,0 +1,116 @@
+\section{Chance levels of the group metrics}
+\label{app:chance}
+
+Let the four scores of a group, $S_{00},S_{01},S_{10},S_{11}$, and the paraphrase scores
+$S'_0,S'_1$ be independent draws from one continuous distribution, so ties have probability zero.
+These are properties of random scores, not of any trained model. Each metric is derived separately.
+
+\emph{Text and image scores.} The text score needs $S_{00}>S_{01}$ and $S_{11}>S_{10}$. These two
+events involve disjoint pairs of independent exchangeable variables, so the probability is
+$\tfrac12\cdot\tfrac12=\tfrac14$. The image score is analogous.
+
+\emph{Group score.} All four inequalities hold iff $\min(S_{00},S_{11})>\max(S_{01},S_{10})$, that
+is, iff the two diagonal entries are the two largest of four exchangeable values. All
+$\binom{4}{2}=6$ pairs are equally likely to be the top two, so the probability is $1/6$.
+
+\emph{GroupMatch.} $X=S_{00}+S_{11}$ and $Y=S_{01}+S_{10}$ are independent and identically
+distributed, so $P(X>Y)=1/2$. For $k{\times}k$ groups \citet{zhu2025ttm} give $1/k!$ for GroupMatch
+and $(k-1)!/(2k-1)!$ for the group score; we use only $k=2$ and do not carry either formula over to
+the other metrics.
+
+\emph{aug.} For image $i$, the other caption must score below both $S_{ii}$ and $S'_i$, that is, be
+the smallest of three exchangeable values: probability $1/3$.
+
+\emph{aug\_group.} The two images use the disjoint triples $(S_{00},S'_0,S_{01})$ and
+$(S_{11},S'_1,S_{10})$, so the two events are independent and the probability is $1/9$.
+
+\emph{Pair AUC.} Under random scores, the expected AUC is $1/2$.
+
+\section{Splits and metadata statistics}
+\label{app:splits}
+
+Orbit ownership is decided by a hash of the orbit key and the data seed, with fractions 0.5
+(training), 0.075 (development), 0.075 (calibration), 0.1 for each of the i.i.d., held-out-pair and
+composition test splits, and 0.05 for the held-out-template test split. For each split, the
+generator draws a base scene until its orbit is owned. It then samples an edit of the scheduled kind
+among the applicable edits whose result stays in an owned orbit, and it keeps the group only if the
+oracle truth table, the operation contract, the held-out-pair rule and the scene/caption-content
+registry all pass. Edit kinds follow a fixed cycle, so accepted kinds are balanced within each
+split. Content edits (attribute and object edits) are the only edits that can leave an orbit, and
+only they are affected by the ownership filter.
+\ifhavesplitsemantics
+\input{sections/app_split_semantics}
+\else
+Proposal and acceptance counts per split have not yet been extracted in this draft.
+\fi
+
+\section{Structural properties of single-modality scorers}
+\label{app:blind}
+
+Let a text-only scorer assign $S_{ij}=f(T_j)$. Then $S_{00}=S_{10}$ and $S_{01}=S_{11}$.
+\begin{itemize}
+\item The text score needs $f(T_0)>f(T_1)$ and $f(T_1)>f(T_0)$, which is impossible.
+\item The image score needs $S_{00}>S_{10}$, a tie.
+\item GroupMatch compares $f(T_0)+f(T_1)$ with itself.
+\item aug\_group needs the text-score inequalities again.
+\end{itemize}
+With strict comparisons all four are therefore zero for every $f$. The per-image aug score can
+still reach $1/2$, so it is not blind-proof. For the pair AUC, the four pairs of a group carry
+labels given by the identity truth table. Each caption $T_j$ appears once with label 1 (with
+$I_j$) and once with label 0 (with $I_{1-j}$), with the same score $f(T_j)$. The multisets of
+positive and negative scores are therefore identical. The Mann--Whitney statistic, with ties
+counted as $1/2$, then equals $1/2$ exactly. The image-only case is symmetric. These identities hold
+for any single-modality scorer, including ones that exploit real artefacts, so the corresponding
+table entries carry no information about artefacts.
+
+\section{Small-panel results over all edit kinds}
+\label{app:full}
+
+\begin{table}[h]
+\caption{Small development panel, metrics over all four edit kinds (same run, rows and conventions
+as Table~\ref{tab:small}). These include groups that a binding-blind content signal can solve.}
+\centering\footnotesize
+\input{tables/small_panel_all.tex}
+\end{table}
+
+\section{Planned experiments (NOT RUN)}
+\label{app:planned}
+
+None of the following has been executed; no result in the main text depends on them.
+\begin{enumerate}
+\ifhavepaired\else
+\item \textbf{Paired comparison (planned for this revision).} Two arms, the hard-negative loss (A)
+and the same loss plus $\lambda\,\mathcal{L}_{\mathrm{edit}}$ (B). Both use the same
+initialization, batches, supervision, false-negative masks, head, cached encoder features,
+optimizer and number of updates. $\lambda=0.01$, the smallest non-zero value of the earlier
+pre-registered grid; that grid was itself set after gradient-scale observations, which we
+disclose. The panel is 512 training and 128 development groups inside the data-v1 training and
+development orbits. Seeds 0, 1 and 2 serve as paired optimization repeats. The primary endpoint is
+the binding-necessary development group score.
+\fi
+\item \textbf{Test evaluation.} No v1 test split has been rendered, encoded or scored.
+\item \textbf{Natural images and encoder fine-tuning.} Not attempted. No natural-image data was
+used, and the encoder stays frozen.
+\item \textbf{Other encoders, layers or token choices.} Not attempted (single encoder, final layer).
+\item \textbf{Calibrated pair accuracy.} Requires a calibration panel, which has not been fixed.
+\item \textbf{Edit-loss hyperparameter sweep.} The earlier 12-setting sweep was withdrawn and not
+run.
+\end{enumerate}
+
+\section{Provenance and corrections}
+\label{app:provenance}
+
+\texttt{scripts/export\_paper\_numbers.py} reads the raw run files, writes every number as a macro
+to \texttt{paper/generated/numbers.tex}, builds the tables from the same values, and records file,
+field and derivation rule per macro in \texttt{paper/generated/provenance.tsv}. Corrections made
+during the project are recorded rather than hidden:
+\begin{itemize}
+\item \emph{Renderer.} The metal-cone highlight error was found by the audit decoder and fixed
+before any model was run.
+\item \emph{First pixel-stage run.} It was executed on an uncommitted working tree. A re-run at the
+committed code gave identical metrics, decisions and parameter hashes, and both runs are kept.
+\item \emph{Manifest.} The ``dirty'' flag in the reference run's manifest is a false positive
+caused by a parsing bug, since fixed; the recorded source-tree hash identifies the code.
+\item \emph{Installation.} A first package-installation attempt failed because a timing utility
+was missing; its log is kept.
+\end{itemize}

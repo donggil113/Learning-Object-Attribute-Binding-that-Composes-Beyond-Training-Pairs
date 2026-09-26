@@ -1,0 +1,55 @@
+\documentclass{article} % For LaTeX2e
+% Official ICLR 2027 style files (unmodified copies; hashes in BUILD.md).
+\usepackage{iclr2027_conference,times}
+\input{math_commands.tex}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Every number in the text comes from these generated macros (scripts/export_paper_numbers.py).
+\input{generated/numbers.tex}
+
+\newtheorem{remark}{Remark}
+\newcommand{\bn}{\textsc{bn}}
+
+\title{Evaluating Compositional Binding\\ from Pixels without Oracle Features}
+
+% Anonymous: in non-final mode the style prints "Anonymous authors" regardless of \author.
+\author{Anonymous authors}
+
+\begin{document}
+
+\maketitle
+% STATUS OVERRIDE (see BUILD.md). In non-final mode the unmodified ICLR 2027 style sets the
+% page header to "Under review as a conference paper at ICLR 2027". This draft has NOT been
+% submitted anywhere, so the header text is replaced here, without editing the .sty file.
+\lhead{Internal working draft --- not submitted (ICLR 2027 style)}
+
+\noindent\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\small
+\textbf{Status: internal working draft v0, not submitted.} The line ``Paper under double-blind
+review'' above is printed by the unmodified ICLR 2027 style in anonymous mode and does not
+indicate a submission. No human author has reviewed this text yet (see the AI use statement).}}
+
+\input{sections/00_abstract}
+\input{sections/01_introduction}
+\input{sections/02_related}
+\input{sections/03_setting}
+\input{sections/04_method}
+\input{sections/05_experiments}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+\label{end-of-main-text}
+
+\input{sections/08_statements}
+
+\bibliography{references}
+\bibliographystyle{iclr2027_conference}
+
+\appendix
+\input{appendix}
+
+\end{document}

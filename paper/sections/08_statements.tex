@@ -1,0 +1,19 @@
+\subsection*{AI use statement}
+This working draft, the code base and every experiment it reports were produced by an AI coding
+assistant (Anthropic's Claude, used through Claude Code) acting on a researcher's written
+instructions. The assistant designed and implemented the generator, renderer, head, losses and
+evaluation code; ran all experiments; verified bibliographic metadata through arXiv's BibTeX export
+and paper pages; and wrote this text. AI sub-agents searched and read related work, and their
+reports were partially re-checked by the main assistant. \textbf{HUMAN\_REVIEW\_PENDING:} no human
+author has yet checked the code, the numbers or the text, and no human is named as having verified
+anything. The draft must not be submitted before that review. The repository file
+\texttt{AI\_USAGE.md} lists the AI's design decisions and the errors it found and corrected.
+
+\subsection*{Reproducibility statement}
+Section~\ref{sec:setting} and Appendices~\ref{app:splits}--\ref{app:planned} describe the data,
+splits, inputs, head, objectives and metrics. Every number in the text is generated from raw run
+files by \texttt{scripts/export\_paper\_numbers.py}, which writes a provenance table mapping each
+macro to a file and field (Appendix~\ref{app:provenance}). Run directories contain configuration,
+logs and manifests with code, configuration and data hashes, the environment, wall and CPU time,
+and peak memory. The encoder checkpoint is pinned by revision and SHA-256, and Python packages are
+pinned in \texttt{requirements-pixel.lock}.

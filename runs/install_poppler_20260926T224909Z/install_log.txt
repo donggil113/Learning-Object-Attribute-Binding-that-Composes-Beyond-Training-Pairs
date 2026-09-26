@@ -1,0 +1,16 @@
+Sat Sep 26 22:49:09 UTC 2026
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  poppler-utils
+0 upgraded, 1 newly installed, 0 to remove and 1 not upgraded.
+Need to get 212 kB of archives.
+After this operation, 734 kB of additional disk space will be used.
+Ign:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 poppler-utils amd64 24.02.0-1ubuntu9.8
+Err:1 http://security.ubuntu.com/ubuntu noble-updates/main amd64 poppler-utils amd64 24.02.0-1ubuntu9.8
+  404  Not Found [IP: 185.125.190.82 80]
+E: Failed to fetch http://security.ubuntu.com/ubuntu/pool/main/p/poppler/poppler-utils_24.02.0-1ubuntu9.8_amd64.deb  404  Not Found [IP: 185.125.190.82 80]
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+returncode=100
+Sat Sep 26 22:49:11 UTC 2026

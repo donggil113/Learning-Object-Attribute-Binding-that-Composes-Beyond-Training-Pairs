@@ -1,0 +1,58 @@
+\section{Objectives under Study}
+\label{sec:method}
+
+\paragraph{Hard-negative contrastive loss.}
+A batch contains $B$ groups, hence $2B$ images and $2B$ captions. With $S$ the $2B{\times}2B$
+score matrix, the loss $\mathcal{L}_{\mathrm{hn}}$ is the average of row-wise (image$\to$caption)
+and column-wise (caption$\to$image) cross-entropies with diagonal targets. Every off-diagonal pair
+that the oracle marks as true is removed from the denominators, so it is never used as a negative.
+The group partner of each item is kept as a negative (the hard negative). This is the NegCLIP-style
+use of minimal-change partners \citep{yuksekgonul2023bow,awal2024vismin}, applied here to a small
+head on frozen features.
+
+\begin{remark}[a standard bilinear identity]
+\label{rem:identity}
+Assume the score is an inner product $s(I,T)=\langle \phi(I),\psi(T)\rangle$, where $\phi$ depends
+only on the image and $\psi$ only on the caption. Per-input normalization, as in cosine scores, is
+allowed; normalization or attention that depends on the pair is not. Then, for a $2{\times}2$
+group,
+\begin{equation}
+\begin{aligned}
+S_{00}+S_{11}-S_{01}-S_{10}
+&=\langle\phi(I_0),\psi(T_0)\rangle+\langle\phi(I_1),\psi(T_1)\rangle
+-\langle\phi(I_0),\psi(T_1)\rangle-\langle\phi(I_1),\psi(T_0)\rangle\\
+&=\langle \phi(I_0)-\phi(I_1),\,\psi(T_0)-\psi(T_1)\rangle ,
+\end{aligned}
+\label{eq:identity}
+\end{equation}
+by bilinearity alone. Both the head of Section~\ref{sec:setting} and zero-shot cosine CLIP satisfy
+the assumption.
+\end{remark}
+
+Equation~\eqref{eq:identity} is elementary; we state it because it fixes what several signals
+share. GroupMatch is exactly the event that the right-hand side is positive. The two within-group
+row margins of the hard-negative loss, $S_{00}-S_{01}$ and $S_{11}-S_{10}$, sum to the same
+quantity. Aligning the image edit vector $\phi(I_1)-\phi(I_0)$ with the caption edit vector
+$\psi(T_1)-\psi(T_0)$ of the same group rewards the same inner product, up to normalization. None
+of this holds automatically for scorers with pair-dependent computation, such as cross-attention
+heads, and we do not apply it to them.
+
+\paragraph{The edit-consistency objective under study.}
+For each group $g$ in a batch let $\Delta^I_g=e(I^g_1)-e(I^g_0)$ and $\Delta^T_g=e(T^g_1)-e(T^g_0)$,
+using the same member order in both modalities, where $e$ is the concatenated head output. The
+objective $\mathcal{L}_{\mathrm{edit}}$ is a symmetric cross-entropy over the $B{\times}B$ matrix
+$C_{gh}=\cos(\Delta^I_g,\Delta^T_h)/\tau$ with diagonal targets and $\tau=0.1$. Norms include a
+small $\epsilon$, so zero edit vectors give uniform logits and a loss of $\log B$: unlike a squared
+error between edit vectors, zero is not a minimizer. The diagonal entries reward the normalized
+within-group quantity of Remark~\ref{rem:identity} and therefore overlap with the hard-negative
+loss. The off-diagonal entries are the additional signal: an image edit must be closer in direction
+to its own caption edit than to the caption edits of other groups in the batch. The objective
+assumes that different groups in a batch carry different edits; edit-level false negatives are not
+masked. The combined loss is $\mathcal{L}_{\mathrm{hn}}+\lambda\,\mathcal{L}_{\mathrm{edit}}$.
+
+\paragraph{Scale.}
+On the first training batch of the small panel, before training and with $\lambda=1$, the ratio
+$\|\nabla\mathcal{L}_{\mathrm{edit}}\|/\|\nabla\mathcal{L}_{\mathrm{hn}}\|$ was \SPgradInitMin--\SPgradInitMax{}
+across seeds; after hard-negative training it was \SPgradEndMin--\SPgradEndMax. We report these
+ratios only to show that $\lambda$ must be small for the two terms to be on comparable scales. A
+large gradient says nothing about usefulness.

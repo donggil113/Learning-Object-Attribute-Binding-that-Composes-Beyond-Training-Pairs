@@ -1,0 +1,54 @@
+\section{Introduction}
+\label{sec:intro}
+
+Contrastive vision--language models are often described as behaving like bags of words: they
+retrieve images that contain the right objects and attributes but do not reliably tell apart
+``a red cube and a blue sphere'' from ``a blue cube and a red sphere''
+\citep{yuksekgonul2023bow,thrush2022winoground,lewis2024clipbind}. A common response is to train with
+minimal-change counterfactuals, either as hard negatives \citep{yuksekgonul2023bow,zhang2024contrasting,
+zhang2024countercurate,awal2024vismin} or with additional structure such as similarity-level
+equivariance \citep{wang2023eqsim} or object-centric binding modules \citep{assouel2025occlip}.
+Whether such training yields binding that transfers to attribute--object combinations or edit
+compositions absent from training is an empirical question, and answering it requires an
+evaluation that cannot be passed without binding.
+
+This paper is about that evaluation rather than about a new method. Building it carefully exposed
+three failure modes that are easy to miss. First, the input can carry the answer: in our own first
+version, the ``image'' seen by the model was one token per object assembled from the scene graph,
+so each token already bound its object's shape, colour and material. A head trained on such
+tokens can only show how well the text side is aligned, not whether binding is learned from
+visual input. Second, a metric can be solvable without binding: when minimal-change groups include
+edits that change which colours or shapes are present, a binding-blind content channel scores well
+above chance \citep[cf.][]{hsieh2023sugarcrepe}. Third, blind controls can look reassuring for
+structural reasons: on $2{\times}2$ groups a single-modality scorer ties on every comparison, so
+its group score is zero by construction, and on a pair metric that pairs every caption with one
+matching and one non-matching image its AUC is exactly $0.5$. Neither number says anything about
+whether the benchmark contains exploitable artefacts \citep[cf.][]{lin2024languagepriors}.
+
+We therefore use a scene-graph generator in which every group of two images and two captions is
+validated by an oracle, render the scenes to RGB, and give the model only pixels and caption
+strings. Splits are made at the level of edit orbits, so no content multiset seen in training
+reappears in development or test data, and the endpoint is the subset of \emph{binding-necessary}
+groups, whose two scenes have identical object and attribute multisets. Within this setting we
+examine the simplest reasonable learner: a small head on frozen CLIP ViT-B/32 tokens
+\citep{radford2021clip,ilharco2021openclip}, trained with a hard-negative contrastive loss. We also
+state what a cross-group edit-consistency objective adds to that loss for the inner-product scorers
+used here.
+
+Our current observations are narrow and mostly negative. On a small development panel the head
+fits its training groups but performs at or below chance on binding-necessary development groups,
+while a binding-blind content channel reproduces most of its score on the full panel. Oracle
+object tokens used as a control give higher, but still low, development scores, so we cannot yet
+separate limits of the frozen encoder from limits of the training data or the head. The held-out
+test splits have not been opened.
+
+\paragraph{Contributions.} (i) A description of an oracle-validated, minimal-change evaluation
+setting for compositional binding with pixel-only model inputs, orbit-level splits and a
+metadata-defined binding-necessary endpoint (Section~\ref{sec:setting}). None of these ingredients is new
+on its own; we document how they interact. (ii) Derivations of chance levels and tie handling for
+each group metric, and the structural properties of single-modality controls (Section~\ref{sec:setting},
+Appendices~\ref{app:chance} and~\ref{app:blind}). (iii) The standard bilinear identity that relates hard-negative
+training, the GroupMatch metric \citep{zhu2025ttm} and within-group edit alignment, which isolates
+the cross-group part of the edit-consistency objective under study (Section~\ref{sec:method}).
+(iv) Development-panel observations for a hard-negative baseline on frozen CLIP tokens, with
+content-only, shuffle, blind and oracle-token controls (Section~\ref{sec:experiments}).

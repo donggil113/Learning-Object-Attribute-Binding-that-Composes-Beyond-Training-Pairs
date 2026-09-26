@@ -1,0 +1,48 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Compositionality benchmarks and minimal-change training.}
+Winoground introduced $2{\times}2$ groups with text, image and group scores
+\citep{thrush2022winoground}. ARO showed that retrieval objectives can be solved without order or
+binding information and proposed NegCLIP, which adds swapped captions as hard negatives
+\citep{yuksekgonul2023bow}. CREPE separates seen and unseen compounds relative to pre-training data
+\citep{ma2023crepe}. CounterCurate and VisMin generate counterfactual image--caption pairs with
+generative models and fine-tune CLIP with them as hard negatives \citep{zhang2024countercurate,
+awal2024vismin}; CE-CLIP combines intra-modal contrast with a cross-modal ranking loss over hard
+negatives \citep{zhang2024contrasting}. Our generator plays the role of a minimal-change source,
+but works at the level of scene graphs, so every group is validated exactly by an oracle rather than
+filtered by a model or annotators. CLEVR's CoGenT conditions hold out colour--shape palettes
+between training and testing \citep{johnson2017clevr}, and compositional zero-shot learning
+evaluates unseen attribute--object pairs \citep{nayak2023csp}; orbit-level splitting is a stricter
+relative of these designs.
+
+\paragraph{Metrics, blind baselines and hard positives.}
+SugarCrepe found that text-only models beat CLIP on most earlier compositionality benchmarks and
+rebuilt negatives to remove such artefacts \citep{hsieh2023sugarcrepe}; language priors alone can
+solve several benchmarks \citep{lin2024languagepriors}. Test-Time Matching argues that the
+Winoground group score underestimates model capability and introduces GroupMatch, which asks whether
+the correct assignment maximizes the summed score \citep{zhu2025ttm}. Hard positives show that
+hard-negative fine-tuning can reward perturbation detection instead of understanding
+\citep{kamath2024hardpositive}. We use these metrics and controls, and we add the observation that
+in balanced $2{\times}2$ designs single-modality controls are structurally uninformative.
+
+\paragraph{Binding in CLIP-style models.}
+\citet{lewis2024clipbind} trained compositional heads on frozen CLIP embeddings for synthetic
+CLEVR-like scenes and found little generalization to held-out attribute--object pairs. LABCLIP
+learns a linear map on frozen text embeddings with permuted negatives and argues that binding
+information is present uni-modally \citep{koishigarina2025labclip}. \citet{gurung2025binding}
+report that neither larger batches nor explicit hard negatives make small CLIP models trained from
+scratch bind reliably on synthetic data. \citet{uselis2026bind} relate generalization to
+multiplicative interactions between concepts; we read only part of that paper, and our binding
+channel is a multiplicative (Hadamard) interaction of this kind. OC-CLIP adds an object-centric
+binding module driven by parsed scene graphs \citep{assouel2025occlip}, building on slot-based
+representations \citep{locatello2020slot}.
+
+\paragraph{Equivariance and edit directions.}
+EqSim constrains the similarity differences of two semantically close pairs to be consistent
+\citep{wang2023eqsim}. Aligning the direction of an image-embedding change with a text-embedding
+change appears in StyleGAN-NADA, where frozen CLIP guides a generator \citep{gal2021stylegannada},
+and PC-CLIP aligns image differences with embeddings of captions that describe the difference
+\citep{sam2024pcclip}. The edit-consistency objective we study aligns image and text edit vectors
+across groups; we did not find it used for binding with held-out edit compositions, but our search
+was not exhaustive and we make no novelty claim for it.

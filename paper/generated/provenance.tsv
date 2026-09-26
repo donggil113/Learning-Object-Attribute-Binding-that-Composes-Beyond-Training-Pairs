@@ -1,0 +1,161 @@
+macro	source_file	json_field	value	rule
+SPtrainGroups	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	-	64	len(panel/train/gids)
+SPdevGroups	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	-	32	len(panel/dev/gids)
+SPdevBNn	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle/binding_necessary/n	16	raw field
+SPrenderImages	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	renderer_audit/images	288	raw field
+SPrenderMismatch	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	renderer_audit/decode_mismatches	0	raw field
+SPchanceGroupMC	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	random_mc500/group	0.168125	raw field
+SPchanceMatchMC	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	random_mc500/match	0.5004375	raw field
+SPoracleBNGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle/binding_necessary/group	1.0	raw field
+SPzsBNGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	zero_shot_clip/binding_necessary/group	0.0	raw field
+SPzsBNMatch	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	zero_shot_clip/binding_necessary/match	0.6875	raw field
+SPzsBNAUC	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	zero_shot_clip/pair_auc_binding_necessary	0.4970703125	raw field
+SPzsAllGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	zero_shot_clip/all/group	0.3125	raw field
+SPzsAllMatch	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	zero_shot_clip/all/match	0.84375	raw field
+SPtxtBNGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	text_only/binding_necessary/group	0.0	raw field
+SPtxtBNMatch	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	text_only/binding_necessary/match	0.0	raw field
+SPtxtBNAUC	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	text_only/pair_auc_binding_necessary	0.5	raw field
+SPtxtAllGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	text_only/all/group	0.0	raw field
+SPtxtAllMatch	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	text_only/all/match	0.0	raw field
+SPimgBNGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	image_only_clip/binding_necessary/group	0.0	raw field
+SPimgBNMatch	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	image_only_clip/binding_necessary/match	0.0	raw field
+SPimgBNAUC	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	image_only_clip/pair_auc_binding_necessary	0.5	raw field
+SPimgAllGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	image_only_clip/all/group	0.0	raw field
+SPimgAllMatch	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	image_only_clip/all/match	0.0	raw field
+SPfitGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	fit_sanity/train_fit/all/group	1.0	raw field
+SPfitAugGroup	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	fit_sanity/train_fit/all/aug_group	0.375	raw field
+SPfitN	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	fit_sanity/train_fit/all/n	16	raw field
+SPdevBNGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[all]/binding_necessary/group	0.0625	raw field
+SPdevBNGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[all]/binding_necessary/group	0.0	raw field
+SPdevBNGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[all]/binding_necessary/group	0.0	raw field
+SPdevBNGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0	min over seeds of hardneg/<seed>/dev[all]/binding_necessary/group
+SPdevBNGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0625	max over seeds of hardneg/<seed>/dev[all]/binding_necessary/group
+SPdevBNMatchSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[all]/binding_necessary/match	0.625	raw field
+SPdevBNMatchSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[all]/binding_necessary/match	0.5	raw field
+SPdevBNMatchSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[all]/binding_necessary/match	0.4375	raw field
+SPdevBNMatchMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.4375	min over seeds of hardneg/<seed>/dev[all]/binding_necessary/match
+SPdevBNMatchMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.625	max over seeds of hardneg/<seed>/dev[all]/binding_necessary/match
+SPdevBNAUCSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[all]/pair_auc_binding_necessary	0.5078125	raw field
+SPdevBNAUCSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[all]/pair_auc_binding_necessary	0.5	raw field
+SPdevBNAUCSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[all]/pair_auc_binding_necessary	0.5078125	raw field
+SPdevBNAUCMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.5	min over seeds of hardneg/<seed>/dev[all]/pair_auc_binding_necessary
+SPdevBNAUCMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.5078125	max over seeds of hardneg/<seed>/dev[all]/pair_auc_binding_necessary
+SPdevAllGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[all]/all/group	0.375	raw field
+SPdevAllGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[all]/all/group	0.15625	raw field
+SPdevAllGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[all]/all/group	0.1875	raw field
+SPdevAllGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.15625	min over seeds of hardneg/<seed>/dev[all]/all/group
+SPdevAllGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.375	max over seeds of hardneg/<seed>/dev[all]/all/group
+SPdevAllMatchSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[all]/all/match	0.8125	raw field
+SPdevAllMatchSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[all]/all/match	0.75	raw field
+SPdevAllMatchSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[all]/all/match	0.71875	raw field
+SPdevAllMatchMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.71875	min over seeds of hardneg/<seed>/dev[all]/all/match
+SPdevAllMatchMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.8125	max over seeds of hardneg/<seed>/dev[all]/all/match
+SPcontentAllGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[content]/all/group	0.21875	raw field
+SPcontentAllGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[content]/all/group	0.15625	raw field
+SPcontentAllGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[content]/all/group	0.1875	raw field
+SPcontentAllGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.15625	min over seeds of hardneg/<seed>/dev[content]/all/group
+SPcontentAllGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.21875	max over seeds of hardneg/<seed>/dev[content]/all/group
+SPcontentBNGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[content]/binding_necessary/group	0.0	raw field
+SPcontentBNGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[content]/binding_necessary/group	0.0	raw field
+SPcontentBNGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[content]/binding_necessary/group	0.0	raw field
+SPcontentBNGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0	min over seeds of hardneg/<seed>/dev[content]/binding_necessary/group
+SPcontentBNGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0	max over seeds of hardneg/<seed>/dev[content]/binding_necessary/group
+SPbindingBNGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[binding]/binding_necessary/group	0.125	raw field
+SPbindingBNGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[binding]/binding_necessary/group	0.0625	raw field
+SPbindingBNGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[binding]/binding_necessary/group	0.0	raw field
+SPbindingBNGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0	min over seeds of hardneg/<seed>/dev[binding]/binding_necessary/group
+SPbindingBNGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.125	max over seeds of hardneg/<seed>/dev[binding]/binding_necessary/group
+SPimgShufBNGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[image_shuffled]/binding_necessary/group	0.0	raw field
+SPimgShufBNGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[image_shuffled]/binding_necessary/group	0.0	raw field
+SPimgShufBNGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[image_shuffled]/binding_necessary/group	0.0	raw field
+SPimgShufBNGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0	min over seeds of hardneg/<seed>/dev[image_shuffled]/binding_necessary/group
+SPimgShufBNGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0	max over seeds of hardneg/<seed>/dev[image_shuffled]/binding_necessary/group
+SPtxtShufBNGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/dev[text_shuffled]/binding_necessary/group	0.0	raw field
+SPtxtShufBNGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/dev[text_shuffled]/binding_necessary/group	0.0	raw field
+SPtxtShufBNGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/dev[text_shuffled]/binding_necessary/group	0.0	raw field
+SPtxtShufBNGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0	min over seeds of hardneg/<seed>/dev[text_shuffled]/binding_necessary/group
+SPtxtShufBNGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.0	max over seeds of hardneg/<seed>/dev[text_shuffled]/binding_necessary/group
+SPtrainBNGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/train_fit/binding_necessary/group	0.75	raw field
+SPtrainBNGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/train_fit/binding_necessary/group	0.5625	raw field
+SPtrainBNGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/train_fit/binding_necessary/group	0.875	raw field
+SPtrainBNGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.5625	min over seeds of hardneg/<seed>/train_fit/binding_necessary/group
+SPtrainBNGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.875	max over seeds of hardneg/<seed>/train_fit/binding_necessary/group
+SPtrainAllGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/train_fit/all/group	0.84375	raw field
+SPtrainAllGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/train_fit/all/group	0.78125	raw field
+SPtrainAllGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/train_fit/all/group	0.9375	raw field
+SPtrainAllGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.78125	min over seeds of hardneg/<seed>/train_fit/all/group
+SPtrainAllGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.9375	max over seeds of hardneg/<seed>/train_fit/all/group
+SPlossFirstSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/loss_first	3.527527979981512	raw field
+SPlossFirstSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/loss_first	3.4327354022266965	raw field
+SPlossFirstSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/loss_first	3.4932035059070374	raw field
+SPlossFirstMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	3.4327354022266965	min over seeds of hardneg/<seed>/loss_first
+SPlossFirstMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	3.527527979981512	max over seeds of hardneg/<seed>/loss_first
+SPlossLastSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/loss_last	0.12876483749128406	raw field
+SPlossLastSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/loss_last	1.1518495313982837	raw field
+SPlossLastSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/loss_last	0.15751775322354078	raw field
+SPlossLastMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.12876483749128406	min over seeds of hardneg/<seed>/loss_last
+SPlossLastMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	1.1518495313982837	max over seeds of hardneg/<seed>/loss_last
+SPgradInitSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/grad_ratio_edit_over_task/init	11.692171201084921	raw field
+SPgradInitSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/grad_ratio_edit_over_task/init	11.859294327141335	raw field
+SPgradInitSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/grad_ratio_edit_over_task/init	14.034752887863439	raw field
+SPgradInitMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	11.692171201084921	min over seeds of hardneg/<seed>/grad_ratio_edit_over_task/init
+SPgradInitMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	14.034752887863439	max over seeds of hardneg/<seed>/grad_ratio_edit_over_task/init
+SPgradEndSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/grad_ratio_edit_over_task/end	0.5548588501910263	raw field
+SPgradEndSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/grad_ratio_edit_over_task/end	0.5408407376535168	raw field
+SPgradEndSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/grad_ratio_edit_over_task/end	0.2671870563032379	raw field
+SPgradEndMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.2671870563032379	min over seeds of hardneg/<seed>/grad_ratio_edit_over_task/end
+SPgradEndMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.5548588501910263	max over seeds of hardneg/<seed>/grad_ratio_edit_over_task/end
+SPcontentResidSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed0/content_residual_binding_necessary/median	0.23411344292092884	raw field
+SPcontentResidSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed1/content_residual_binding_necessary/median	0.2837529788128814	raw field
+SPcontentResidSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	hardneg/seed2/content_residual_binding_necessary/median	0.26405478057561715	raw field
+SPcontentResidMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.23411344292092884	min over seeds of hardneg/<seed>/content_residual_binding_necessary/median
+SPcontentResidMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.2837529788128814	max over seeds of hardneg/<seed>/content_residual_binding_necessary/median
+SPotcBNGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed0/dev/binding_necessary/group	0.3125	raw field
+SPotcBNGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed1/dev/binding_necessary/group	0.125	raw field
+SPotcBNGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed2/dev/binding_necessary/group	0.1875	raw field
+SPotcBNGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.125	min over seeds of oracle_token_control/<seed>/dev/binding_necessary/group
+SPotcBNGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.3125	max over seeds of oracle_token_control/<seed>/dev/binding_necessary/group
+SPotcBNMatchSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed0/dev/binding_necessary/match	0.8125	raw field
+SPotcBNMatchSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed1/dev/binding_necessary/match	0.75	raw field
+SPotcBNMatchSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed2/dev/binding_necessary/match	0.75	raw field
+SPotcBNMatchMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.75	min over seeds of oracle_token_control/<seed>/dev/binding_necessary/match
+SPotcBNMatchMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	0.8125	max over seeds of oracle_token_control/<seed>/dev/binding_necessary/match
+SPotcTrainBNGroupSeedZero	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed0/train_fit/binding_necessary/group	1.0	raw field
+SPotcTrainBNGroupSeedOne	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed1/train_fit/binding_necessary/group	1.0	raw field
+SPotcTrainBNGroupSeedTwo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	oracle_token_control/seed2/train_fit/binding_necessary/group	1.0	raw field
+SPotcTrainBNGroupMin	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	1.0	min over seeds of oracle_token_control/<seed>/train_fit/binding_necessary/group
+SPotcTrainBNGroupMax	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	-	1.0	max over seeds of oracle_token_control/<seed>/train_fit/binding_necessary/group
+SPnuisBinding	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	nuisance_ratio/binding/ratio	1.4865260746631992	raw field
+SPnuisRelation	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	nuisance_ratio/relation/ratio	1.0367324453905875	raw field
+SPnuisAttribute	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	nuisance_ratio/attribute/ratio	2.2748315092261846	raw field
+SPnuisObject	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	nuisance_ratio/object/ratio	4.035469295194793	raw field
+SPlr	runs/pixel_baseline_v1_20260926T161957Z/config.json	stage/train/lr	0.01	raw field
+SPwd	runs/pixel_baseline_v1_20260926T161957Z/config.json	stage/train/weight_decay	0.0001	raw field
+SPsteps	runs/pixel_baseline_v1_20260926T161957Z/config.json	stage/train/steps	300	raw field
+SPbatch	runs/pixel_baseline_v1_20260926T161957Z/config.json	stage/train/batch_groups	16	raw field
+SPdetectN	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	base_vs_edited_detectability/n_eval	64	raw field
+SPdetectAUC	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	base_vs_edited_detectability/auc	0.470703125	raw field
+SPdetectLo	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	base_vs_edited_detectability/auc_ci95/0	0.3128205128205128	raw field
+SPdetectHi	runs/pixel_baseline_v1_20260926T161957Z/metrics.json	base_vs_edited_detectability/auc_ci95/1	0.6101190476190477	raw field
+SPheadParams	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	head_n_params	24586	raw field
+SPencParams	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	encoder/n_params_frozen	151277313	raw field
+SPencCPU	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	timing/encoder_features_cpu_s	50.1	raw field
+SPencImages	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	timing/encoder_images	288	raw field
+SPencCaptions	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	timing/encoder_captions	384	raw field
+SPstageCPU	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	cpu_time_s	104.472	raw field
+SPpeakRSS	runs/pixel_baseline_v1_20260926T161957Z/manifest.json	peak_rss_mib	1633.4	raw field
+DVauditFail	runs/metadata_check_data_v1_20260926T161932Z/audit.json	n_fail	0	raw field
+DVblindText	runs/metadata_check_data_v1_20260926T161932Z/blind.json	text/auc	0.5075194444444444	raw field
+DVblindImage	runs/metadata_check_data_v1_20260926T161932Z/blind.json	image/auc	0.5114777777777778	raw field
+DVblindN	runs/metadata_check_data_v1_20260926T161932Z/blind.json	text/n_eval	1200	raw field
+DZblindText	runs/metadata_check_data_v0_20260926T152348Z/blind.json	text/auc	0.503444	raw field
+DZblindImage	runs/metadata_check_data_v0_20260926T152348Z/blind.json	image/auc	0.502024	raw field
+DVnCalib	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	300	n_groups/calib
+DVnDev	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	300	n_groups/dev
+DVnTestComposition	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	400	n_groups/test_composition
+DVnTestHeldoutPairs	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	400	n_groups/test_heldout_pairs
+DVnTestHeldoutTemplate	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	400	n_groups/test_heldout_template
+DVnTestIid	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	400	n_groups/test_iid
+DVnTrain	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	2000	n_groups/train
+SMcontentMatchMin	runs/smoke_v0_20260926T152653Z/metrics.json	-	0.65	min over variants of <variant>_seed0[content]/test_composition/overall/match
+SMcontentMatchMax	runs/smoke_v0_20260926T152653Z/metrics.json	-	0.76	max over variants of <variant>_seed0[content]/test_composition/overall/match

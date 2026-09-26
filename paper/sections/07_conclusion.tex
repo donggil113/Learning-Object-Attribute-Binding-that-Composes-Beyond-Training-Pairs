@@ -1,0 +1,14 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+A binding evaluation is only as informative as the weakest of its inputs, metrics and controls. By
+removing oracle features from the model input, splitting at the level of edit orbits and scoring a
+metadata-defined binding-necessary subset, we obtained a setting in which a simple hard-negative
+head on frozen CLIP tokens can be seen to fit its training groups without transferring to held-out
+orbits, and in which blind controls are recognized as structurally uninformative.
+\ifhavepaired
+\input{sections/07_conclusion_paired}
+\else
+Whether the edit-consistency objective under study adds anything to the hard-negative loss in this
+setting is still open. The fixed plan for that comparison is given in Appendix~\ref{app:planned}.
+\fi

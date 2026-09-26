@@ -1,0 +1,20 @@
+{
+  "finished_utc": "2026-09-26T22:39:23.663774+00:00",
+  "steps": [
+    {
+      "cmd": [
+        "apt-get",
+        "install",
+        "-y",
+        "--no-install-recommends",
+        "texlive-latex-base",
+        "texlive-latex-recommended",
+        "texlive-fonts-recommended"
+      ],
+      "returncode": 0,
+      "wall_s": 38.9,
+      "cpu_s": 35.0
+    }
+  ],
+  "note": "LaTeX engine install for the manuscript build (Ubuntu signed repositories, no recommends); recorded separately from both CPU caps"
+}

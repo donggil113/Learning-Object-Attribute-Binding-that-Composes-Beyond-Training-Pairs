@@ -1,0 +1,29 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+
+\paragraph{What the observations support.}
+The setting does what it was built to do: model inputs are produced from pixels and caption strings
+alone, the evaluation path passes its oracle and shuffle checks, and the binding-necessary subset
+removes the part of the metric that a binding-blind channel can solve. On this subset, a
+hard-negative head on frozen CLIP tokens fits its training groups but does not transfer to held-out
+orbits on the development panels we examined. This is a statement about one encoder, one head, one
+training setting and small panels. It is neither a claim that the encoder lacks binding
+information nor a claim that hard negatives fail in general.
+
+\paragraph{Limitations.}
+\emph{Synthetic renders.} The images are stylized renders of four shapes, five colours and two
+materials; nothing here concerns natural images, and we did not test whether CLIP maps the words
+``metal'' and ``rubber'' onto our rendering. \emph{Frozen encoder.} Only the head is trained, so no
+result speaks to what fine-tuning the encoder would do. Only final-layer tokens of one checkpoint
+were used, and other layers or token choices were not examined. \emph{Small panels and dependent
+repeats.} The development panels are small, and the three seeds share the same data, so their
+spread reflects optimization variance only. Non-significant differences are not evidence of
+equivalence. \emph{Self-checked renderer.} Our decoder shows that the renderer is internally
+consistent, not that an independent observer would read the scenes the same way.
+\emph{Data-generation bias.} Keeping orbits within splits requires restricting content edits to
+owned orbits, which changes their distribution (Appendix~\ref{app:splits}). \emph{Unopened test.}
+No v1 test split has been scored, so no result here is confirmatory. \emph{Prior art.} Each
+ingredient of the setting and both objectives have close precedents
+(Section~\ref{sec:related}); we have not established novelty for any of them. \emph{Authorship.}
+The code and this text were produced by an AI system and have not yet been reviewed by a human
+author.

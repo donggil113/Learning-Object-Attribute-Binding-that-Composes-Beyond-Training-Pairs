@@ -1,0 +1,79 @@
+\section{Experiments and Observations}
+\label{sec:experiments}
+
+All numbers are produced by one exporter from the raw run files and inserted as macros
+(Appendix~\ref{app:provenance}). Every experiment uses data v1, frozen features, one CPU thread and
+development data only. Seeds are optimization repeats on the same panel, not independent samples.
+
+\subsection{Renderer and data audits}
+Before any model was run, an audit-only pixel decoder recovered slot, shape, colour and material of
+every object from the rendered images. It flagged a renderer error: the specular highlight of metal
+cones fell outside the cone's narrow top, so those cones looked like rubber. After the fix, the
+decoder found \SPrenderMismatch{} mismatches on all \SPrenderImages{} images of the small panel.
+The decoder is a hand-written check written with the renderer, so it shows self-consistency, not
+independent visual verification. Data v1 passed all structural and leakage audits (\DVauditFail{}
+failures). Logistic-regression detectors that try to tell the base from the edited member reached
+AUC \DVblindText{} (caption n-grams) and \DVblindImage{} (oracle tokens) on \DVblindN{}
+development and calibration items. A detector on pooled CLIP image features reached
+\SPdetectAUC{} with a 95\% bootstrap interval of [\SPdetectLo, \SPdetectHi] on the \SPdetectN{} panel images.
+That interval is wide, and none of these linear detectors rules out nonlinear traces.
+
+\subsection{Small development panel: hard-negative baseline}
+The baseline was trained with a single setting fixed before the run: learning rate \SPlr, weight
+decay \SPwd, \SPsteps{} steps of \SPbatch{} groups, logit scale 1, and seeds 0, 1 and 2. It used the first
+\SPtrainGroups{} training and first \SPdevGroups{} development groups of data v1. Half of the
+development groups (\SPdevBNn) are binding-necessary. Table~\ref{tab:small} reports the results.
+
+\begin{table}[t]
+\caption{Small development panel (\SPtrainGroups{} training / \SPdevGroups{} development groups,
+\SPdevBNn{} binding-necessary). Entries for trained heads list seeds 0/1/2, which are optimization
+repeats on the same panel. \bn: binding-necessary subset; ``all'': all four edit kinds. Chance for
+independent continuous scores: group $1/6$, GroupMatch $1/2$, pair AUC $0.5$. Single-modality rows
+are zero or $0.5$ by construction (Section~\ref{sec:setting}). Source:
+\texttt{runs/pixel\_baseline\_v1\_20260926T161957Z/metrics.json}.}
+\label{tab:small}
+\centering\footnotesize
+\input{tables/small_panel.tex}
+\end{table}
+
+\paragraph{Observations.}
+(1) The evaluation path behaves as intended. The oracle scores \SPoracleBNGroup, and shuffling
+development images or captions across groups drives the \bn{} group score to
+\SPimgShufBNGroupMax{} and \SPtxtShufBNGroupMax{} respectively in every seed.
+(2) The head largely fits its training groups: on the \SPfitN{}-group fit subset its group score
+was \SPfitGroup, and on the full training panel its \bn{} group score was
+\SPtrainBNGroupMin--\SPtrainBNGroupMax. The fit is surface-bound, however: on the fit subset,
+the aug\_group score with meaning-preserving paraphrases was only \SPfitAugGroup.
+(3) On binding-necessary development groups the head is at or below chance: its group score is
+\SPdevBNGroupMin--\SPdevBNGroupMax{}, its GroupMatch \SPdevBNMatchMin--\SPdevBNMatchMax{} and
+its pair AUC \SPdevBNAUCMin--\SPdevBNAUCMax.
+(4) Most of the head's full-panel group score (\SPdevAllGroupMin--\SPdevAllGroupMax) is
+reproduced by its content channel alone (\SPcontentAllGroupMin--\SPcontentAllGroupMax).
+Zero-shot CLIP shows the same pattern: \SPzsAllGroup{} on all kinds but \SPzsBNGroup{} on the \bn{}
+subset, although its \bn{} GroupMatch is \SPzsBNMatch.
+(5) The oracle object-token control, whose input already binds attributes, reaches \bn{}
+development group scores of only \SPotcBNGroupMin--\SPotcBNGroupMax{} after fitting its training
+groups perfectly (\SPotcTrainBNGroupMin). With \SPtrainGroups{} training groups, therefore, the
+head and the data size already limit generalization, before any limit of the encoder comes into
+play. We cannot separate these factors on this panel, and with \SPdevBNn{} \bn{} groups we make no
+significance claim in either direction.
+
+\subsection{Encoder sensitivity diagnostics}
+For each development group we compared the cosine distance between the pooled CLIP embeddings of
+the two members with the distance between two renders of the same member under different seeds. The
+median ratio was \SPnuisObject{} for object edits, \SPnuisAttribute{} for attribute edits,
+\SPnuisBinding{} for binding edits and \SPnuisRelation{} for relation edits. Relation swaps
+therefore move the pooled embedding about as much as rendering nuisance does. The content channel
+is no longer invariant: for binding-necessary pairs rendered with a shared seed, the median relative
+content change $\|c(I_1)-c(I_0)\|/\|c(I_0)\|$ was \SPcontentResidMin--\SPcontentResidMax{} across
+seeds, whereas with v0 oracle tokens it was zero by construction. The invariance of v0 was a
+property of its additive inputs, not something the head learned.
+
+\ifhavepaired
+\input{sections/05b_paired}
+\else
+\subsection{Paired comparison with the edit-consistency objective}
+This draft does not yet contain the paired comparison between the hard-negative loss and the same
+loss plus the edit-consistency objective. Its fixed design is described in
+Appendix~\ref{app:planned}.
+\fi

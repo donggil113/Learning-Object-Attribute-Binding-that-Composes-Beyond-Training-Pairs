@@ -1,0 +1,88 @@
+{
+  "cap_cpu_s": 600.0,
+  "entries": [
+    {
+      "name": "paper_build_v0",
+      "cmd": [
+        "bash",
+        "-c",
+        "cd paper && pdflatex -interaction=nonstopmode -halt-on-error main.tex > build_pass1.log 2>&1; bibtex main > build_bibtex.log 2>&1; pdflatex -interaction=nonstopmode -halt-on-error main.tex > build_pass2.log 2>&1; pdflatex -interaction=nonstopmode -halt-on-error main.tex > build_pass3.log 2>&1; echo pass3=$?"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 1.15,
+      "wall_s": 1.19,
+      "children_peak_rss_mib": 37.7,
+      "rlimit_cpu_s": 600,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "paper_build_v0_retry",
+      "cmd": [
+        "bash",
+        "-c",
+        "cd paper && pdflatex -interaction=nonstopmode -halt-on-error main.tex > build_pass1.log 2>&1; bibtex main > build_bibtex.log 2>&1; pdflatex -interaction=nonstopmode -halt-on-error main.tex > build_pass2.log 2>&1; pdflatex -interaction=nonstopmode -halt-on-error main.tex > build_pass3.log 2>&1; echo pass3=$?"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 1.37,
+      "wall_s": 1.39,
+      "children_peak_rss_mib": 38.1,
+      "rlimit_cpu_s": 598,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "paper_build_v0_2",
+      "cmd": [
+        "bash",
+        "paper/build.sh"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 1.48,
+      "wall_s": 1.49,
+      "children_peak_rss_mib": 38.1,
+      "rlimit_cpu_s": 597,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "paper_build_v0_3",
+      "cmd": [
+        "bash",
+        "paper/build.sh"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 1.76,
+      "wall_s": 1.77,
+      "children_peak_rss_mib": 38.2,
+      "rlimit_cpu_s": 596,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    }
+  ],
+  "used_cpu_s": 5.76
+}

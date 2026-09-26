@@ -1,0 +1,23 @@
+{
+  "name": "smoke_v0",
+  "purpose": "TECHNICAL SMOKE ONLY: checks that data -> encoder -> head -> loss -> eval runs end to end and that no variant collapses. One seed, few steps, subsampled eval. NOT a pilot; the numbers must not be compared across variants or reported as results.",
+  "data_config": "configs/data_v0.json",
+  "encoder_config": "configs/encoder_v0.json",
+  "head": {"hc": 8, "hb": 8, "window": 5, "init_scale": 1.0},
+  "train": {
+    "lr": 0.01,
+    "weight_decay": 0.0001,
+    "steps": 60,
+    "batch_groups": 16,
+    "logit_scale": 1.0,
+    "tau_eq": 0.1,
+    "lam_eq": 0.3,
+    "log_every": 10
+  },
+  "variants": ["inbatch", "hardneg", "hardneg_eq"],
+  "seeds": [0],
+  "eval_splits": ["calib", "dev", "test_iid", "test_heldout_pairs", "test_composition", "test_heldout_template"],
+  "eval_max_groups_per_split": 100,
+  "n_boot": 200,
+  "blind_train_max_groups": 1000
+}

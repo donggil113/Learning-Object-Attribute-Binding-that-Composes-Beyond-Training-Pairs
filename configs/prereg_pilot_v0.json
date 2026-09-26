@@ -1,0 +1,62 @@
+{
+  "name": "prereg_pilot_v0",
+  "status": "NOT_RUN",
+  "fixed_on": "2026-09-26",
+  "note": "Pre-registration for the NEXT stage. Nothing here has been executed. Changing any field after seeing test results invalidates the pilot.",
+  "data_config": "configs/data_v0.json",
+  "encoder_config": "configs/encoder_v0.json",
+  "comparison": {
+    "treatment": "hardneg_eq",
+    "same_data_baseline": "hardneg",
+    "secondary_baseline": "inbatch",
+    "held_constant": ["head architecture and init seed", "train groups and batch order", "optimizer", "false-negative masking", "steps", "eval code"]
+  },
+  "primary_endpoint": {
+    "metric": "group (Winoground group score, strict, 1e-9 tie tolerance)",
+    "split": "test_composition",
+    "effect": "mean over test seeds of [group(hardneg_eq) - group(hardneg)]",
+    "minimum_effect_of_interest": 0.05,
+    "ci": "95% paired percentile bootstrap over test groups (2000 resamples), each resample averaging the 5 test seeds",
+    "decision": {
+      "SUPPORTED": "effect >= 0.05 and CI lower bound > 0",
+      "REJECTED": "CI upper bound < 0.05",
+      "INCONCLUSIVE": "otherwise (report CI; do not call it 'no effect')"
+    }
+  },
+  "secondary_endpoints": [
+    {"metric": "group", "split": "test_heldout_pairs"},
+    {"metric": "match", "split": "test_composition"},
+    {"metric": "aug_group", "split": "test_composition"},
+    {"metric": "group", "split": "test_heldout_template"},
+    {"metric": "group", "split": "test_iid"},
+    {"metric": "pair_auc", "split": "test_composition"},
+    {"metric": "group by kind", "split": "test_composition"}
+  ],
+  "narrowing_rules": {
+    "template": "effect on test_heldout_template < 0.5 * effect on test_composition -> claim limited to seen templates",
+    "metric": "SUPPORTED on group but not on match (or vice versa) -> metric-dependent claim",
+    "axis": "effect on test_composition but not on test_heldout_pairs (or vice versa) -> claim limited to that axis",
+    "architecture": "effect confined to disjoint-object compositions -> attribute to the image head's architectural additivity plus the text side",
+    "artifact": "blind detectability WARN, or content-only channel group > chance + 0.05 on same-word binding groups -> fix data before any claim",
+    "scope": "synthetic proxy features only; no claim about natural images or about the frozen encoder itself"
+  },
+  "seeds": {"tuning": [0, 1], "test": [100, 101, 102, 103, 104]},
+  "tuning": {
+    "selection_split": "dev",
+    "selection_metric": "group on dev, mean over tuning seeds",
+    "budget_per_variant": 12,
+    "hardneg_eq": {"lr": [0.003, 0.01, 0.03], "lam_eq": [0.01, 0.03, 0.1, 0.3]},
+    "hardneg": {"lr": [0.003, 0.01, 0.03], "weight_decay": [0.0, 0.0001, 0.001, 0.01]},
+    "inbatch": {"lr": [0.003, 0.01, 0.03], "weight_decay": [0.0, 0.0001, 0.001, 0.01]},
+    "fixed": {"hardneg_eq.weight_decay": 0.0001, "tau_eq": 0.1, "logit_scale": 1.0, "batch_groups": 16, "steps": 2000, "head": {"hc": 8, "hb": 8, "window": 5}},
+    "rationale_lam_grid": "smoke_v0 showed the edit-consistency gradient ~80x the task gradient at init with lam_eq=0.3, so the grid extends two decades below 0.3"
+  },
+  "calibration": "pair-level threshold fitted on calib only; never on dev or test",
+  "resource_caps": {
+    "hardware": "CPU only (4 cores), no GPU, no downloads, no paid APIs",
+    "max_wall_minutes_per_run": 45,
+    "max_total_cpu_hours": 12,
+    "note": "Caps are upper bounds, not spend. Record actual wall/CPU time and peak RSS per run in manifest.json; hardneg_eq costs more per step than hardneg."
+  },
+  "reporting": "all runs including failed/OOM/NOT_RUN are kept; no seed selection; tuning seeds are never reported as test results"
+}

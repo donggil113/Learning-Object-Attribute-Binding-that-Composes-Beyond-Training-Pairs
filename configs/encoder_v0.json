@@ -1,0 +1,9 @@
+{
+  "name": "proxy_encoder_v0",
+  "note": "Synthetic frozen proxy features (oracle object tokens + word/position embeddings). Not a pretrained encoder, not pixels.",
+  "dim": 24,
+  "seed": 0,
+  "jitter": 0.1,
+  "lighting": 0.1,
+  "pos_scale": 0.5
+}

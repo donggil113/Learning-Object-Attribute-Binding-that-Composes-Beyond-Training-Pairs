@@ -39,5 +39,13 @@ class TestDataV1(unittest.TestCase):
                     self.assertEqual(orbit_owner(s.content_key(), cfg), split)
 
 
+class TestManifest(unittest.TestCase):
+    def test_run_outputs_do_not_mark_tree_dirty(self):
+        from bindcomp.manifest import dirty_code_lines
+        # The first porcelain line may start with a space (unstaged modification).
+        status = " M runs/pixel_v1_cpu_ledger.json\n?? runs/x/log.txt\n M bindcomp/head.py\n"
+        self.assertEqual(dirty_code_lines(status), [" M bindcomp/head.py"])
+
+
 if __name__ == "__main__":
     unittest.main()

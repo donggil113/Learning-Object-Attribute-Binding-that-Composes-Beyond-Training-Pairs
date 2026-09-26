@@ -29,6 +29,11 @@ def sha256_file(path):
     return h.hexdigest()
 
 
+def dirty_code_lines(porcelain):
+    """Porcelain status lines that concern code/config (outputs under runs/ are excluded)."""
+    return [ln for ln in porcelain.splitlines() if ln.strip() and not ln[3:].startswith("runs/")]
+
+
 def git_info():
     def run(*args):
         try:
@@ -37,9 +42,13 @@ def git_info():
             return None
 
     head = run("rev-parse", "HEAD")
-    status = run("status", "--porcelain", "--untracked-files=all") or ""
-    # Outputs of earlier runs under runs/ are not code; anything else counts as dirty.
-    dirty = [ln for ln in status.splitlines() if not ln[3:].startswith("runs/")]
+    try:
+        # Not stripped: porcelain lines start with a status column that may be a space.
+        status = subprocess.run(["git", "status", "--porcelain", "--untracked-files=all"], cwd=ROOT,
+                                capture_output=True, text=True, check=True).stdout
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        status = ""
+    dirty = dirty_code_lines(status)
     # Content hash of every tracked or untracked (non-ignored) file outside runs/,
     # so a run on a dirty tree still identifies the exact code it used.
     files = sorted(f for f in (run("ls-files", "-co", "--exclude-standard") or "").splitlines()

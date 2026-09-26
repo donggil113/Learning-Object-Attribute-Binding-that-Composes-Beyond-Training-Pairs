@@ -158,6 +158,10 @@ def pair_accuracy(scores, labels, thr):
     return sum((s > thr) == bool(y) for s, y in zip(scores, labels)) / len(labels)
 
 
+def binding_necessary(kind_label):
+    return set(kind_label.split("+")) <= {"binding", "relation"}
+
+
 def full_report(scorer, splits_enc, calib_key="calib", n_boot=1000):
     """Group + pair metrics for every split; threshold fitted on ``calib_key`` only."""
     rep = {}
@@ -171,8 +175,14 @@ def full_report(scorer, splits_enc, calib_key="calib", n_boot=1000):
         rep[k] = {
             "overall": summarize(rows)["all"],
             "by_kind": summarize(rows, key=lambda r: r["kind"]),
+            # Groups whose edits leave object/attribute multisets unchanged: the
+            # content channel cannot separate their images, so these are the
+            # groups where a gain can be attributed to binding.
+            "binding_necessary": summarize(
+                [r for r in rows if binding_necessary(r["kind"])]
+            ).get("all"),
             "binding_relation_same_words": summarize(
-                [r for r in rows if r["same_words"] and set(r["kind"].split("+")) <= {"binding", "relation"}]
+                [r for r in rows if r["same_words"] and binding_necessary(r["kind"])]
             ).get("all"),
             "group_ci95": bootstrap_ci([r["group"] for r in rows], n_boot=n_boot),
             "match_ci95": bootstrap_ci([r["match"] for r in rows], n_boot=n_boot),

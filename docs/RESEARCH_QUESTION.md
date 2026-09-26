@@ -23,6 +23,7 @@
 | metric 의존 | group과 GroupMatch 중 한쪽에서만 SUPPORTED | metric 의존 주장 |
 | 축 한정 | `test_composition`과 `test_heldout_pairs` 중 한쪽에서만 효과 | 해당 축에 한정 |
 | 구조 기인 | 효과가 서로 다른 객체를 건드린 조합에만 있음 | 이미지 head의 구조적 가법성(아래 4절)과 텍스트 쪽 학습의 결과로 기술 |
+| binding 한정 | `test_composition` 중 binding_necessary 부분집합(op 종류가 모두 binding 또는 relation)에서 효과 < 0.05이거나 CI 하한 ≤ 0 | "binding"이 아니라 일반 편집 조합의 결과로 기술. smoke_v0에서 content-only 채널이 전체 `test_composition`의 GroupMatch 0.65–0.76(우연 0.5)에 도달했기 때문에 추가한 규칙이다. 파일럿 실행 전의 수정이며 처치-기준선 차이는 보지 않았다(`amendments` 참조). |
 | 데이터 흔적 | blind detectability가 WARN이거나, content-only 채널이 same-word binding 그룹에서 group > 우연 + 0.05 | 데이터부터 수정하고, 그 전에는 주장하지 않음 |
 | 범위 | 항상 | 합성 proxy feature 결과일 뿐이다. 자연 이미지 전이나 encoder 자체의 학습 효과는 주장하지 않는다(encoder는 frozen이고 proxy다). |
 
@@ -32,7 +33,7 @@
 |---|---|---|---|---|---|---|---|
 | `inbatch` | 두 멤버 모두 | 아니오(mask) | 아니오 | 예 | 아니오 | 1162 | 1× (측정값은 manifest) |
 | `hardneg` | 두 멤버 모두 | 예 | 아니오 | 예 | 아니오 | 1162 | ≈1× |
-| `hardneg_eq` | 두 멤버 모두 | 예 | 예 | 예 | 아니오 | 1162 | edit 손실만큼 추가 (측정값은 manifest) |
+| `hardneg_eq` | 두 멤버 모두 | 예 | 예 | 예 | 아니오 | 1162 | edit 손실이 추가됨. smoke 60 step 기준 inbatch 5.96 s / hardneg 6.39 s / hardneg_eq 6.33 s로, 1회 측정이라 차이를 주장할 수 없음 |
 | `text_only` | 캡션 + oracle label | — | — | label | 아니오 | n-gram 가중치 | — |
 | `image_only` | proxy 이미지 feature + oracle label | — | — | label | 아니오 | pooled moment 가중치 | — |
 | head `[content]` / `[binding]` | 학습된 head에서 한 채널만 남긴 평가 시점 ablation | — | — | — | — | — | — |

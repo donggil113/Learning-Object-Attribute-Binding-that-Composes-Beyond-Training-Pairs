@@ -75,6 +75,7 @@ class TestScorers(unittest.TestCase):
         head = FactorizedHead(d=24, seed=0)
         rep = full_report(HeadScorer(head), {"calib": self.groups[:20], "test": self.groups[20:]}, n_boot=50)
         self.assertIn("pair_acc_at_calib_threshold", rep["test"])
+        self.assertIn("binding_necessary", rep["test"])
         self.assertIsNotNone(rep["calib_threshold"])
 
     def test_blind_detectability_runs(self):

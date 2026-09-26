@@ -33,3 +33,21 @@
 - `docs/PRIOR_ART.md`의 PARTIAL / FULL_TEXT_UNVERIFIED 항목, 그리고 신규성 판단.
 - 수동 gradient 식. finite-difference gradcheck와 mutation test로 확인했지만, 수치 검사는 증명이 아닙니다.
 - proxy feature(oracle object token) 가정이 연구 질문에 적절한지.
+
+## 픽셀 입력 단계 (2026-09-26)
+
+- **수행 범위.** 같은 Claude Code 세션이 다음을 했습니다. 하위 에이전트는 쓰지 않았습니다.
+  - 입력 출처 추적.
+  - renderer, CLIP feature 경로, torch bridge, data_v1, CPU ledger 구현.
+  - `.venv` 설치, 단일 encoder 다운로드, stage 실행, 문서 갱신.
+- **외부 접근.** PyPI와 download.pytorch.org에서 패키지를, Hugging Face에서 checkpoint 1개를 받았습니다. 그 전에 모델 카드와 PyPI 메타데이터의 사용권을 직접 읽었습니다. 원격 코드 실행과 유료 API는 사용하지 않았습니다.
+- **AI가 정한 것 (검토 필요).**
+  - renderer의 시각 표현(특히 metal/rubber).
+  - token 선택: CLIP 최종층 class token + patch token, 표준화 bridge.
+  - panel 규칙, 학습 설정(lr 0.01, 300 step, seed 0–2), 판정 임계값(fit ≥ 0.75, 손실 비 ≤ 0.7).
+  - orbit 분할 비율.
+- **AI 작업 중 발견하고 수정한 오류.**
+  - 원뿔 반사광 위치(렌더 의미 손실).
+  - `/usr/bin/time` 부재로 설치 첫 시도 실패.
+  - 커밋 전 작업 트리에서 stage를 실행한 일(재실행 결과 동일).
+  - manifest의 dirty 오탐 버그.

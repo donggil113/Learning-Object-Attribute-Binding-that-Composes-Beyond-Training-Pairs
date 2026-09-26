@@ -1,0 +1,9 @@
+{
+  "written": "2026-09-26, AFTER the run (post-hoc note; manifest.json is the original and is not modified)",
+  "status": "SUPERSEDED_AS_REFERENCE_BY runs/pixel_baseline_v1_20260926T161957Z (identical results)",
+  "facts": [
+    "Executed on an uncommitted working tree based on commit f606795 (manifest git.dirty=true).",
+    "Every source file it used is byte-identical to commit 121fdab except bindcomp/manifest.py, which was edited after this run started (find -newer config.json) only to add source-tree hashing.",
+    "The reference re-run at commit 121fdab produced identical metrics.json (excluding elapsed/CPU timing fields), identical decisions.json and identical head parameter hashes for seeds 0,1,2."
+  ]
+}

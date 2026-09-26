@@ -1,0 +1,411 @@
+{
+  "checks": {
+    "groups_valid": {
+      "status": "PASS",
+      "detail": {
+        "n_invalid": 0,
+        "examples": {}
+      }
+    },
+    "no_cross_split_scene": {
+      "status": "PASS",
+      "detail": {
+        "n_leaked": 0
+      }
+    },
+    "no_cross_split_desc": {
+      "status": "PASS",
+      "detail": {
+        "n_leaked": 0
+      }
+    },
+    "no_cross_split_orbit": {
+      "status": "PASS",
+      "detail": {
+        "n_leaked": 0
+      }
+    },
+    "no_cross_split_caption_string": {
+      "status": "PASS",
+      "detail": {
+        "n_leaked": 0
+      }
+    },
+    "render_seeds_unique": {
+      "status": "PASS",
+      "detail": {
+        "n": 8400,
+        "n_unique": 8400
+      }
+    },
+    "train:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "train:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "0": 1012,
+        "1": 988
+      }
+    },
+    "train:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 2000
+      }
+    },
+    "dev:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "dev:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "0": 154,
+        "1": 146
+      }
+    },
+    "dev:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 300
+      }
+    },
+    "calib:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "calib:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 160,
+        "0": 140
+      }
+    },
+    "calib:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 300
+      }
+    },
+    "test_iid:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "test_iid:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 213,
+        "0": 187
+      }
+    },
+    "test_iid:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 400
+      }
+    },
+    "test_heldout_pairs:heldout_touched_in_all": {
+      "status": "PASS",
+      "detail": {
+        "n_touched": 400,
+        "n": 400
+      }
+    },
+    "test_heldout_pairs:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "0": 187,
+        "1": 213
+      }
+    },
+    "test_heldout_pairs:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 400
+      }
+    },
+    "test_composition:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "test_composition:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "0": 220,
+        "1": 180
+      }
+    },
+    "test_composition:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "2": 400
+      }
+    },
+    "test_heldout_template:no_heldout_pairs": {
+      "status": "PASS",
+      "detail": {
+        "n_groups_with_heldout": 0
+      }
+    },
+    "test_heldout_template:templates_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "2": 400
+      }
+    },
+    "test_heldout_template:n_ops_as_specified": {
+      "status": "PASS",
+      "detail": {
+        "1": 400
+      }
+    },
+    "info:object_set_overlap_with_train": {
+      "status": "INFO",
+      "detail": {
+        "dev": 0.0,
+        "calib": 0.0,
+        "test_iid": 0.0,
+        "test_heldout_pairs": 0.0,
+        "test_composition": 0.0,
+        "test_heldout_template": 0.0
+      }
+    },
+    "info:balance": {
+      "status": "INFO",
+      "detail": {
+        "train": {
+          "mention_order_is_left_to_right": 0.151,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.4865,
+          "base_member_1_rate": 0.504,
+          "kinds": {
+            "binding": 500,
+            "attribute": 500,
+            "object": 500,
+            "relation": 500
+          },
+          "n_objects": {
+            "3": 2000
+          },
+          "same_word_multiset_rate_binding_relation": 0.683
+        },
+        "dev": {
+          "mention_order_is_left_to_right": 0.19,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.4633,
+          "base_member_1_rate": 0.5033,
+          "kinds": {
+            "binding": 75,
+            "attribute": 75,
+            "object": 75,
+            "relation": 75
+          },
+          "n_objects": {
+            "3": 300
+          },
+          "same_word_multiset_rate_binding_relation": 0.6333
+        },
+        "calib": {
+          "mention_order_is_left_to_right": 0.19,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.4967,
+          "base_member_1_rate": 0.4833,
+          "kinds": {
+            "binding": 75,
+            "attribute": 75,
+            "object": 75,
+            "relation": 75
+          },
+          "n_objects": {
+            "3": 300
+          },
+          "same_word_multiset_rate_binding_relation": 0.7133
+        },
+        "test_iid": {
+          "mention_order_is_left_to_right": 0.175,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.495,
+          "base_member_1_rate": 0.5075,
+          "kinds": {
+            "binding": 100,
+            "attribute": 100,
+            "object": 100,
+            "relation": 100
+          },
+          "n_objects": {
+            "3": 400
+          },
+          "same_word_multiset_rate_binding_relation": 0.675
+        },
+        "test_heldout_pairs": {
+          "mention_order_is_left_to_right": 0.15,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.5,
+          "base_member_1_rate": 0.4875,
+          "kinds": {
+            "binding": 100,
+            "attribute": 100,
+            "object": 100,
+            "relation": 100
+          },
+          "n_objects": {
+            "3": 400
+          },
+          "same_word_multiset_rate_binding_relation": 0.68
+        },
+        "test_composition": {
+          "mention_order_is_left_to_right": 0.1625,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.4425,
+          "base_member_1_rate": 0.525,
+          "kinds": {
+            "binding+binding": 40,
+            "attribute+binding": 40,
+            "binding+object": 40,
+            "binding+relation": 40,
+            "attribute+attribute": 40,
+            "attribute+object": 40,
+            "attribute+relation": 40,
+            "object+object": 40,
+            "object+relation": 40,
+            "relation+relation": 40
+          },
+          "n_objects": {
+            "3": 400
+          },
+          "same_word_multiset_rate_binding_relation": 0.4583
+        },
+        "test_heldout_template": {
+          "mention_order_is_left_to_right": 0.1775,
+          "expected_if_independent": 0.1667,
+          "rel_dir_1_rate": 0.4925,
+          "base_member_1_rate": 0.475,
+          "kinds": {
+            "binding": 100,
+            "attribute": 100,
+            "object": 100,
+            "relation": 100
+          },
+          "n_objects": {
+            "3": 400
+          },
+          "same_word_multiset_rate_binding_relation": 0.66
+        }
+      }
+    }
+  },
+  "n_fail": 0,
+  "generation_stats": {
+    "test_heldout_pairs": {
+      "n_groups": 400,
+      "attempts": 14309,
+      "rejects": {
+        "duplicate_group": 2,
+        "heldout_pair_not_touched": 549,
+        "invalid_group:bind_color_equal": 9,
+        "invalid_group:bind_material_equal": 17,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 248,
+        "invalid_group:triples_equal": 25,
+        "no_applicable_op": 302,
+        "orbit_not_owned": 12757
+      }
+    },
+    "test_composition": {
+      "n_groups": 400,
+      "attempts": 25297,
+      "rejects": {
+        "duplicate_group": 2,
+        "heldout_pair_present": 202,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 515,
+        "invalid_group:composition is reachable by a single op": 111,
+        "invalid_group:composition is reachable by a single op; caption true for th": 1,
+        "invalid_group:composition is reachable by a single op; content edit did no": 16,
+        "invalid_group:content edit did not change the word multiset": 29,
+        "no_applicable_op": 1112,
+        "orbit_not_owned": 22909
+      }
+    },
+    "test_heldout_template": {
+      "n_groups": 400,
+      "attempts": 80837,
+      "rejects": {
+        "duplicate_group": 220,
+        "heldout_pair_present": 370,
+        "invalid_group:bind_color_equal": 6,
+        "invalid_group:bind_material_equal": 9,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 68,
+        "invalid_group:triples_equal": 49,
+        "no_applicable_op": 2680,
+        "orbit_not_owned": 77035
+      }
+    },
+    "test_iid": {
+      "n_groups": 400,
+      "attempts": 6858,
+      "rejects": {
+        "duplicate_group": 5,
+        "heldout_pair_present": 82,
+        "invalid_group:bind_color_equal": 7,
+        "invalid_group:bind_material_equal": 7,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 68,
+        "invalid_group:triples_equal": 15,
+        "no_applicable_op": 149,
+        "orbit_not_owned": 6125
+      }
+    },
+    "calib": {
+      "n_groups": 300,
+      "attempts": 19334,
+      "rejects": {
+        "duplicate_group": 12,
+        "heldout_pair_present": 124,
+        "invalid_group:bind_color_equal": 12,
+        "invalid_group:bind_material_equal": 6,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 73,
+        "invalid_group:triples_equal": 50,
+        "no_applicable_op": 599,
+        "orbit_not_owned": 18158
+      }
+    },
+    "dev": {
+      "n_groups": 300,
+      "attempts": 7063,
+      "rejects": {
+        "duplicate_group": 3,
+        "heldout_pair_present": 51,
+        "invalid_group:bind_color_equal": 8,
+        "invalid_group:bind_material_equal": 5,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 49,
+        "invalid_group:triples_equal": 21,
+        "no_applicable_op": 141,
+        "orbit_not_owned": 6485
+      }
+    },
+    "train": {
+      "n_groups": 2000,
+      "attempts": 6743,
+      "rejects": {
+        "duplicate_group": 12,
+        "heldout_pair_present": 566,
+        "invalid_group:bind_color_equal": 76,
+        "invalid_group:bind_material_equal": 56,
+        "invalid_group:caption true for the other scene (group not minimal-contrast": 453,
+        "invalid_group:triples_equal": 202,
+        "no_applicable_op": 15,
+        "orbit_not_owned": 3363
+      }
+    }
+  }
+}

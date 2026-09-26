@@ -1,5 +1,11 @@
 # 연구 질문, 반증 조건, 정보 접근, 목적함수 가정 (고정: 2026-09-26)
 
+> **2026-09-26 갱신.**
+> - 아래 v0 질문이 쓰는 image feature는 scene metadata에서 만든 oracle token이다. 따라서 v0 synthetic-feature 파일럿은 철회했다.
+> - 픽셀 입력 경로와 기준선 실행 결과는 `STATUS.md` A절에 있다.
+> - 향후 질문은 `configs/prereg_pilot_v1.json`(NOT_RUN)이다. binding-necessary 부분집합이 primary이며, smoke 이후의 범위 수정임을 명시한다.
+
+
 ## 1. 연구 질문 (단일, 반증 가능)
 
 **RQ.** 모든 변형은 같은 frozen token feature, 같은 content/binding head, 같은 단일 편집 학습 그룹, 같은 false-negative masking을 씁니다. 이 조건에서 hard-negative contrastive 목적함수에 **그룹 간 edit-consistency 손실**을 더하면 결과가 달라지는지 묻습니다. edit-consistency 손실은 이미지 편집 벡터와 텍스트 편집 벡터를 cosine-InfoNCE로 정렬합니다. 구체적으로, 학습에 없던 **두 편집의 조합**(`test_composition`)에서 Winoground group score가 같은 데이터로 학습한 hard-negative 기준선(`hardneg`)보다 **절대값 0.05 이상** 높아지는가?

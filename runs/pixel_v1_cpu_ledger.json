@@ -67,7 +67,79 @@
       "cpu_s": 103.0,
       "wall_s": 104.05,
       "peak_rss_mib": 1632.2
+    },
+    {
+      "name": "final_tests_venv",
+      "cmd": [
+        ".venv/bin/python",
+        "scripts/run_tests.py"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 33.14,
+      "wall_s": 33.4,
+      "children_peak_rss_mib": 1570.5,
+      "rlimit_cpu_s": 3245,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "metadata_check_data_v1",
+      "cmd": [
+        "python3",
+        "scripts/check_metadata.py",
+        "--config",
+        "configs/data_v1.json",
+        "--blind-eval-splits",
+        "dev,calib"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 15.4,
+      "wall_s": 15.54,
+      "children_peak_rss_mib": 430.5,
+      "rlimit_cpu_s": 3212,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "pixel_baseline_v1",
+      "run_dir": "/home/user/Learning-Object-Attribute-Binding-that-Composes-Beyond-Training-Pairs/runs/pixel_baseline_v1_20260926T161957Z",
+      "status": "COMPLETED",
+      "cpu_s": 104.49,
+      "wall_s": 105.6,
+      "peak_rss_mib": 1633.4
+    },
+    {
+      "name": "final_tests_venv_after_manifest_fix",
+      "cmd": [
+        ".venv/bin/python",
+        "scripts/run_tests.py"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 34.92,
+      "wall_s": 35.31,
+      "children_peak_rss_mib": 1571.6,
+      "rlimit_cpu_s": 3092,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
     }
   ],
-  "used_cpu_s": 354.68
+  "used_cpu_s": 542.63
 }

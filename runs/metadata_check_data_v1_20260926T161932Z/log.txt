@@ -1,0 +1,40 @@
+[16:19:32] building dataset data_v1
+[16:19:33] built test_heldout_pairs: 400 groups, 14309 attempts, rejects={'orbit_not_owned': 12757, 'heldout_pair_not_touched': 549, 'no_applicable_op': 302, 'invalid_group:caption true for the other scene (group not minimal-contrast': 248, 'invalid_group:bind_color_equal': 9, 'invalid_group:triples_equal': 25, 'invalid_group:bind_material_equal': 17, 'duplicate_group': 2}
+[16:19:36] built test_composition: 400 groups, 25297 attempts, rejects={'orbit_not_owned': 22909, 'heldout_pair_present': 202, 'invalid_group:caption true for the other scene (group not minimal-contrast': 515, 'invalid_group:composition is reachable by a single op': 111, 'no_applicable_op': 1112, 'invalid_group:composition is reachable by a single op; content edit did no': 16, 'invalid_group:content edit did not change the word multiset': 29, 'invalid_group:composition is reachable by a single op; caption true for th': 1, 'duplicate_group': 2}
+[16:19:39] built test_heldout_template: 400 groups, 80837 attempts, rejects={'orbit_not_owned': 77035, 'no_applicable_op': 2680, 'heldout_pair_present': 370, 'invalid_group:caption true for the other scene (group not minimal-contrast': 68, 'duplicate_group': 220, 'invalid_group:triples_equal': 49, 'invalid_group:bind_material_equal': 9, 'invalid_group:bind_color_equal': 6}
+[16:19:39] built test_iid: 400 groups, 6858 attempts, rejects={'orbit_not_owned': 6125, 'heldout_pair_present': 82, 'invalid_group:caption true for the other scene (group not minimal-contrast': 68, 'no_applicable_op': 149, 'invalid_group:triples_equal': 15, 'duplicate_group': 5, 'invalid_group:bind_color_equal': 7, 'invalid_group:bind_material_equal': 7}
+[16:19:40] built calib: 300 groups, 19334 attempts, rejects={'orbit_not_owned': 18158, 'heldout_pair_present': 124, 'no_applicable_op': 599, 'invalid_group:caption true for the other scene (group not minimal-contrast': 73, 'invalid_group:triples_equal': 50, 'invalid_group:bind_color_equal': 12, 'invalid_group:bind_material_equal': 6, 'duplicate_group': 12}
+[16:19:41] built dev: 300 groups, 7063 attempts, rejects={'orbit_not_owned': 6485, 'heldout_pair_present': 51, 'no_applicable_op': 141, 'invalid_group:caption true for the other scene (group not minimal-contrast': 49, 'invalid_group:triples_equal': 21, 'invalid_group:bind_color_equal': 8, 'duplicate_group': 3, 'invalid_group:bind_material_equal': 5}
+[16:19:42] built train: 2000 groups, 6743 attempts, rejects={'orbit_not_owned': 3363, 'invalid_group:bind_color_equal': 76, 'heldout_pair_present': 566, 'invalid_group:triples_equal': 202, 'invalid_group:bind_material_equal': 56, 'invalid_group:caption true for the other scene (group not minimal-contrast': 453, 'no_applicable_op': 15, 'duplicate_group': 12}
+[16:19:43] data sha256 b8ec4ff27a0ceeb4a18506b68d1993b29ae2d4a4904a671997542590b933e506
+[16:19:44] audit PASS groups_valid {"n_invalid": 0, "examples": {}}
+[16:19:44] audit PASS no_cross_split_scene {"n_leaked": 0}
+[16:19:44] audit PASS no_cross_split_desc {"n_leaked": 0}
+[16:19:44] audit PASS no_cross_split_orbit {"n_leaked": 0}
+[16:19:44] audit PASS no_cross_split_caption_string {"n_leaked": 0}
+[16:19:44] audit PASS render_seeds_unique {"n": 8400, "n_unique": 8400}
+[16:19:44] audit PASS train:no_heldout_pairs {"n_groups_with_heldout": 0}
+[16:19:44] audit PASS train:templates_as_specified {"0": 1012, "1": 988}
+[16:19:44] audit PASS train:n_ops_as_specified {"1": 2000}
+[16:19:44] audit PASS dev:no_heldout_pairs {"n_groups_with_heldout": 0}
+[16:19:44] audit PASS dev:templates_as_specified {"0": 154, "1": 146}
+[16:19:44] audit PASS dev:n_ops_as_specified {"1": 300}
+[16:19:44] audit PASS calib:no_heldout_pairs {"n_groups_with_heldout": 0}
+[16:19:44] audit PASS calib:templates_as_specified {"1": 160, "0": 140}
+[16:19:44] audit PASS calib:n_ops_as_specified {"1": 300}
+[16:19:44] audit PASS test_iid:no_heldout_pairs {"n_groups_with_heldout": 0}
+[16:19:44] audit PASS test_iid:templates_as_specified {"1": 213, "0": 187}
+[16:19:44] audit PASS test_iid:n_ops_as_specified {"1": 400}
+[16:19:44] audit PASS test_heldout_pairs:heldout_touched_in_all {"n_touched": 400, "n": 400}
+[16:19:44] audit PASS test_heldout_pairs:templates_as_specified {"0": 187, "1": 213}
+[16:19:44] audit PASS test_heldout_pairs:n_ops_as_specified {"1": 400}
+[16:19:44] audit PASS test_composition:no_heldout_pairs {"n_groups_with_heldout": 0}
+[16:19:44] audit PASS test_composition:templates_as_specified {"0": 220, "1": 180}
+[16:19:44] audit PASS test_composition:n_ops_as_specified {"2": 400}
+[16:19:44] audit PASS test_heldout_template:no_heldout_pairs {"n_groups_with_heldout": 0}
+[16:19:44] audit PASS test_heldout_template:templates_as_specified {"2": 400}
+[16:19:44] audit PASS test_heldout_template:n_ops_as_specified {"1": 400}
+[16:19:44] audit failures: 0
+[16:19:46] blind base-vs-edited detectability [text] AUC=0.5075 CI95=[0.4749,0.5403] -> PASS
+[16:19:48] blind base-vs-edited detectability [image] AUC=0.5115 CI95=[0.4846,0.5438] -> PASS
+[16:19:48] summary {"software_status": "TECHNICAL_TEST_PASS", "science_status": "SCIENCE_NOT_EVALUATED", "audit_failures": 0, "blind": {"text": "PASS", "image": "PASS"}, "data_sha256": "b8ec4ff27a0ceeb4a18506b68d1993b29ae2d4a4904a671997542590b933e506"}

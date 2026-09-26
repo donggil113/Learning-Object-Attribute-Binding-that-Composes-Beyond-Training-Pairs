@@ -1,14 +1,152 @@
 # STATUS: P3 Learning Object-Attribute Binding that Composes Beyond Training Pairs
 
-마지막 갱신: 2026-09-26. 기준 커밋은 `b095b16`입니다(`c786999`, `a683daa` 이후).
+마지막 갱신: 2026-09-26 (픽셀 입력 단계 `pixel_baseline_v1`).
+- 코드 기준 커밋: `121fdab`(stage 코드). `0b0d130`은 manifest 버그 수정이다.
+- 인수 기준 커밋은 `f606795`이며, 그 이전 기록은 아래 "1단계 기록"에 원문 그대로 보존했다.
 
-## 0. 판정 (소프트웨어와 과학을 분리)
+# A. 픽셀 입력 단계 (pixel_baseline_v1)
+
+## A0. 판정
+
+| 질문 | 판정 | 근거 (사전 고정 규칙: `configs/pixel_baseline_v1.json` `decision_rules`) |
+|---|---|---|
+| 소프트웨어 | **TECHNICAL_TEST_PASS** | `.venv`에서 unittest 68/68 통과, skip 0(`runs/tests_20260926T162256Z`, 소스 hash가 커밋 `0b0d130`과 일치). data_v1 감사 FAIL 0. |
+| Q1. 픽셀만으로 모델 입력을 만들고 평가 경로가 동작하는가 | **PASS** | renderer decode 불일치 0/288. feature는 모두 유한하고 분산 > 0. oracle 대조 1.0. 계획한 cell이 모두 있음. provenance-guard 테스트 통과. |
+| Q2. hard-negative 기준선이 학습되는가 | **PASS** | fit sanity: 학습용 16 그룹에서 group 1.000(규칙 ≥ 0.75). 마지막/첫 step 손실 비의 seed 평균 0.14(규칙 ≤ 0.7). |
+| Q2′. 병목은 어디인가 (기술 판독, 유의성 없음) | 평가 경로는 **아님**. dev의 binding-necessary 사례로 **일반화되는 것은 관찰되지 않음**. encoder, 데이터 크기(64 그룹), head 중 무엇이 원인인지는 **분리하지 못함**. | A4절 |
+| Q3. 정답을 입력에 주지 않고 binding-necessary 사례를 평가할 수 있는가 | **PASS** | dev의 binding-necessary 16 그룹을 픽셀과 캡션만으로 점수화했다. 그 위에서 oracle은 1.0이다. shuffle·blind·content-only 대조를 pair AUC, tie 비율, 우연 수준과 함께 보고했다. |
+| 종합 | **PIXEL_BASELINE_FEASIBILITY** | 가능성 확인일 뿐이다. |
+| 과학 | **SCIENCE_NOT_EVALUATED** | edit loss의 우수성과 신규성은 평가하지 않았다. 입력은 **합성 RGB**이며 자연 이미지 전이가 아니다. |
+
+## A1. 입력 출처 추적 (지시 1)
+
+| 텐서 / 경로 | 출처 | metadata가 모델 입력으로 가는가 |
+|---|---|---|
+| v0 `render.ProxyEncoder.image_tokens` → `EncGroup.img` → `FactorizedHead` / `HeadScorer` / `ImageOnlyScorer` | 객체마다 shape·color·material·slot embedding의 합(객체 정답과 속성 할당이 token에 들어 있음) | **예 (ORACLE 경로).** `render.PROVENANCE`로 표시했고 지금은 oracle 대조로만 쓴다. |
+| v0 `ProxyEncoder.text_tokens` | caption 단어열(realizer 출력). parser를 거치지 않음 | 아니오. `encode_group`의 `parse()`는 assert 검사에만 쓴다. |
+| `train.batch_forward` / `torch_head.negative_mask`의 `satisfies(scene, desc)` | oracle truth | 입력은 아니다. **supervision**(false-negative mask)이다. |
+| `OracleScorer` | scenes / descs | 설계상 oracle 대조 |
+| scene ID(gid), edit(op), render seed | 보고와 부분집합 선택, 렌더링 nuisance | 모델 입력 아님 |
+| **v1 이미지**: `pixel_render.render(scene, seed)` → PIL RGB → `ClipEncoder.encode_images` | renderer만 metadata를 읽고, encoder는 PIL 이미지만 받는다(type check) | 아니오 |
+| **v1 텍스트**: 캡션 문자열 → `ClipEncoder.encode_texts` | 원문 캡션 | 아니오(parser 정답 없음) |
+| `FeatGroup.meta` | Group | label·mask·감사 전용. model scorer가 읽으면 실패하는 poison 테스트로 확인 |
+
+## A2. 실제 명령과 결과 위치
+
+`scripts/ledger_run.py`는 자식 프로세스에 RLIMIT_CPU(남은 예산), RLIMIT_AS 3 GiB, 단일 thread 환경변수를 걸고, 실측 CPU 시간을 ledger에 기록한다.
+
+| 명령 | 결과 위치 | CPU 실측 |
+|---|---|---|
+| `python3 -m venv .venv`; `.venv/bin/python -m pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.14.0+cpu torchvision==0.29.0+cpu`; `.venv/bin/python -m pip install --no-cache-dir numpy pillow open_clip_torch==3.3.0` | `runs/install_pixel_v1_20260926T155648Z` (고정 목록: `requirements-pixel.lock`). 첫 시도 `…155635Z`는 `/usr/bin/time` 부재로 **FAILED**(아무것도 설치되지 않음)이며 보존함. | 설치 43.8 s(wall 49 s). 상한 밖에 별도 기록 |
+| `python3 scripts/fetch_encoder.py` | `runs/fetch_encoder_20260926T155833Z` | 605,143,316 B, wall 6.3 s. 별도 기록 |
+| `python3 scripts/ledger_run.py --name final_tests_venv_after_manifest_fix -- .venv/bin/python scripts/run_tests.py` | `runs/tests_20260926T162256Z` | 34.9 s |
+| `python3 scripts/ledger_run.py --name metadata_check_data_v1 -- python3 scripts/check_metadata.py --config configs/data_v1.json --blind-eval-splits dev,calib` | `runs/metadata_check_data_v1_20260926T161932Z` | 15.4 s |
+| `.venv/bin/python scripts/pixel_baseline.py` (**기준 실행**, 커밋 121fdab) | `runs/pixel_baseline_v1_20260926T161957Z` (`metrics.json`, `decisions.json`, `log.txt`, `manifest.json`, `dev_examples.png`, `head_hardneg_seed*.pt`) | 104.5 s, peak RSS 1.63 GiB |
+| 같은 명령, 커밋 전의 작업 트리 | `runs/pixel_baseline_v1_20260926T161601Z` | 103.0 s. 결과는 기준 실행과 **동일**(metric, 판정, 파라미터 hash). `POSTHOC_PROVENANCE.json` 참조 |
+| debug(작은 panel 4/4/2, 3 step) | `runs/debug_pixel_baseline_tiny_20260926T161518Z` | 22.3 s. 결과는 무의미 |
+
+- **CPU ledger** (`runs/pixel_v1_cpu_ledger.json`): 542.6 / 3,600 s 사용.
+  - 여기에는 ledger 이전 개발 작업의 **추정치** 200 s가 포함된다(renderer 감사, 모델 1회 로드, v1 생성 시도; 측정값 아님).
+  - 나머지 항목은 probe 9.2 s, 개발 테스트 20.2 s, 테스트 33.1 s이다.
+- **worker와 thread**: worker 1개, torch thread 1개. RLIMIT_AS 3 GiB에서 OOM은 없었다.
+
+## A3. 실행한 cell과 실행하지 않은 cell
+
+- **실행**
+  - data_v1 생성과 감사.
+  - panel 렌더링과 decode 감사(288장).
+  - CLIP feature 추출.
+  - 대조: oracle, zero-shot CLIP, text-only, image-only(CLIP pooled), random(해석적 값과 MC 500회), shuffle(이미지·캡션), content-only와 binding-only 채널, oracle-object-token 대조.
+  - fit sanity(16 그룹, 200 step).
+  - hardneg 기준선: 단일 설정, seed 0/1/2, 300 step.
+  - train batch에서 gradient 비율 측정.
+  - 진단: nuisance ratio, content 잔차, base-vs-edited 검출.
+- **NOT_RUN**
+  - edit loss(`hardneg_eq`) 학습과 12-setting sweep, `inbatch` 학습.
+  - 자연 이미지 전이.
+  - data_v1 test 분할(렌더링·인코딩·평가 모두 하지 않음).
+  - calibration 임계값 기반 pair accuracy(이번 panel에 calib 없음).
+  - encoder와 architecture sweep.
+  - v0 12시간 synthetic-feature pilot(승인되지 않았고 철회됨).
+
+## A4. 결과 (dev panel, 기술 관찰이며 가설 검정이 아님)
+
+**조건.**
+- dev panel은 32 그룹이고, 그중 binding-necessary(BN, op 종류가 모두 binding 또는 relation)가 16이다.
+- seed 3개는 같은 데이터를 공유하므로 독립 표본이 아니다.
+- 유의하지 않다는 것을 동등성으로 해석하지 않는다.
+- 우연 수준: group 1/6, match 1/2, text·image 1/4. MC 500회로 확인한 값은 0.168 / 0.500 / 0.249 / 0.251이다.
+
+| scorer (입력 출처) | BN group | BN match | BN pair AUC | ALL group | ALL match |
+|---|---|---|---|---|---|
+| oracle (metadata, 대조) | 1.000 | 1.000 | 1.000 | 1.000 | 1.000 |
+| zero-shot CLIP (픽셀+캡션, 학습 없음) | 0.000 | 0.688 | 0.497 | 0.312 | 0.844 |
+| text-only / image-only (단일 modality) | 0.000 / 0.000 | 0.000 / 0.000 | 0.500 / 0.500 | 0.000 | 0.000 |
+| **pixel head (hardneg)**, seed 0/1/2 | 0.062 / 0.000 / 0.000 | 0.625 / 0.500 / 0.438 | 0.508 / 0.500 / 0.508 | 0.375 / 0.156 / 0.188 | 0.812 / 0.750 / 0.719 |
+| 같은 head의 content 채널만 | 0 / 0 / 0 | 0.562 / 0.562 / 0.438 | 0.506 / 0.504 / 0.494 | 0.219 / 0.156 / 0.188 | 0.781 / 0.781 / 0.719 |
+| 같은 head의 binding 채널만 | 0.125 / 0.062 / 0.000 | 0.625 / 0.625 / 0.562 | 0.515 / 0.537 / 0.511 | 0.062 / 0.062 / 0.000 | 0.500 / 0.562 / 0.562 |
+| 같은 head, 이미지를 그룹 간 shuffle | 0 / 0 / 0 | 0.312 / 0.312 / 0.375 | 0.49–0.50 | 0.000 / 0.062 / 0.031 | 0.31–0.44 |
+| 같은 head, 캡션을 그룹 간 shuffle | 0 / 0 / 0 | 0.375 / 0.500 / 0.750 | 0.49–0.50 | 0.062 / 0.000 / 0.000 | 0.47–0.66 |
+| 같은 head의 train-panel fit | 0.750 / 0.562 / 0.875 | 1.000 (×3) | 0.62–0.72 | 0.844 / 0.781 / 0.938 | 1.000 |
+| oracle-object-token 대조 (metadata token, 같은 head와 설정) | 0.312 / 0.125 / 0.188 | 0.812 / 0.750 / 0.750 | 0.619 / 0.548 / 0.569 | 0.312 / 0.094 / 0.188 | 0.906 / 0.781 / 0.875 |
+
+**진단.**
+- **nuisance ratio**: 편집에 의한 CLIP pooled 코사인 거리를 같은 장면의 다른 렌더와의 거리로 나눈 값(중앙값)이다. object 4.04, attribute 2.27, binding 1.49, relation 1.04. relation swap은 렌더 nuisance와 거의 같은 크기로만 pooled 표현을 바꾼다.
+- **content 잔차**: 같은 seed로 렌더한 BN 쌍에서 ‖Δc‖/‖c‖의 중앙값은 0.23–0.28이다. v0에서는 구조적으로 0이었으므로, **v0의 content 구조적 불변성은 픽셀·CLIP 입력에서 성립하지 않는다.** 그 결과 BN 그룹에서 content 채널의 tie도 사라졌다(tie 비율 0).
+- **gradient 비율** ‖∇L_edit‖/‖∇L_task‖ (λ=1, train 첫 batch): init 11.7 / 11.9 / 14.0, 학습 후 0.55 / 0.54 / 0.27. 크기만 보고하며 효용으로 해석하지 않는다.
+- **base-vs-edited 검출** (pooled 이미지, train → dev): AUC 0.471, 95% CI [0.31, 0.61], n = 64. 약한 근거이다. data_v1 전체 감사(dev+calib, 1,200 항목)에서는 text 0.508, proxy 이미지 0.512로 PASS였다.
+- **fit sanity**: group 1.000인데 aug_group(의미 보존 paraphrase)은 0.125이다. 캡션 표면형을 외운 적합으로 보인다.
+
+**판독** (기술 관찰일 뿐 결론이 아님).
+1. 평가 경로가 병목이라는 신호는 없다. oracle은 1.0이고, shuffle 대조는 BN group 0이다.
+2. head는 학습 데이터에 적합한다. 그러나 dev BN에서는 group 0.00–0.06, match 0.44–0.63, pair AUC ≈ 0.50으로 우연 수준 부근이거나 그 아래다.
+3. dev 전체 점수(ALL group 0.16–0.38)의 대부분은 content 채널만으로도 나온다(0.16–0.22). 즉 binding 없이 풀리는 편집이다.
+4. binding이 입력에 이미 들어 있는 oracle-token 대조도 dev BN group이 0.12–0.31에 그친다. 따라서 frozen encoder의 한계(nuisance ratio 1.0–1.5)와, 64 그룹이라는 데이터 크기나 head·설정의 한계를 **분리할 수 없다.**
+
+## A5. 이번 단계의 결정과 수정 (smoke/test 열람 후 수정 포함)
+
+1. **v1 사전등록 범위 수정.** `prereg_pilot_v1`에서 primary endpoint를 binding-necessary 부분집합으로 옮기고 전체 composition 점수는 secondary로 두었다. **smoke_v0를 본 뒤의 범위 수정**이다. v0 test 분할은 smoke에서 열람되었으므로 이제 개발 자료이며, test 크기는 늘리지 않았다. v0 설정과 사전등록은 보존했다.
+2. **data_v1.** edit orbit(속성 할당을 뺀 객체·속성 multiset)을 누출 단위로 추가했다. 선착순 registry로는 생성이 불가능해서(orbit 소진) orbit을 hash로 분할에 미리 배정했다. 새 seed를 쓰고 분할 크기는 v0와 같다. data_v0 hash는 불변이다(테스트).
+3. **renderer 수정.** 모델을 실행하기 전 decode 감사에서, 금속 원뿔의 반사광이 실루엣 밖에 떨어져 "rubber"로 보이는 의미 손실을 발견했다(1,500 객체 중 16). 반사광 위치를 모양별로 정해 수정한 뒤 6,000 객체에서 불일치 0이다.
+4. **debug run의 손실 급등.** 3 step째에 손실이 튀었지만(0.42 → 3.82) 사전 고정 설정은 바꾸지 않았다. 튜닝은 하지 않았다.
+5. **첫 stage 실행이 커밋 전 작업 트리에서 수행되었다.** 커밋 후 재실행했고 결과가 완전히 같았다. 두 실행을 모두 보존했다.
+6. **manifest dirty 오탐 버그.** 기준 실행 manifest의 `dirty: true`는 오탐이다(목록은 run 산출물인 ledger 1개뿐). 이 버그는 수정하고 회귀 테스트를 추가했다.
+7. **입력 bridge.** image·text token을 train panel 통계로 차원별 표준화한다. 실행 전에 고정했고 대안은 시험하지 않았다.
+
+## A6. 미검증 주장과 한계
+
+- **blind scorer의 한계.** 2×2 그룹에서 blind scorer는 group 지표가 구조적으로 0이다. 게다가 각 캡션과 이미지가 한 그룹 안에서 양·음 label을 한 번씩 가지므로 **pair AUC도 구조적으로 정확히 0.5**다. 따라서 blind 대조로는 shortcut의 부재를 보일 수 없다. 정보가 있는 검사는 content-only 채널, shuffle, base-vs-edited 검출(n이 작음), v1 데이터 감사이다.
+- **renderer.** 양식화된 2.5D 합성이며, decode 감사는 같은 renderer 계열에 대한 자기 일관성 검사다. CLIP이 "metal/rubber" 같은 단어를 이 렌더링에 대응시키는지는 검증하지 않았다.
+- **CLIP 마지막 층 patch token.** 국소화가 약하다고 알려져 있다. 다른 층이나 token 선택은 sweep 금지로 시험하지 않았다.
+- **표본 크기.** BN dev는 16 그룹이다. CI가 매우 넓다(예: seed 0의 BN group 95% CI [0, 0.19]).
+- **encoder 사용.** encoder는 frozen이다. 어떤 결과도 encoder 자체의 학습 효과로 해석하지 않는다.
+
+## A7. 공개 사항 (supervision, 파라미터, 비용)
+
+- **supervision**: oracle truth label, false-negative mask, 그룹 짝(hard negative). op 종류, base 표시, held-out 정보, scene ID, parser 출력은 입력에 넣지 않았다.
+- **학습 파라미터**: 24,586(head). frozen encoder는 151,277,313이다.
+- **encoder 비용**: 이미지 288장과 캡션 384개에 50.1 CPU s, 로드 4.5 s.
+- **encoder 사용권**: `laion/CLIP-ViT-B-32-laion2B-s34B-b79K` rev `1a25a446…`, `open_clip_model.safetensors` sha256 `ac4f8c4b…`. 모델 카드는 MIT이고 연구용이다(영어 전용, 감시·얼굴인식은 범위 밖). open_clip_torch 3.3.0은 MIT이다.
+- **의존성 라이선스**: torch는 BSD/Apache 계열, numpy는 BSD-3, Pillow는 MIT-CMU, timm·huggingface-hub·safetensors는 Apache-2.0이다(`importlib.metadata` 기준).
+
+## A8. Blocker와 다음 단계 (승인 필요, 미착수)
+
+- PIXEL_INPUT_BLOCKED는 **해당하지 않는다.**
+- **edit loss 비교**: `prereg_pilot_v1`의 seed, 튜닝, CPU 상한을 픽셀 경로에 맞춰 다시 고정하고, calibration panel을 정하고, 승인을 받아야 한다. 현재 A4의 판독상 기준선 자체가 BN에서 일반화하지 않으므로, edit loss를 비교하기 전에 train 크기나 encoder 선택을 먼저 결정해야 할 수 있다(결정 사항).
+- **자연 이미지 전이**: 데이터·사용권 승인이 필요하다(B2).
+- **LICENSE**: 저장소에 아직 없다(B3).
+
+---
+
+# 1단계 기록 (v0; 인수 기준 `f606795`, 원문 보존)
+
+## 0. 판정 (1단계 v0 당시; 아래 1–8절은 원문 보존)
 
 | 구분 | 상태 | 근거 |
 |---|---|---|
 | 소프트웨어 | **TECHNICAL_TEST_PASS** | unittest 55/55 통과(skip 0). metadata 감사 FAIL 0. blind 검출 text/image 모두 PASS. smoke 3개 변형의 붕괴 flag 0. |
 | 과학 | **SCIENCE_NOT_EVALUATED** | 파일럿은 NOT_RUN. smoke 수치는 변형 간 비교가 금지된 기술 점검용이다. |
-| 다음 단계 | **READY_FOR_PILOT (조건부)** | 적용 범위는 합성 proxy feature 파일럿에 한한다. `configs/prereg_pilot_v0.json`을 연구 책임자가 승인해야 한다. 신규성 인증이나 채택 가능성 확인이 아니다. |
+| 다음 단계 | ~~READY_FOR_PILOT (조건부)~~ → **철회 (2026-09-26 픽셀 단계)** | v0 image token은 scene metadata에서 직접 만든 oracle 입력이므로 synthetic-feature 파일럿(`prereg_pilot_v0.json`)은 승인되지 않았고 실행하지 않는다. A절 참조. |
 | 자연 이미지 전이 | **BLOCKED** | B2 참조. |
 
 ## 1. 이번 단계에서 한 일과 멈춘 지점

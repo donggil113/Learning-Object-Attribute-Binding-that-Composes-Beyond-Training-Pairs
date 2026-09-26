@@ -1,14 +1,29 @@
 # P3 — Learning Object-Attribute Binding that Composes Beyond Training Pairs
 
-현재 단계는 **metadata 수준 정답 생성기, 검사, 최소 head 구현**까지이며 여기서 멈춥니다. 파일럿은 실행하지 않았습니다(`configs/prereg_pilot_v0.json`, NOT_RUN). 현재 상태는 [STATUS.md](STATUS.md)를 보십시오.
+현재 단계는 **픽셀 입력 가능성 확인과 hard-negative 기준선 실행**(`pixel_baseline_v1`, PIXEL_BASELINE_FEASIBILITY)까지이며 여기서 멈춥니다. edit loss 비교와 파일럿은 실행하지 않았습니다(`configs/prereg_pilot_v1.json`, NOT_RUN). 현재 상태는 [STATUS.md](STATUS.md)를 보십시오.
 
 - 연구 질문과 반증 조건: [docs/RESEARCH_QUESTION.md](docs/RESEARCH_QUESTION.md)
 - 선행연구 대조와 주장 표: [docs/PRIOR_ART.md](docs/PRIOR_ART.md)
 - AI 사용 내역: [AI_USAGE.md](AI_USAGE.md)
 
+## 픽셀 입력 단계 (pixel_baseline_v1)
+
+v0의 proxy image token은 scene metadata에서 직접 만든 oracle 입력이라 대조로만 쓴다. 픽셀 경로는 다음과 같다.
+- 이미지: `pixel_render`(합성 RGB) → frozen CLIP ViT-B-32(laion2b) token
+- 텍스트: 원문 캡션 → frozen CLIP token
+
+이 경로는 저장소 전용 `.venv`가 필요하다(`requirements-pixel.lock`, 설치 명령은 STATUS A2절).
+
+```bash
+python3 scripts/fetch_encoder.py                         # 고정 revision/sha256 checkpoint (605 MB)
+.venv/bin/python scripts/pixel_baseline.py               # stage 실행 (CPU ledger, 1 thread, 3 GiB AS cap)
+python3 scripts/ledger_run.py --name NAME -- CMD ...      # 임의 명령을 stage CPU ledger 아래에서 실행
+.venv/bin/python scripts/run_tests.py                    # 전체 테스트 (시스템 python에서는 픽셀 테스트가 skip되므로 FAIL로 판정됨)
+```
+
 ## 요구 환경
 
-Python 3.11 표준 라이브러리만 씁니다. 이 환경에는 numpy, torch, pytest가 없고, 지시에 따라 설치하지 않았습니다. 테스트는 `unittest`로 돌립니다.
+v0 경로는 Python 3.11 표준 라이브러리만 씁니다. 픽셀 경로는 `.venv`(torch CPU, numpy, Pillow, open_clip)를 씁니다. 테스트는 `unittest`로 돌립니다.
 
 ## 실행
 

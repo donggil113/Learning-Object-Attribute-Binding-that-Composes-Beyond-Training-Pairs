@@ -1,0 +1,8 @@
+{
+  "written": "2026-09-26, AFTER the run (post-hoc note; manifest.json is the original and is not modified)",
+  "status": "REFERENCE RUN of stage pixel_baseline_v1",
+  "facts": [
+    "manifest git.commit = 121fdab; git.source_tree_sha256 = 44bac7a66f1c1367... equals the source hash of commit 121fdab with a clean tree (checked right after that commit).",
+    "manifest git.dirty = true is a FALSE POSITIVE: the only listed file is runs/pixel_v1_cpu_ledger.json (run output). git_info stripped the leading space of the first porcelain line, so the runs/ exclusion missed it. Fixed and regression-tested in the next commit (bindcomp.manifest.dirty_code_lines)."
+  ]
+}

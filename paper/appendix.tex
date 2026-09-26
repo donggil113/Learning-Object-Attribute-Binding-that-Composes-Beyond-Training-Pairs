@@ -29,9 +29,10 @@ $(S_{11},S'_1,S_{10})$, so the two events are independent and the probability is
 \section{Splits and metadata statistics}
 \label{app:splits}
 
-Orbit ownership is decided by a hash of the orbit key and the data seed, with fractions 0.5
-(training), 0.075 (development), 0.075 (calibration), 0.1 for each of the i.i.d., held-out-pair and
-composition test splits, and 0.05 for the held-out-template test split. For each split, the
+Orbit ownership is decided by a hash of the orbit key and the data seed, with fractions \DVpartTrain{}
+(training), \DVpartDev{} (development), \DVpartCalib{} (calibration), \DVpartTestIid{} for each of the
+i.i.d., held-out-pair and composition test splits, and \DVpartTestTemplate{} for the held-out-template
+test split (\texttt{configs/data\_v1.json}). For each split, the
 generator draws a base scene until its orbit is owned. It then samples an edit of the scheduled kind
 among the applicable edits whose result stays in an owned orbit, and it keeps the group only if the
 oracle truth table, the operation contract, the held-out-pair rule and the scene/caption-content
@@ -87,6 +88,11 @@ pre-registered grid; that grid was itself set after gradient-scale observations,
 disclose. The panel is 512 training and 128 development groups inside the data-v1 training and
 development orbits. Seeds 0, 1 and 2 serve as paired optimization repeats. The primary endpoint is
 the binding-necessary development group score.
+\fi
+\ifhavepaired
+\item \textbf{Stabilized paired comparison.} The paired comparison of Section~\ref{sec:paired} was
+not repeated with a lower learning rate, a schedule, gradient clipping, normalized scores or
+checkpoint averaging. Any such change would need a new configuration fixed before running.
 \fi
 \item \textbf{Test evaluation.} No v1 test split has been rendered, encoded or scored.
 \item \textbf{Natural images and encoder fine-tuning.} Not attempted. No natural-image data was

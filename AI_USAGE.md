@@ -51,3 +51,22 @@
   - `/usr/bin/time` 부재로 설치 첫 시도 실패.
   - 커밋 전 작업 트리에서 stage를 실행한 일(재실행 결과 동일).
   - manifest의 dirty 오탐 버그.
+
+## Paired 비교와 원고 단계 (2026-09-26)
+
+- **수행 범위.** 같은 Claude Code 세션이 split 의미 분석, paired 비교 설계·실행, 원고(LaTeX) 작성·빌드를 모두 했습니다. 하위 에이전트는 쓰지 않았습니다.
+- **외부 접근.**
+  - 공식 ICLR 2027 Author Guidelines와 style ZIP.
+  - arXiv BibTeX export: 인용 25건을 자동으로 가져왔고, 제목은 docs/PRIOR_ART.md와 대조했습니다.
+  - encoder 모델 카드의 인용 블록.
+  - Ubuntu 서명 저장소: TeX Live, poppler-utils.
+  - 새 연구 데이터·가중치, GPU, 유료 API는 쓰지 않았습니다.
+- **AI가 정한 것 (검토 필요).**
+  - paired 설정: 1,500 update, dev 시작 위치 32, fit 기준 0.75, at-chance 규칙, 판정 순서.
+  - 원고 구성과 모든 문장, header 교체 방식.
+  - bib venue note와 약어 보호(중괄호).
+- **AI 작업 중 발견하고 수정한 오류.**
+  - `\input`을 tabular 안에 넣어 생긴 빌드 실패.
+  - overfull box 5건, 제목 하이픈, 그림 크기.
+  - split 분석을 dirty tree에서 먼저 실행한 일(재실행 결과 동일).
+- **AI use statement.** 원고에는 HUMAN_REVIEW_PENDING을 명시했고, 사람이 검증했다고 쓰지 않았습니다.

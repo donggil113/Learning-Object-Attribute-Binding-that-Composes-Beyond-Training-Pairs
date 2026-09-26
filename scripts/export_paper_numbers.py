@@ -199,6 +199,10 @@ def data_audits():
     for split, n in man["n_groups"].items():
         name = "DVn" + "".join(w.capitalize() for w in split.split("_"))
         add_derived(name, n, f"{META_V1}/manifest.json", f"n_groups/{split}", "int")
+    for split, W in (("train", "Train"), ("dev", "Dev"), ("calib", "Calib"), ("test_iid", "TestIid"),
+                     ("test_heldout_template", "TestTemplate")):
+        add(f"DVpart{W}", "configs/data_v1.json", ["orbit_partition", split], "s3" if split in ("dev", "calib") else "s2")
+    add("SMevalCap", f"{SMOKE}/config.json", ["smoke", "eval_max_groups_per_split"], "int")
     sm = load(f"{SMOKE}/metrics.json")
     vals = [sm[f"{v}_seed0[content]"]["test_composition"]["overall"]["match"] for v in ("inbatch", "hardneg", "hardneg_eq")]
     add_derived("SMcontentMatchMin", min(vals), f"{SMOKE}/metrics.json",
@@ -235,12 +239,25 @@ def split_semantics():
         add(f"SSpanel{W}Orbits", rel, ["panel", panel, "n_orbits"], "int")
         add(f"SSpanel{W}BN", rel, ["panel", panel, "binding_necessary_fraction"], "pct")
     add("SSpanelDevExcluded", rel, ["panel", "dev", "excluded_previously_scored"], "int")
+    add("SSpanelOverlap", rel, ["panel", "orbit_overlap_train_dev"], "int")
     add("SSorbitsTotal", rel, ["n_orbits_total"], "int")
+    add("SSDevTVColor", rel, ["splits", "dev", "tv_to_train", "color"], "s2")
+    add("SSDevTVShape", rel, ["splits", "dev", "tv_to_train", "shape"], "s2")
+    add("SSHeldTemplateContentFilter", rel, ["splits", "test_heldout_template", "content_edit_filter_keep_rate"], "pct")
+    add("SSCalibContentFilter", rel, ["splits", "calib", "content_edit_filter_keep_rate"], "pct")
+    for op, W in (("replace_attr:color", "ReplColor"), ("replace_shape:-", "ReplShape"), ("swap_attr:color", "SwapColor")):
+        add(f"SSDev{W}Kept", rel, ["splits", "dev", "orbit_filter_by_op", op, "kept"], "int")
+        add(f"SSDev{W}Appl", rel, ["splits", "dev", "orbit_filter_by_op", op, "applicable"], "int")
+    for col in ("green", "purple", "red", "blue", "yellow"):
+        add(f"SSpanelDevColor{col.capitalize()}", rel, ["panel", "dev", "marginals", "color", col], "s2")
+        add(f"SSpanelTrainColor{col.capitalize()}", rel, ["panel", "train", "marginals", "color", col], "s2")
     lines = []
     for split in ("train", "dev", "calib", "test_iid", "test_heldout_pairs", "test_composition", "test_heldout_template"):
         r = s["splits"][split]
-        esc = split.replace("_", "\\_")
-        lines.append(f"\\texttt{{{esc}}} & {r['n_groups']} & {r['attempts']} & {fmt(r['accept_rate'], 'pct')} & "
+        esc = {"train": "train", "dev": "dev", "calib": "calib", "test_iid": "test i.i.d.",
+               "test_heldout_pairs": "test held-out pairs", "test_composition": "test composition",
+               "test_heldout_template": "test held-out template"}[split]
+        lines.append(f"{esc} & {r['n_groups']} & {r['attempts']} & {fmt(r['accept_rate'], 'pct')} & "
                      f"{r['n_orbits_owned']} & {r['n_orbits_used']} & {fmt(r['content_edit_filter_keep_rate'], 'pct')} & "
                      f"{fmt(r['binding_necessary_fraction'], 'pct')} \\\\")
     write_table("split_semantics.tex", lines, d)
@@ -274,18 +291,62 @@ def paired():
         add(f"PRdiff{name}Lo", rel, ["paired", key, "ci95", 0])
         add(f"PRdiff{name}Hi", rel, ["paired", key, "ci95", 1])
         add(f"PRdiff{name}Pos", rel, ["paired", key, "n_seeds_positive"], "int")
-    add("PRgradInitMean", rel, ["grad_ratio", "init_mean"], "s2")
+    add("PRgradInitMean", rel, ["grad_ratio", "init_mean"], "s1")
+    add("PRgradInitLamMean", rel, ["grad_ratio", "init_lam_scaled_mean"], "s2")
+    add("PRzsBNGroup", rel, ["controls", "zero_shot_clip", "bn", "group"])
+    add("PRzsBNMatch", rel, ["controls", "zero_shot_clip", "bn", "match"])
+    add("PRzsAllGroup", rel, ["controls", "zero_shot_clip", "all", "group"])
+    add("PRoracleBNGroup", rel, ["controls", "oracle", "bn", "group"])
+    add("PRrandBNGroup", rel, ["controls", "random_mc300_bn", "group"])
+    add("PRrandBNMatch", rel, ["controls", "random_mc300_bn", "match"])
+    add("PRrenderImages", rel, ["renderer_audit", "images"], "int")
+    add("PRrenderMismatch", rel, ["renderer_audit", "decode_mismatches"], "int")
+    add("PRencCPU", rel, ["cost", "encoder_cpu_s"], "s1")
+    for arm in ("A", "B"):
+        for met, W in (("group", "Group"), ("match", "Match")):
+            add(f"PR{arm}CI{W}Mean", rel, ["verdict", "arm_bn_ci", arm, met, "mean"])
+            add(f"PR{arm}CI{W}Lo", rel, ["verdict", "arm_bn_ci", arm, met, "ci95", 0])
+            add(f"PR{arm}CI{W}Hi", rel, ["verdict", "arm_bn_ci", arm, met, "ci95", 1])
+        vals = []
+        for sd in SEEDS:
+            v = s["arms"][arm][sd]["loss_last"]
+            vals.append(v)
+            macros.append((f"PR{arm}LossLastSeed{SEED_WORDS[sd]}", fmt(v, "s2")))
+            prov.append((f"PR{arm}LossLastSeed{SEED_WORDS[sd]}", rel, f"arms/{arm}/{sd}/loss_last", repr(v), "raw field"))
+            c = s["arms"][arm][sd]["content_residual_bn"]
+            macros.append((f"PR{arm}ResidSeed{SEED_WORDS[sd]}", fmt(c, "s2")))
+            prov.append((f"PR{arm}ResidSeed{SEED_WORDS[sd]}", rel, f"arms/{arm}/{sd}/content_residual_bn", repr(c), "raw field"))
+    det = load(f"{d}/arms_detail.json")
+    gmax = {}
+    for arm in ("A", "B"):
+        for sd in SEEDS:
+            v = max(h["grad_norm"] for h in det[arm][sd]["history"])
+            gmax[(arm, sd)] = v
+            add_derived(f"PR{arm}GradMaxSeed{SEED_WORDS[sd]}", v, f"{d}/arms_detail.json",
+                        f"max of {arm}/{sd}/history[*]/grad_norm (logged every 100 steps)", "s1")
+    add_derived("PRgradMaxAll", max(gmax.values()), f"{d}/arms_detail.json",
+                "max over arms and seeds of logged grad_norm", "s1")
+    add_derived("PRgradMinOfMax", min(gmax.values()), f"{d}/arms_detail.json",
+                "min over arms and seeds of the max logged grad_norm", "s1")
+    tr = load(f"{d}/config.json")["paired"]
+    add("PRlr", f"{d}/config.json", ["paired", "train", "lr"], "s2")
+    add("PRbatch", f"{d}/config.json", ["paired", "train", "batch_groups"], "int")
+    add("PRwd", f"{d}/config.json", ["paired", "train", "weight_decay"], "e2")
     add("PRcpuTotal", rel, ["cost", "stage_cpu_s"], "s1")
     add("PRpeakRSS", rel, ["cost", "peak_rss_mib"], "s1")
     lines = []
-    for label, key in (("Dev BN group score", "dev_bn_group"), ("Dev BN GroupMatch", "dev_bn_match"),
-                       ("Dev BN pair AUC", "dev_bn_auc"), ("Dev binding-only group", "dev_binding_group"),
+    for label, key in (("Dev \\bn{} group score", "dev_bn_group"), ("Dev \\bn{} GroupMatch", "dev_bn_match"),
+                       ("Dev \\bn{} pair AUC", "dev_bn_auc"), ("Dev binding-only group", "dev_binding_group"),
                        ("Dev relation-only group", "dev_relation_group"), ("Dev all-kinds group", "dev_all_group"),
-                       ("Dev all-kinds GroupMatch", "dev_all_match"), ("Train BN group (fit)", "train_bn_group"),
+                       ("Dev all-kinds GroupMatch", "dev_all_match"), ("Train \\bn{} group (fit)", "train_bn_group"),
                        ("Final task loss", "loss_last")):
-        a = " / ".join(fmt(s["arms"]["A"][sd][key], "s3") for sd in SEEDS)
-        b = " / ".join(fmt(s["arms"]["B"][sd][key], "s3") for sd in SEEDS)
-        diff = " / ".join(fmt(s["arms"]["B"][sd][key] - s["arms"]["A"][sd][key], "s3") for sd in SEEDS)
+        def m(v):
+            if key == "loss_last":
+                return f"{v:.2f}".replace("-", "$-$")
+            return ("$-$" + fmt(-v, "c3")) if v < 0 else fmt(v, "c3")
+        a = "/".join(m(s["arms"]["A"][sd][key]) for sd in SEEDS)
+        b = "/".join(m(s["arms"]["B"][sd][key]) for sd in SEEDS)
+        diff = "/".join(m(s["arms"]["B"][sd][key] - s["arms"]["A"][sd][key]) for sd in SEEDS)
         lines.append(f"{label} & {a} & {b} & {diff} \\\\")
     write_table("paired.tex", lines, d)
     return True
@@ -294,9 +355,8 @@ def paired():
 HEADERS = {
     "small_panel.tex": ("lcccc", "Scorer & \\bn{} group & \\bn{} GroupMatch & \\bn{} pair AUC & all: group"),
     "small_panel_all.tex": ("lccc", "Scorer & all: group & all: GroupMatch & all: pair AUC"),
-    "split_semantics.tex": ("lrrrrrrr", "Split & groups & attempts & accept & orbits owned & orbits used & "
-                                        "content filter keep & \\bn{} share"),
-    "paired.tex": ("lccc", "Quantity (seeds 0/1/2) & A: hard-negative & B: + edit-consistency & B$-$A"),
+    "split_semantics.tex": ("lrrrrrrr", "Split & groups & attempts & accept & orbits & used & keep & \\bn{}"),
+    "paired.tex": ("lccc", "Seeds 0/1/2 & A: hard-neg. & B: + edit-cons. & B$-$A"),
 }
 
 

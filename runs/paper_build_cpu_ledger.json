@@ -82,7 +82,87 @@
         "NUMEXPR_NUM_THREADS": "1",
         "TOKENIZERS_PARALLELISM": "false"
       }
+    },
+    {
+      "name": "paper_build_v1",
+      "cmd": [
+        "bash",
+        "paper/build.sh"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 1.87,
+      "wall_s": 1.9,
+      "children_peak_rss_mib": 38.3,
+      "rlimit_cpu_s": 594,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "paper_build_v1_2",
+      "cmd": [
+        "bash",
+        "paper/build.sh"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 1.82,
+      "wall_s": 1.83,
+      "children_peak_rss_mib": 38.1,
+      "rlimit_cpu_s": 592,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "paper_build_v1_3",
+      "cmd": [
+        "bash",
+        "paper/build.sh"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 2.06,
+      "wall_s": 2.07,
+      "children_peak_rss_mib": 38.2,
+      "rlimit_cpu_s": 590,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "paper_build_v1_4",
+      "cmd": [
+        "bash",
+        "paper/build.sh"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 1.81,
+      "wall_s": 1.87,
+      "children_peak_rss_mib": 38.1,
+      "rlimit_cpu_s": 588,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
     }
   ],
-  "used_cpu_s": 5.76
+  "used_cpu_s": 13.32
 }

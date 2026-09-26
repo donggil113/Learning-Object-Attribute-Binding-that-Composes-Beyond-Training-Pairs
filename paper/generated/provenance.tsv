@@ -157,5 +157,172 @@ DVnTestHeldoutPairs	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-
 DVnTestHeldoutTemplate	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	400	n_groups/test_heldout_template
 DVnTestIid	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	400	n_groups/test_iid
 DVnTrain	runs/metadata_check_data_v1_20260926T161932Z/manifest.json	-	2000	n_groups/train
+DVpartTrain	configs/data_v1.json	orbit_partition/train	0.5	raw field
+DVpartDev	configs/data_v1.json	orbit_partition/dev	0.075	raw field
+DVpartCalib	configs/data_v1.json	orbit_partition/calib	0.075	raw field
+DVpartTestIid	configs/data_v1.json	orbit_partition/test_iid	0.1	raw field
+DVpartTestTemplate	configs/data_v1.json	orbit_partition/test_heldout_template	0.05	raw field
+SMevalCap	runs/smoke_v0_20260926T152653Z/config.json	smoke/eval_max_groups_per_split	100	raw field
 SMcontentMatchMin	runs/smoke_v0_20260926T152653Z/metrics.json	-	0.65	min over variants of <variant>_seed0[content]/test_composition/overall/match
 SMcontentMatchMax	runs/smoke_v0_20260926T152653Z/metrics.json	-	0.76	max over variants of <variant>_seed0[content]/test_composition/overall/match
+SSTrainAttempts	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/train/attempts	6743	raw field
+SSTrainAccept	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/train/accept_rate	0.29660388551090017	raw field
+SSTrainOrbits	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/train/n_orbits_used	758	raw field
+SSTrainOrbitsOwned	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/train/n_orbits_owned	1241	raw field
+SSTrainContentFilter	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/train/content_edit_filter_keep_rate	0.5007147232999796	raw field
+SSDevAttempts	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/attempts	7063	raw field
+SSDevAccept	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/accept_rate	0.04247486903582047	raw field
+SSDevOrbits	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/n_orbits_used	97	raw field
+SSDevOrbitsOwned	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/n_orbits_owned	173	raw field
+SSDevContentFilter	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/content_edit_filter_keep_rate	0.10417258018734034	raw field
+SSpanelTrainN	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/train/n_groups	512	raw field
+SSpanelTrainOrbits	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/train/n_orbits	427	raw field
+SSpanelTrainBN	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/train/binding_necessary_fraction	0.5	raw field
+SSpanelDevN	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/n_groups	128	raw field
+SSpanelDevOrbits	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/n_orbits	74	raw field
+SSpanelDevBN	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/binding_necessary_fraction	0.5	raw field
+SSpanelDevExcluded	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/excluded_previously_scored	32	raw field
+SSpanelOverlap	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/orbit_overlap_train_dev	0	raw field
+SSorbitsTotal	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	n_orbits_total	2440	raw field
+SSDevTVColor	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/tv_to_train/color	0.1185555555555556	raw field
+SSDevTVShape	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/tv_to_train/shape	0.0466111111111111	raw field
+SSHeldTemplateContentFilter	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/test_heldout_template/content_edit_filter_keep_rate	0.0341148311560977	raw field
+SSCalibContentFilter	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/calib/content_edit_filter_keep_rate	0.046857428464325876	raw field
+SSDevReplColorKept	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/orbit_filter_by_op/replace_attr:color/kept	168	raw field
+SSDevReplColorAppl	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/orbit_filter_by_op/replace_attr:color/applicable	1484	raw field
+SSDevReplShapeKept	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/orbit_filter_by_op/replace_shape:-/kept	152	raw field
+SSDevReplShapeAppl	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/orbit_filter_by_op/replace_shape:-/applicable	1684	raw field
+SSDevSwapColorKept	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/orbit_filter_by_op/swap_attr:color/kept	305	raw field
+SSDevSwapColorAppl	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	splits/dev/orbit_filter_by_op/swap_attr:color/applicable	305	raw field
+SSpanelDevColorGreen	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/marginals/color/green	0.2552083333333333	raw field
+SSpanelTrainColorGreen	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/train/marginals/color/green	0.1748046875	raw field
+SSpanelDevColorPurple	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/marginals/color/purple	0.2942708333333333	raw field
+SSpanelTrainColorPurple	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/train/marginals/color/purple	0.2643229166666667	raw field
+SSpanelDevColorRed	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/marginals/color/red	0.12239583333333333	raw field
+SSpanelTrainColorRed	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/train/marginals/color/red	0.1865234375	raw field
+SSpanelDevColorBlue	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/marginals/color/blue	0.12239583333333333	raw field
+SSpanelTrainColorBlue	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/train/marginals/color/blue	0.18912760416666666	raw field
+SSpanelDevColorYellow	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/dev/marginals/color/yellow	0.20572916666666666	raw field
+SSpanelTrainColorYellow	runs/split_semantics_v1_20260926T230848Z/split_semantics.json	panel/train/marginals/color/yellow	0.18522135416666666	raw field
+PRtrainN	runs/paired_v1_20260926T230018Z/paired_summary.json	panel/train_groups	512	raw field
+PRdevN	runs/paired_v1_20260926T230018Z/paired_summary.json	panel/dev_groups	128	raw field
+PRdevBNN	runs/paired_v1_20260926T230018Z/paired_summary.json	panel/dev_binding_necessary	64	raw field
+PRlambda	runs/paired_v1_20260926T230018Z/paired_summary.json	config/lam_eq	0.01	raw field
+PRsteps	runs/paired_v1_20260926T230018Z/paired_summary.json	config/steps	1500	raw field
+PRverdict	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/label	'OPTIMIZATION_OR_INPUT_UNRESOLVED'	raw field
+PRADevBNGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/dev_bn_group	0.09375	raw field
+PRADevBNGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/dev_bn_group	0.015625	raw field
+PRADevBNGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/dev_bn_group	0.0	raw field
+PRADevBNGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.036458333333333336	mean over seeds of arms/A/<seed>/dev_bn_group
+PRADevBNMatchSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/dev_bn_match	0.6875	raw field
+PRADevBNMatchSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/dev_bn_match	0.640625	raw field
+PRADevBNMatchSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/dev_bn_match	0.65625	raw field
+PRADevBNMatchMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.6614583333333334	mean over seeds of arms/A/<seed>/dev_bn_match
+PRADevBNAUCSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/dev_bn_auc	0.51995849609375	raw field
+PRADevBNAUCSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/dev_bn_auc	0.50341796875	raw field
+PRADevBNAUCSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/dev_bn_auc	0.5006103515625	raw field
+PRADevBNAUCMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.50799560546875	mean over seeds of arms/A/<seed>/dev_bn_auc
+PRADevAllGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/dev_all_group	0.3671875	raw field
+PRADevAllGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/dev_all_group	0.2890625	raw field
+PRADevAllGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/dev_all_group	0.25	raw field
+PRADevAllGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.3020833333333333	mean over seeds of arms/A/<seed>/dev_all_group
+PRATrainBNGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/train_bn_group	0.53515625	raw field
+PRATrainBNGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/train_bn_group	0.15234375	raw field
+PRATrainBNGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/train_bn_group	0.06640625	raw field
+PRATrainBNGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.2513020833333333	mean over seeds of arms/A/<seed>/train_bn_group
+PRADevBindGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/dev_binding_group	0.15625	raw field
+PRADevBindGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/dev_binding_group	0.0	raw field
+PRADevBindGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/dev_binding_group	0.0	raw field
+PRADevBindGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.052083333333333336	mean over seeds of arms/A/<seed>/dev_binding_group
+PRADevRelGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/dev_relation_group	0.03125	raw field
+PRADevRelGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/dev_relation_group	0.03125	raw field
+PRADevRelGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/dev_relation_group	0.0	raw field
+PRADevRelGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.020833333333333332	mean over seeds of arms/A/<seed>/dev_relation_group
+PRBDevBNGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/dev_bn_group	0.0	raw field
+PRBDevBNGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/dev_bn_group	0.125	raw field
+PRBDevBNGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/dev_bn_group	0.234375	raw field
+PRBDevBNGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.11979166666666667	mean over seeds of arms/B/<seed>/dev_bn_group
+PRBDevBNMatchSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/dev_bn_match	0.609375	raw field
+PRBDevBNMatchSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/dev_bn_match	0.8125	raw field
+PRBDevBNMatchSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/dev_bn_match	0.71875	raw field
+PRBDevBNMatchMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.7135416666666666	mean over seeds of arms/B/<seed>/dev_bn_match
+PRBDevBNAUCSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/dev_bn_auc	0.5059814453125	raw field
+PRBDevBNAUCSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/dev_bn_auc	0.548828125	raw field
+PRBDevBNAUCSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/dev_bn_auc	0.57391357421875	raw field
+PRBDevBNAUCMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.54290771484375	mean over seeds of arms/B/<seed>/dev_bn_auc
+PRBDevAllGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/dev_all_group	0.296875	raw field
+PRBDevAllGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/dev_all_group	0.3828125	raw field
+PRBDevAllGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/dev_all_group	0.4609375	raw field
+PRBDevAllGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.3802083333333333	mean over seeds of arms/B/<seed>/dev_all_group
+PRBTrainBNGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/train_bn_group	0.09375	raw field
+PRBTrainBNGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/train_bn_group	0.74609375	raw field
+PRBTrainBNGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/train_bn_group	0.703125	raw field
+PRBTrainBNGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.5143229166666666	mean over seeds of arms/B/<seed>/train_bn_group
+PRBDevBindGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/dev_binding_group	0.0	raw field
+PRBDevBindGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/dev_binding_group	0.15625	raw field
+PRBDevBindGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/dev_binding_group	0.46875	raw field
+PRBDevBindGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.20833333333333334	mean over seeds of arms/B/<seed>/dev_binding_group
+PRBDevRelGroupSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/dev_relation_group	0.0	raw field
+PRBDevRelGroupSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/dev_relation_group	0.09375	raw field
+PRBDevRelGroupSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/dev_relation_group	0.0	raw field
+PRBDevRelGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	-	0.03125	mean over seeds of arms/B/<seed>/dev_relation_group
+PRdiffGroup	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_group/mean_diff	0.08333333333333333	raw field
+PRdiffGroupLo	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_group/ci95/0	0.03645833333333333	raw field
+PRdiffGroupHi	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_group/ci95/1	0.13541666666666663	raw field
+PRdiffGroupPos	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_group/n_seeds_positive	2	raw field
+PRdiffMatch	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_match/mean_diff	0.05208333333333333	raw field
+PRdiffMatchLo	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_match/ci95/0	-0.015625000000000017	raw field
+PRdiffMatchHi	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_match/ci95/1	0.125	raw field
+PRdiffMatchPos	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_match/n_seeds_positive	2	raw field
+PRdiffAUC	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_auc/mean_diff	0.034912109375	raw field
+PRdiffAUCLo	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_auc/ci95/0	0.0224609375	raw field
+PRdiffAUCHi	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_auc/ci95/1	0.049784342447916664	raw field
+PRdiffAUCPos	runs/paired_v1_20260926T230018Z/paired_summary.json	paired/dev_bn_auc/n_seeds_positive	2	raw field
+PRgradInitMean	runs/paired_v1_20260926T230018Z/paired_summary.json	grad_ratio/init_mean	13.064527225394137	raw field
+PRgradInitLamMean	runs/paired_v1_20260926T230018Z/paired_summary.json	grad_ratio/init_lam_scaled_mean	0.13064527225394137	raw field
+PRzsBNGroup	runs/paired_v1_20260926T230018Z/paired_summary.json	controls/zero_shot_clip/bn/group	0.03125	raw field
+PRzsBNMatch	runs/paired_v1_20260926T230018Z/paired_summary.json	controls/zero_shot_clip/bn/match	0.59375	raw field
+PRzsAllGroup	runs/paired_v1_20260926T230018Z/paired_summary.json	controls/zero_shot_clip/all/group	0.2578125	raw field
+PRoracleBNGroup	runs/paired_v1_20260926T230018Z/paired_summary.json	controls/oracle/bn/group	1.0	raw field
+PRrandBNGroup	runs/paired_v1_20260926T230018Z/paired_summary.json	controls/random_mc300_bn/group	0.16609375	raw field
+PRrandBNMatch	runs/paired_v1_20260926T230018Z/paired_summary.json	controls/random_mc300_bn/match	0.4998958333333333	raw field
+PRrenderImages	runs/paired_v1_20260926T230018Z/paired_summary.json	renderer_audit/images	1408	raw field
+PRrenderMismatch	runs/paired_v1_20260926T230018Z/paired_summary.json	renderer_audit/decode_mismatches	0	raw field
+PRencCPU	runs/paired_v1_20260926T230018Z/paired_summary.json	cost/encoder_cpu_s	259.26	raw field
+PRACIGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/A/group/mean	0.03645833333333333	raw field
+PRACIGroupLo	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/A/group/ci95/0	0.010416666666666666	raw field
+PRACIGroupHi	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/A/group/ci95/1	0.0625	raw field
+PRACIMatchMean	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/A/match/mean	0.6614583333333334	raw field
+PRACIMatchLo	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/A/match/ci95/0	0.5677083333333333	raw field
+PRACIMatchHi	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/A/match/ci95/1	0.7499999999999999	raw field
+PRALossLastSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/loss_last	0.5076759375430748	raw field
+PRAResidSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed0/content_residual_bn	0.24395740110523784	raw field
+PRALossLastSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/loss_last	1.82939495132582	raw field
+PRAResidSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed1/content_residual_bn	0.24629309642249403	raw field
+PRALossLastSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/loss_last	7.1761961037087545	raw field
+PRAResidSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/A/seed2/content_residual_bn	0.2431720174652467	raw field
+PRBCIGroupMean	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/B/group/mean	0.11979166666666666	raw field
+PRBCIGroupLo	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/B/group/ci95/0	0.07812499999999999	raw field
+PRBCIGroupHi	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/B/group/ci95/1	0.16666666666666669	raw field
+PRBCIMatchMean	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/B/match/mean	0.7135416666666666	raw field
+PRBCIMatchLo	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/B/match/ci95/0	0.6458333333333333	raw field
+PRBCIMatchHi	runs/paired_v1_20260926T230018Z/paired_summary.json	verdict/arm_bn_ci/B/match/ci95/1	0.7864583333333329	raw field
+PRBLossLastSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/loss_last	0.9067908285460157	raw field
+PRBResidSeedZero	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed0/content_residual_bn	0.26306009851830914	raw field
+PRBLossLastSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/loss_last	0.2542616221301668	raw field
+PRBResidSeedOne	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed1/content_residual_bn	0.24827921338195708	raw field
+PRBLossLastSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/loss_last	0.2875805512291789	raw field
+PRBResidSeedTwo	runs/paired_v1_20260926T230018Z/paired_summary.json	arms/B/seed2/content_residual_bn	0.26176218946389296	raw field
+PRAGradMaxSeedZero	runs/paired_v1_20260926T230018Z/arms_detail.json	-	107.12314766498595	max of A/seed0/history[*]/grad_norm (logged every 100 steps)
+PRAGradMaxSeedOne	runs/paired_v1_20260926T230018Z/arms_detail.json	-	173.10834752642444	max of A/seed1/history[*]/grad_norm (logged every 100 steps)
+PRAGradMaxSeedTwo	runs/paired_v1_20260926T230018Z/arms_detail.json	-	427.6808633467211	max of A/seed2/history[*]/grad_norm (logged every 100 steps)
+PRBGradMaxSeedZero	runs/paired_v1_20260926T230018Z/arms_detail.json	-	82.49326910160843	max of B/seed0/history[*]/grad_norm (logged every 100 steps)
+PRBGradMaxSeedOne	runs/paired_v1_20260926T230018Z/arms_detail.json	-	77.33244239161843	max of B/seed1/history[*]/grad_norm (logged every 100 steps)
+PRBGradMaxSeedTwo	runs/paired_v1_20260926T230018Z/arms_detail.json	-	112.67697187367182	max of B/seed2/history[*]/grad_norm (logged every 100 steps)
+PRgradMaxAll	runs/paired_v1_20260926T230018Z/arms_detail.json	-	427.6808633467211	max over arms and seeds of logged grad_norm
+PRgradMinOfMax	runs/paired_v1_20260926T230018Z/arms_detail.json	-	77.33244239161843	min over arms and seeds of the max logged grad_norm
+PRlr	runs/paired_v1_20260926T230018Z/config.json	paired/train/lr	0.01	raw field
+PRbatch	runs/paired_v1_20260926T230018Z/config.json	paired/train/batch_groups	16	raw field
+PRwd	runs/paired_v1_20260926T230018Z/config.json	paired/train/weight_decay	0.0001	raw field
+PRcpuTotal	runs/paired_v1_20260926T230018Z/paired_summary.json	cost/stage_cpu_s	481.0	raw field
+PRpeakRSS	runs/paired_v1_20260926T230018Z/paired_summary.json	cost/peak_rss_mib	1940.1	raw field

@@ -1,10 +1,80 @@
 # STATUS: P3 Learning Object-Attribute Binding that Composes Beyond Training Pairs
 
+마지막 갱신: 2026-09-26 (paired 비교 `paired_v1` + 원고 Working Draft v1).
+- 인수 기준: `1edc535`. 최종 tested code: `0b0d130`.
+- 이번 단계 코드: `fc7d5f6`(paired 실행 커밋). 원고 v0: `6d6887e`.
+- 이전 기록(A절, 1단계 기록)은 아래에 원문 그대로 보존했다.
+
+# B. Paired 비교와 원고 (2026-09-26)
+
+## B0. 판정
+
+| 구분 | 판정 | 근거 |
+|---|---|---|
+| 소프트웨어 | **TECHNICAL_TEST_PASS** | `.venv`에서 unittest 70/70 통과, skip 0(`runs/tests_20260926T231246Z`) |
+| split 의미 검사 | **완료 (metadata 전용)** | edit orbit, 수락률, orbit filter 유지율, 구성비. test 점수는 열지 않음 |
+| paired 비교 | **OPTIMIZATION_OR_INPUT_UNRESOLVED** (사전 고정 규칙) | 두 arm 모두 fit 기준 미달(seed 평균 BN train group A 0.251, B 0.514 < 0.75). 학습이 두 arm 모두에서 불안정 |
+| edit-loss 분기 | **ON_HOLD** | 규칙상 PRELIMINARY_ADDED_UTILITY가 아니면 보류. 결과를 보고 자동으로 후속 실행하지 않음 |
+| 과학 | **SCIENCE_NOT_EVALUATED** (dev 전용) | test는 봉인 상태. 합성 RGB와 frozen encoder에 한정 |
+| 원고 | **WORKING_DRAFT_V1_BUILT**, HUMAN_REVIEW_PENDING | `paper/main.pdf` 13쪽. 본문은 8쪽에서 끝남(한도 9). 공식 ICLR 2027 style이며 미제출 |
+
+## B1. 실제 명령과 결과 위치
+
+| 명령 | 결과 위치 | CPU |
+|---|---|---|
+| `python3 scripts/ledger_run.py --name split_semantics_v1_committed --ledger runs/paired_v1_cpu_ledger.json --cap-s 7200 -- python3 scripts/analyze_split_semantics.py` | `runs/split_semantics_v1_20260926T230848Z`. 먼저 dirty tree에서 한 실행 `…225449Z`도 보존했고, 결과는 float 한 자리 차이를 빼면 동일 | 10.7 s |
+| `.venv/bin/python scripts/paired_v1.py` (커밋 fc7d5f6, clean) | `runs/paired_v1_20260926T230018Z` (`paired_summary.json`, `arms_detail.json`, head `.pt` 6개, log, manifest) | 471.3 s, peak RSS 1.94 GiB |
+| debug(8/8 panel, 5 step) | `runs/debug_paired_tiny_20260926T225836Z` | 27.3 s |
+| `python3 scripts/ledger_run.py --name final_tests_paired_stage ... -- .venv/bin/python scripts/run_tests.py` | `runs/tests_20260926T231246Z` | 33.1 s |
+| `python3 scripts/ledger_run.py --name paper_build ... --ledger runs/paper_build_cpu_ledger.json --cap-s 600 -- bash paper/build.sh` | `paper/main.pdf` | 빌드 총 13.3 s / 600 |
+
+- **task ledger** (`runs/paired_v1_cpu_ledger.json`): 562.5 / 7,200 s. 개발 회귀 테스트 8.9 s 포함.
+- **설치(상한 밖에 별도 기록)**
+  - TeX Live 2023: `runs/install_latex_*`, 35 CPU s.
+  - poppler-utils: `runs/install_poppler_*`. 첫 시도는 오래된 index 때문에 실패했고, 그 기록도 보존.
+  - 공식 ICLR 2027 style ZIP(sha256 `0d940dfa…`). 새 연구 데이터나 가중치는 받지 않았다.
+
+## B2. Split 의미 (지시 1)
+
+- **edit orbit의 정의**: binding 편집(한 속성 종류를 두 객체 사이에서 교환)과 relation 편집(slot 교환)이 생성하는 군의 orbit이다. 중간 장면의 유효성을 무시하면, shape·color·material multiset이 같은 유효 장면의 집합과 같다. content 편집(속성·객체 교체)은 다른 orbit으로 옮긴다.
+- **orbit filter**: binding·relation 편집은 100% 유지된다. content 편집의 유지율은 train 50.1%, dev 10.4%, calib 4.7%, test 템플릿 3.4%다. 따라서 **수락된 content 편집은 균등 표본이 아니다.**
+- **구성비 이동**: 작은 split은 orbit 수가 적어 구성비가 train과 다르다(dev 색 분포 TV 0.12).
+- **BN 비율**: 단일 편집 split은 50%, test composition은 30%다.
+- **Panel**: train 512 그룹(427 orbit), dev 128 그룹(74 orbit). 공유 orbit 0이며, dev는 이전에 채점된 32 그룹을 제외했다.
+
+## B3. Paired 결과 (dev 128 그룹, BN 64; 가설 검정 아님)
+
+| seed 0/1/2 | A: hard-neg | B: +edit (λ=0.01) | B−A |
+|---|---|---|---|
+| dev BN group | .094/.016/.000 | .000/.125/.234 | −.094/.109/.234 |
+| dev BN GroupMatch | .688/.641/.656 | .609/.812/.719 | −.078/.172/.062 |
+| train BN group (fit) | .535/.152/.066 | .094/.746/.703 | |
+| 최종 task loss | 0.51/1.83/7.18 | 0.91/0.25/0.29 | |
+
+- **판정**: 두 arm 모두 fit 기준 미달이므로 **OPTIMIZATION_OR_INPUT_UNRESOLVED**.
+- **학습 불안정**: 로그된 grad norm의 run별 최대값은 77.3–427.7이다. A seed 2는 최종 loss 7.18로, 초기값 3.56보다 높다.
+- **B−A 차이**: 평균 0.083, group bootstrap CI [0.036, 0.135]. 이 CI는 seed 분산을 반영하지 않는다. B가 이긴 seed는 A가 높은 loss로 끝난 run과 겹치므로 **추가 효용으로 해석하지 않는다.**
+- **chance와의 관계**: 두 arm 모두 BN group score는 1/6 아래(A 0.036, B 0.120)이고 GroupMatch는 1/2 위(A 0.661, B 0.714)다.
+- **zero-shot CLIP** (BN): group 0.031, GroupMatch 0.594.
+- **λ 공개**: λ=0.01은 기존 grid에서 가장 작은 0이 아닌 값이고, 그 grid는 gradient 관찰 이후에 정해졌다. init 시점 edit/task gradient 비는 13.1이고, λ를 곱하면 약 0.13이다.
+
+## B4. 미실행 (NOT_RUN)
+- 안정화된 재비교(낮은 lr, schedule, clipping, 정규화 score, 평균화). 새 사전 고정 config와 승인이 필요하다.
+- v1 test 평가, 자연 이미지 전이, encoder 교체·층 선택·fine-tuning, calibrated pair accuracy, 12-setting sweep.
+
+## B5. 원고
+- 파일: `paper/main.tex`, `paper/sections/*.tex`, `paper/appendix.tex`, `paper/references.bib`, `paper/tables/*.tex`(생성), `paper/figures/dev_examples_row.png`(run 산출물 재배치), `paper/claim_evidence.tsv`(35건), `paper/BUILD.md`, `paper/PAPER_STATUS.md`, `paper/main.pdf`.
+- 숫자: `scripts/export_paper_numbers.py`가 원자료에서 매크로 327개와 표 4개를 만든다. 출처는 `paper/generated/provenance.tsv`에 있다.
+- 남은 주의사항: 사람 검토 없음. arXiv export의 연도가 최신 버전 기준이라 인용 연도 정책이 필요하다. C29의 설명은 미검정이다.
+
+---
+
+# A. 픽셀 입력 단계 (pixel_baseline_v1)
+
+(당시 머리말, 원문 보존)
 마지막 갱신: 2026-09-26 (픽셀 입력 단계 `pixel_baseline_v1`).
 - 코드 기준 커밋: `121fdab`(stage 코드). `0b0d130`은 manifest 버그 수정이다.
 - 인수 기준 커밋은 `f606795`이며, 그 이전 기록은 아래 "1단계 기록"에 원문 그대로 보존했다.
-
-# A. 픽셀 입력 단계 (pixel_baseline_v1)
 
 ## A0. 판정
 

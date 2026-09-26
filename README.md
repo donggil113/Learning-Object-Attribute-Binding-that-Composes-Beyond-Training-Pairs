@@ -1,10 +1,11 @@
 # P3 — Learning Object-Attribute Binding that Composes Beyond Training Pairs
 
-현재 단계는 **픽셀 입력 가능성 확인과 hard-negative 기준선 실행**(`pixel_baseline_v1`, PIXEL_BASELINE_FEASIBILITY)까지이며 여기서 멈춥니다. edit loss 비교와 파일럿은 실행하지 않았습니다(`configs/prereg_pilot_v1.json`, NOT_RUN). 현재 상태는 [STATUS.md](STATUS.md)를 보십시오.
+현재 단계: 픽셀 입력 paired 비교(`paired_v1`, 판정 OPTIMIZATION_OR_INPUT_UNRESOLVED)와 원고 Working Draft v1(`paper/main.pdf`, 미제출, HUMAN_REVIEW_PENDING)까지이며 여기서 멈춥니다. 현재 상태는 [STATUS.md](STATUS.md)를 보십시오.
 
 - 연구 질문과 반증 조건: [docs/RESEARCH_QUESTION.md](docs/RESEARCH_QUESTION.md)
 - 선행연구 대조와 주장 표: [docs/PRIOR_ART.md](docs/PRIOR_ART.md)
 - AI 사용 내역: [AI_USAGE.md](AI_USAGE.md)
+- 원고: [paper/PAPER_STATUS.md](paper/PAPER_STATUS.md), 빌드 방법은 [paper/BUILD.md](paper/BUILD.md)
 
 ## 픽셀 입력 단계 (pixel_baseline_v1)
 

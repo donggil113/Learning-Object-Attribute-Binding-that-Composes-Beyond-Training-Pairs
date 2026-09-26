@@ -1,0 +1,54 @@
+\subsection{Paired comparison with the edit-consistency objective}
+\label{sec:paired}
+
+\paragraph{Design, fixed before the run.}
+The panel contains the first \SSpanelTrainN{} training groups (\SSpanelTrainOrbits{} orbits) and
+\SSpanelDevN{} development groups (\SSpanelDevOrbits{} orbits). The development groups start after
+the \SSpanelDevExcluded{} groups already scored in the small-panel stage. The two panels share
+\SSpanelOverlap{} orbits, and \PRdevBNN{} of the development groups are binding-necessary. Arm A
+uses the hard-negative loss. Arm B adds $\lambda\,\mathcal{L}_{\mathrm{edit}}$ with
+$\lambda=\PRlambda$, the smallest non-zero value of the earlier pre-registered grid. We disclose
+that this grid was set after observing gradient scales, and $\lambda$ was not changed after any
+development result was seen. Both arms share initialization, batch order, supervision,
+false-negative masks, cached encoder features, optimizer (AdamW, learning rate \PRlr, weight decay
+\PRwd) and \PRsteps{} updates of \PRbatch{} groups. Seeds 0, 1 and 2 are paired optimization
+repeats, and the development panel is scored only after the final update. At initialization the
+edit gradient was \PRgradInitMean{} times the task gradient (mean over the three first batches), so
+$\lambda$ scales it to about \PRgradInitLamMean{} of the task gradient. Encoding the
+\PRrenderImages{} panel images and their captions took \PRencCPU{} CPU seconds, and the audit
+decoder found \PRrenderMismatch{} mismatches.
+
+\begin{table}[t]
+\caption{Paired comparison on \SSpanelTrainN{} training and \SSpanelDevN{} development groups
+(\PRdevBNN{} binding-necessary). Seeds 0/1/2 are paired optimization repeats on the same panel.
+Chance for independent scores: group $1/6$, GroupMatch $1/2$, pair AUC $0.5$. Source:
+\url{runs/paired_v1_20260926T230018Z/paired_summary.json}.}
+\label{tab:paired}
+\centering\small
+\input{tables/paired.tex}
+\end{table}
+
+\paragraph{Outcome under the pre-fixed rules.}
+Neither arm met the fit criterion, a seed-mean binding-necessary training group score of at least
+$0.75$: A reached \PRATrainBNGroupMean{} and B \PRBTrainBNGroupMean{} (Table~\ref{tab:paired}). The
+pre-registered verdict is therefore \texttt{\PRverdict}. Training was unstable in both arms. The
+task loss oscillated during training, and the largest logged gradient norm per run ranged from
+\PRgradMinOfMax{} to \PRgradMaxAll. Arm A finished seed 2 at a task loss of \PRALossLastSeedTwo{},
+above its initial value, and seed 1 at \PRALossLastSeedOne. Arm B finished at
+\PRBLossLastSeedZero, \PRBLossLastSeedOne{} and \PRBLossLastSeedTwo.
+
+\paragraph{What the difference does and does not show.}
+On binding-necessary development groups, the edit-consistency arm scored higher in \PRdiffGroupPos{}
+of 3 seeds. The mean paired difference in group score is \PRdiffGroup. Its group-level bootstrap
+interval is [\PRdiffGroupLo, \PRdiffGroupHi], but that interval treats the three runs as fixed and
+does not reflect their optimization variance. The per-seed differences in Table~\ref{tab:paired} are
+positive in the seeds where the baseline ended with a high final loss, and negative in the seed
+where it did not. We therefore do not read them as added utility of the objective. Both arms also
+sit below the independent-score chance level on the group score (A: \PRACIGroupMean{},
+[\PRACIGroupLo, \PRACIGroupHi]; B: \PRBCIGroupMean{}, [\PRBCIGroupLo, \PRBCIGroupHi]) and above it
+on GroupMatch (A: \PRACIMatchMean; B: \PRBCIMatchMean). A scorer whose preferences are correlated
+across the two captions, for instance one that prefers the same image for both, can fall below
+$1/6$ on the group score while still matching better than $1/2$, so the two metrics must be read
+together. Zero-shot CLIP on the same subset reaches \PRzsBNGroup{} (group) and \PRzsBNMatch{}
+(GroupMatch). Following the pre-fixed rules, the edit-objective branch is put on hold. No
+stabilization, encoder change, data increase or new loss was started on the basis of this result.

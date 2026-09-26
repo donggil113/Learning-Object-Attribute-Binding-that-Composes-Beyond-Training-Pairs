@@ -1,0 +1,116 @@
+[23:00:31] data_v1 b8ec4ff27a0ceeb4 | panel train 512 dev 128 (dev dev-00032..dev-00159) gids sha b0605607bf2d15b6
+[23:01:04] renderer audit: 1408 images, 0 decode mismatches (33.09 CPU s)
+[23:04:26] encoded 1024 images and 2048 captions
+[23:05:16] encoded 256 images and 512 captions
+[23:05:25] encoder: 1408 images + 2560 captions, 259.26 CPU s
+[23:05:28] controls: oracle bn group 1.0, zero-shot bn group 0.031 match 0.594; random bn group 0.166
+[23:05:28] [A seed 0] init: L_task=3.605 L_edit=5.359 grad ratio edit/task=13.61 (x lam=0.0: 0.000)
+[23:05:28]   step 1 task=3.6047 edit=5.3592 |g|=2.3574
+[23:05:30]   step 100 task=0.7283 edit=1.6642 |g|=3.8778
+[23:05:32]   step 200 task=1.4933 edit=1.9670 |g|=9.9121
+[23:05:33]   step 300 task=2.2932 edit=2.0671 |g|=71.3103
+[23:05:35]   step 400 task=0.7006 edit=1.6272 |g|=10.6612
+[23:05:37]   step 500 task=0.8960 edit=1.7382 |g|=14.9020
+[23:05:39]   step 600 task=0.6687 edit=1.6856 |g|=6.1561
+[23:05:40]   step 700 task=0.5618 edit=2.0293 |g|=5.7722
+[23:05:42]   step 800 task=0.3178 edit=1.3560 |g|=6.8438
+[23:05:44]   step 900 task=0.7276 edit=1.7156 |g|=24.3980
+[23:05:46]   step 1000 task=2.8079 edit=2.4624 |g|=107.1231
+[23:05:48]   step 1100 task=6.3515 edit=2.1447 |g|=98.2715
+[23:05:49]   step 1200 task=1.4475 edit=1.6906 |g|=36.9266
+[23:05:51]   step 1300 task=0.1220 edit=1.2188 |g|=9.8316
+[23:05:53]   step 1400 task=0.2617 edit=1.1752 |g|=4.0622
+[23:05:55]   step 1500 task=0.5077 edit=1.4159 |g|=10.6477
+[23:05:55] [A seed 0] loss 3.605->0.508 edit 5.359->1.416 | dev BN group 0.094 match 0.688 auc 0.520 | all group 0.367 | train BN group 0.535 | 26.1 CPU s
+[23:05:55] [B seed 0] init: L_task=3.605 L_edit=5.359 grad ratio edit/task=13.61 (x lam=0.01: 0.136)
+[23:05:55]   step 1 task=3.6047 edit=5.3592 |g|=2.4478
+[23:05:57]   step 100 task=0.6937 edit=2.1620 |g|=3.1635
+[23:05:59]   step 200 task=1.1203 edit=1.6465 |g|=21.8519
+[23:06:01]   step 300 task=0.9532 edit=2.1989 |g|=12.3030
+[23:06:03]   step 400 task=3.2621 edit=2.2912 |g|=82.4933
+[23:06:04]   step 500 task=2.3707 edit=1.9263 |g|=27.9973
+[23:06:06]   step 600 task=0.7514 edit=1.8540 |g|=7.8716
+[23:06:08]   step 700 task=0.5144 edit=1.9894 |g|=9.0885
+[23:06:10]   step 800 task=0.2577 edit=0.8719 |g|=2.1901
+[23:06:12]   step 900 task=0.4141 edit=1.2140 |g|=12.2395
+[23:06:13]   step 1000 task=0.3996 edit=1.0853 |g|=4.0795
+[23:06:15]   step 1100 task=0.3270 edit=1.2146 |g|=7.1816
+[23:06:17]   step 1200 task=0.3210 edit=1.1499 |g|=7.5162
+[23:06:19]   step 1300 task=1.0501 edit=1.0323 |g|=21.8614
+[23:06:20]   step 1400 task=2.0602 edit=1.7681 |g|=23.7650
+[23:06:22]   step 1500 task=0.9068 edit=1.6842 |g|=19.9696
+[23:06:23] [B seed 0] loss 3.605->0.907 edit 5.359->1.684 | dev BN group 0.000 match 0.609 auc 0.506 | all group 0.297 | train BN group 0.094 | 26.4 CPU s
+[23:06:23] [A seed 1] init: L_task=3.458 L_edit=5.776 grad ratio edit/task=13.62 (x lam=0.0: 0.000)
+[23:06:23]   step 1 task=3.4582 edit=5.7763 |g|=2.0460
+[23:06:25]   step 100 task=0.5497 edit=1.7233 |g|=2.9403
+[23:06:27]   step 200 task=0.8167 edit=2.6573 |g|=10.1871
+[23:06:28]   step 300 task=0.8710 edit=1.3908 |g|=14.3963
+[23:06:30]   step 400 task=0.5745 edit=2.2109 |g|=11.1235
+[23:06:32]   step 500 task=1.2762 edit=1.7199 |g|=31.3357
+[23:06:33]   step 600 task=1.4346 edit=1.8389 |g|=20.0838
+[23:06:35]   step 700 task=1.2546 edit=1.4431 |g|=37.4168
+[23:06:37]   step 800 task=0.9362 edit=1.3767 |g|=21.5247
+[23:06:39]   step 900 task=0.9282 edit=1.1474 |g|=11.9584
+[23:06:40]   step 1000 task=0.4676 edit=1.0247 |g|=16.7838
+[23:06:42]   step 1100 task=0.4376 edit=1.1869 |g|=12.1718
+[23:06:44]   step 1200 task=1.0013 edit=2.0293 |g|=27.0544
+[23:06:46]   step 1300 task=27.2080 edit=1.9754 |g|=173.1083
+[23:06:47]   step 1400 task=3.9313 edit=1.9440 |g|=74.5296
+[23:06:49]   step 1500 task=1.8294 edit=1.5409 |g|=52.7197
+[23:06:50] [A seed 1] loss 3.458->1.829 edit 5.776->1.541 | dev BN group 0.016 match 0.641 auc 0.503 | all group 0.289 | train BN group 0.152 | 26.0 CPU s
+[23:06:50] [B seed 1] init: L_task=3.458 L_edit=5.776 grad ratio edit/task=13.62 (x lam=0.01: 0.136)
+[23:06:50]   step 1 task=3.4582 edit=5.7763 |g|=2.1246
+[23:06:52]   step 100 task=0.5751 edit=1.5880 |g|=4.1491
+[23:06:54]   step 200 task=0.6044 edit=2.2829 |g|=3.5659
+[23:06:55]   step 300 task=0.7027 edit=1.2294 |g|=10.1082
+[23:06:57]   step 400 task=0.6319 edit=0.9493 |g|=5.8106
+[23:06:59]   step 500 task=0.9556 edit=1.5750 |g|=21.3946
+[23:07:01]   step 600 task=2.0701 edit=2.8187 |g|=38.3357
+[23:07:03]   step 700 task=3.8748 edit=1.7986 |g|=77.3324
+[23:07:04]   step 800 task=1.3396 edit=1.6889 |g|=27.5838
+[23:07:06]   step 900 task=0.6238 edit=1.1287 |g|=11.9507
+[23:07:08]   step 1000 task=0.2131 edit=1.0798 |g|=6.1760
+[23:07:10]   step 1100 task=0.1922 edit=0.8493 |g|=9.7151
+[23:07:12]   step 1200 task=0.1401 edit=1.0554 |g|=9.2764
+[23:07:13]   step 1300 task=0.5106 edit=0.8465 |g|=7.0432
+[23:07:15]   step 1400 task=0.4370 edit=0.6824 |g|=15.1962
+[23:07:17]   step 1500 task=0.2543 edit=0.9018 |g|=9.4785
+[23:07:18] [B seed 1] loss 3.458->0.254 edit 5.776->0.902 | dev BN group 0.125 match 0.812 auc 0.549 | all group 0.383 | train BN group 0.746 | 26.2 CPU s
+[23:07:18] [A seed 2] init: L_task=3.558 L_edit=6.306 grad ratio edit/task=11.96 (x lam=0.0: 0.000)
+[23:07:18]   step 1 task=3.5583 edit=6.3058 |g|=2.3903
+[23:07:19]   step 100 task=0.6217 edit=1.4146 |g|=5.1009
+[23:07:21]   step 200 task=0.9046 edit=1.3578 |g|=42.7121
+[23:07:23]   step 300 task=0.9406 edit=1.6672 |g|=11.6481
+[23:07:24]   step 400 task=3.4103 edit=2.0211 |g|=121.1098
+[23:07:26]   step 500 task=1.6150 edit=2.0091 |g|=48.1428
+[23:07:28]   step 600 task=0.7885 edit=1.8727 |g|=14.0254
+[23:07:30]   step 700 task=0.3589 edit=0.9208 |g|=6.9749
+[23:07:31]   step 800 task=0.4430 edit=0.9734 |g|=12.0577
+[23:07:33]   step 900 task=0.3882 edit=1.1032 |g|=8.7115
+[23:07:35]   step 1000 task=0.4220 edit=1.0468 |g|=8.2807
+[23:07:36]   step 1100 task=0.2186 edit=0.7024 |g|=7.0420
+[23:07:38]   step 1200 task=0.9334 edit=2.0621 |g|=28.9665
+[23:07:40]   step 1300 task=1.9460 edit=1.4547 |g|=33.0793
+[23:07:41]   step 1400 task=23.5871 edit=2.9534 |g|=427.6809
+[23:07:43]   step 1500 task=7.1762 edit=1.9821 |g|=104.8101
+[23:07:44] [A seed 2] loss 3.558->7.176 edit 6.306->1.982 | dev BN group 0.000 match 0.656 auc 0.501 | all group 0.250 | train BN group 0.066 | 25.4 CPU s
+[23:07:44] [B seed 2] init: L_task=3.558 L_edit=6.306 grad ratio edit/task=11.96 (x lam=0.01: 0.120)
+[23:07:44]   step 1 task=3.5583 edit=6.3058 |g|=2.4793
+[23:07:46]   step 100 task=0.6805 edit=1.9588 |g|=3.7244
+[23:07:48]   step 200 task=0.6761 edit=1.4985 |g|=4.3614
+[23:07:49]   step 300 task=1.1864 edit=1.6710 |g|=9.7136
+[23:07:51]   step 400 task=1.2967 edit=1.4749 |g|=7.9280
+[23:07:53]   step 500 task=1.0697 edit=2.2367 |g|=19.6587
+[23:07:55]   step 600 task=1.4364 edit=2.2380 |g|=16.7045
+[23:07:56]   step 700 task=5.6497 edit=1.6048 |g|=112.6770
+[23:07:58]   step 800 task=1.7603 edit=1.7112 |g|=24.6310
+[23:08:00]   step 900 task=0.8911 edit=1.5556 |g|=22.0005
+[23:08:02]   step 1000 task=0.2608 edit=1.0538 |g|=10.8746
+[23:08:03]   step 1100 task=0.2801 edit=1.1542 |g|=7.1610
+[23:08:05]   step 1200 task=0.3636 edit=0.9678 |g|=22.2299
+[23:08:07]   step 1300 task=0.2716 edit=0.8406 |g|=6.3146
+[23:08:09]   step 1400 task=0.4589 edit=1.3347 |g|=7.7923
+[23:08:11]   step 1500 task=0.2876 edit=0.7295 |g|=15.2721
+[23:08:12] [B seed 2] loss 3.558->0.288 edit 6.306->0.730 | dev BN group 0.234 match 0.719 auc 0.574 | all group 0.461 | train BN group 0.703 | 26.5 CPU s
+[23:08:14] verdict: {"label": "OPTIMIZATION_OR_INPUT_UNRESOLVED", "fits": {"A": false, "B": false}, "at_chance": {"A": false, "B": false}}
+[23:08:14] paired BN group diff 0.083 CI [0.03645833333333333, 0.13541666666666663] per-seed [-0.09375, 0.109375, 0.234375]

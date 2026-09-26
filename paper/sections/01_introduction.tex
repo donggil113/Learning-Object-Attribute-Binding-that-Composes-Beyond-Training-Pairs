@@ -39,8 +39,11 @@ Our current observations are narrow and mostly negative. On a small development 
 fits its training groups but performs at or below chance on binding-necessary development groups,
 while a binding-blind content channel reproduces most of its score on the full panel. Oracle
 object tokens used as a control give higher, but still low, development scores, so we cannot yet
-separate limits of the frozen encoder from limits of the training data or the head. The held-out
-test splits have not been opened.
+separate limits of the frozen encoder from limits of the training data or the head. On a larger
+panel we also ran a paired comparison of the hard-negative loss with and without the edit-consistency
+objective under study. Neither arm fitted its training groups under the fixed update budget, and
+training was unstable, so that comparison is unresolved rather than negative or positive. The
+held-out test splits have not been opened.
 
 \paragraph{Contributions.} (i) A description of an oracle-validated, minimal-change evaluation
 setting for compositional binding with pixel-only model inputs, orbit-level splits and a
@@ -51,4 +54,7 @@ Appendices~\ref{app:chance} and~\ref{app:blind}). (iii) The standard bilinear id
 training, the GroupMatch metric \citep{zhu2025ttm} and within-group edit alignment, which isolates
 the cross-group part of the edit-consistency objective under study (Section~\ref{sec:method}).
 (iv) Development-panel observations for a hard-negative baseline on frozen CLIP tokens, with
-content-only, shuffle, blind and oracle-token controls (Section~\ref{sec:experiments}).
+content-only, shuffle, blind and oracle-token controls. We add a pre-registered paired comparison
+with the edit-consistency objective, whose outcome under the pre-fixed rules is ``optimization
+unresolved'' (Section~\ref{sec:experiments}). (v) A metadata analysis of what orbit-level
+splitting does to the generated data (Appendix~\ref{app:splits}).

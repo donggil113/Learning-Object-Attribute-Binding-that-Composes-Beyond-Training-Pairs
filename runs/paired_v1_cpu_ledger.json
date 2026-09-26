@@ -51,7 +51,55 @@
       "cpu_s": 27.25,
       "wall_s": 68.37,
       "peak_rss_mib": 1571.6
+    },
+    {
+      "name": "paired_v1",
+      "run_dir": "/home/user/Learning-Object-Attribute-Binding-that-Composes-Beyond-Training-Pairs/runs/paired_v1_20260926T230018Z",
+      "status": "COMPLETED",
+      "cpu_s": 471.34,
+      "wall_s": 475.18,
+      "peak_rss_mib": 1940.1
+    },
+    {
+      "name": "split_semantics_v1_committed",
+      "cmd": [
+        "python3",
+        "scripts/analyze_split_semantics.py"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 10.67,
+      "wall_s": 10.77,
+      "children_peak_rss_mib": 55.2,
+      "rlimit_cpu_s": 6681,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
+    },
+    {
+      "name": "final_tests_paired_stage",
+      "cmd": [
+        ".venv/bin/python",
+        "scripts/run_tests.py"
+      ],
+      "status": "COMPLETED",
+      "cpu_s": 33.11,
+      "wall_s": 33.44,
+      "children_peak_rss_mib": 1570.8,
+      "rlimit_cpu_s": 6670,
+      "rlimit_as_bytes": 3221225472,
+      "threads_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TOKENIZERS_PARALLELISM": "false"
+      }
     }
   ],
-  "used_cpu_s": 47.35
+  "used_cpu_s": 562.47
 }

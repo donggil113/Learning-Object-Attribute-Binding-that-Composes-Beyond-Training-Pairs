@@ -1,0 +1,35 @@
+Table~\ref{tab:splits} reports the metadata of every data-v1 split, recomputed by
+\texttt{scripts/analyze\_split\_semantics.py} from the generator's own bookkeeping. No model is
+involved and no test score is opened. Of the \SSorbitsTotal{} orbits of three-object scenes, each
+split owns a hashed subset. ``Content filter keep'' is the fraction of applicable attribute and
+object edits whose result stays in an orbit owned by the same split. Binding and relation edits
+never leave their orbit, and all of them were kept.
+
+\begin{table}[h]
+\caption{Data-v1 split metadata (source:
+\url{runs/split_semantics_v1_20260926T230848Z/split_semantics.json}). ``Attempts'' counts every
+proposal, including rejected base scenes; ``accept'' is groups divided by attempts; ``orbits'' is
+orbits owned, ``used'' orbits occurring in the split; ``keep'' is the content-edit filter keep rate;
+\bn{} is the binding-necessary share.}
+\label{tab:splits}
+\centering\footnotesize
+\input{tables/split_semantics.tex}
+\end{table}
+
+\paragraph{Consequences.}
+(i) Accepted content edits are not a uniform sample of applicable edits. In the development split,
+\SSDevReplColorKept{} of \SSDevReplColorAppl{} applicable colour replacements and
+\SSDevReplShapeKept{} of \SSDevReplShapeAppl{} applicable shape replacements survived the
+ownership filter, while \SSDevSwapColorKept{} of \SSDevSwapColorAppl{} colour swaps did.
+Calibration and held-out-template splits keep even fewer content edits (\SSCalibContentFilter{} and
+\SSHeldTemplateContentFilter). (ii) Small splits own few orbits, so their attribute composition
+differs from training. The total-variation distance to the training colour distribution is
+\SSDevTVColor{} for the development split. In the paired development panel green and purple have
+frequencies \SSpanelDevColorGreen{} and \SSpanelDevColorPurple{}, against red and blue at
+\SSpanelDevColorRed{} and \SSpanelDevColorBlue{}; in the training panel the figures are
+\SSpanelTrainColorGreen{}, \SSpanelTrainColorPurple{}, \SSpanelTrainColorRed{} and
+\SSpanelTrainColorBlue. (iii) Edit kinds are balanced by construction: half of each single-edit
+split is binding-necessary, and \SSpanelDevBN{} of the paired development panel is. (iv) The
+analysis was first run on an uncommitted tree and then re-run on the committed code. The two
+outputs agree except for one total-variation value that differs in the last floating-point digit
+because of summation order. Both runs are kept.

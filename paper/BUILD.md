@@ -59,3 +59,15 @@ Do not type numbers into `.tex` files. Every number comes from a macro in
 `generated/numbers.tex`, and `generated/provenance.tsv` maps each macro to a source file, JSON field
 and rule. Constants of the setting are the exception: vocabulary sizes, image size and chance-level
 fractions are definitions, not results.
+
+## Build history (ledger `runs/paper_build_cpu_ledger.json`, 13.3 CPU s of 600 used)
+- `paper_build_v0`: pdflatex stopped with "Misplaced \noalign" (an `\input` inside `tabular`). The
+  ledger status reads COMPLETED because the wrapper command ended with `echo`; no PDF was produced. The
+  fix was to have the exporter write complete `tabular` environments.
+- `paper_build_v0_retry` .. `paper_build_v0_3`: v0 builds. Fixed three overfull boxes (a wide
+  equation, table widths), the title hyphenation and the figure size.
+- `paper_build_v1` .. `paper_build_v1_4`: v1 builds with the paired and split results. Fixed two
+  overfull boxes (table width, and an unbreakable run path in a caption, now `\url`).
+- Final state: 13 pages; main text ends on page 8 (label `end-of-main-text`); no undefined
+  references; no overfull boxes. Pages were rendered with `pdftoppm` and inspected visually
+  (title block, tables 1-4, equation (1), bibliography, appendix).
